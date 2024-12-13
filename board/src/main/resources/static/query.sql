@@ -10,6 +10,7 @@ select * from mysql.user;
 -- 사용자 추가 : 유저이름@아이피주소
 create user 'cos'@'%' identified by 'cos1234';
 -- 권한 설정 : ON DB이름.테이블명 TO 유저이름@아이피주소
-GRANT ALL PRIVILEGES ON *.* TO
+-- GRANT ALL PRIVILEGES ON *.* TO
 
 -- 테이블 확인
+SELECT  * FROM tb_board;

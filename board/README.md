@@ -6,6 +6,7 @@
 * Framework : SpringBoot
 * DB : MariaDB
 * UI/UX : thymeleaf, bootStrap, html5
+- css,js : 아인커뮤니케이션 https://congsong.tistory.com/16
 * Builder : Gradle
 * CI/CD : git hub, docker
 

@@ -4,13 +4,13 @@
     <div id="adm_wrap">
         <!-- /* Header 영역 */ -->
         <header>
-            <!-- /* Top 메뉴 */ -->
             <div class="head">
                 <div class="container-fluid">
-                    <i style="color: #709085;"><img th:src="@{/images/camp_chairing_woman.png}" height="40"></i>
-                    <span class="h3 fw-bold mb-0" style="color: grey;">Sophie's Home</span>
+                    <i style="color: #709085;"><img th:src="@{/images/camp_chairing_woman.png}" height="40" alt="source by 'https://www.irasutoya.com/'"></i>
+                    <span class="h3 fw-bold mb-0" style="color: #00adb4;">Sophie's Home</span>
                 </div>
-                <div class="top_menu"> <!-- /* MemberController의 login(), 웹 로컬 저정소에 저장된 session 정보로 확인 */ -->
+                <!-- /* Top 메뉴 */ -->
+                <div class="top_menu"> <!-- /* UserController의 login(), 웹 로컬 저정소에 저장된 session 정보로 확인 */ -->
                     <div class="login_user"><strong><i class="far fa-user-circle"></i>Tester</strong>님 반갑습니다.</div>
                     <div class="logout">
                         <form action="/logout" method="post">
@@ -28,11 +28,10 @@
                 <!-- /* 좌측 메뉴 */ -->
                 <nav>
                     <ul>
-                        <li class="has_sub"><a href="javascript: void(0);" class="on"><span>게시판 관리</span></a> <!-- javascript: void(0) : a href 속성 무효화 -->
+                        <li class="has_sub"><a href="javascript: void(0);" class="on"><span>게시판</span></a> <!-- javascript: void(0) : a href 속성 무효화 -->
                             <ul>
-                                <li><a href="/post/list.do" class="on">리스트형</a> </li>
-                                <li><a href="javascript: alert('준비 중입니다.');">갤러리형</a>
-                                <li><a href="javascript: alert('준비 중입니다.');">갤린더형</a> </li>
+                                <li><a th:href="@{/board/list.do}" class="on">공지사항</a> </li>
+                                <li><a href="javascript: alert('준비 중입니다.');">자유게시판</a>
                             </ul>
                         </li>
                         <li><a href="javascript: alert('준비 중입니다');"><span>회원 관리</span></a> </li>
@@ -49,8 +48,13 @@
             </div>
         </div>
     </div>
+    <!-- /* bootstrap JS */ -->
+    <script th:src="@{/js/bootstrap.bundle.min.js}"></script>
+    <!-- /* Common JS */ -->
+    <script th:src="@{/js/function.js}"></script>
+    <script th:src="@{/js/jquery-3.6.0.min.js}"></script>
+    <script th:src="@{/js/common.js}"></script>
     <footer th:replace="~{layout/fragments/footer :: main-footer}"></footer>
-    <foot th:replace="~{layout/fragments/foot :: foot}"></foot>
-    <th:block layout:fragment="script"></th:block>
 </body>
+<th:block layout:fragment="script"></th:block>
 </html>

@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="ko" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <th:block th:insert="~{layout/fragments/head :: headFragment}"></th:block>
+    <th:block th:insert="~{layout/fragments/head :: main-head}"></th:block>
 </head>
 <body>
 <section class="vh-100" style="background-color: #9A616D;">
@@ -11,27 +11,27 @@
                 <div class="card" style="border-radius: 1rem;">
                     <div class="row g-0">
                         <div class="col-md-6 col-lg-5 d-none d-md-block">
-                            <img th:src="@{/images/bg.png}" alt="logo" title="source by 'Sophie Han'" class="img-fluid" style="border-radius: 1rem 0 0 1rem;"/>
+                            <img th:src="@{/images/computer_mob_programming.png}" alt="logo" title="source by 'https://www.irasutoya.com/'" class="img-fluid" style="border-radius: 1rem 0 0 1rem;"/>
                         </div>
                         <div class="col-md-6 col-lg-7 d-flex align-items-center">
                             <div class="card-body p-4 p-lg-5 text-black">
-                                <form>
+                                <form id="loginForm" onsubmit="return false" autocomplete="off">
                                     <h1 class="form-label mb-3 pb-3" style="letter-spacing: 1px;">Sophie's Home</h1>
                                         <div class="form-floating mb-4">
-                                            <input type="email" id="logIn" class="form-control" placeholder="Email address"/>
-                                            <label class="form-label" for="logIn">Email address</label>
+                                            <input type="email" id="loginId" class="form-control" placeholder="이메일 주소"/>
+                                            <label class="form-label" for="loginId">이메일 주소</label>
                                         </div>
                                         <div class="form-floating mb-4">
-                                            <input type="password" id="password" class="form-control" placeholder="Password"/>
-                                            <label class="form-label" for="password">Password</label>
+                                            <input type="password" id="password" class="form-control" placeholder="패스워드"/>
+                                            <label class="form-label" for="password">패스워드</label>
                                         </div>
                                         <div class="d-grid gap-2">
-                                            <button type="button" class="btn btn-info btn-lg" id="btnLogin">로그인</button>
+                                            <button type="button" class="btn btn-info btn-lg" id="btnLogin" onclick="login();">로그인</button>
                                         </div>
                                         <div class="form-floating mb-4"></div>
                                         <a class="small" style="color: #951e22;" href="#!">패스워드 찾기</a>
                                         <p class="mb-5 pb-lg-2" style="color: #393f81;">계정이 없으신가요?
-                                            <a th:href="@{/user/join.do}" style="color: #0d6efd;">회원가입</a>
+                                            <a href="javascript:openSignupPopup();" style="color: #0d6efd;">회원가입</a>
                                         </p>
                                 </form>
 
@@ -43,11 +43,54 @@
         </div>
     </div>
 </section>
+
+<!-- /* 회원가입 popup */ -->
+<div id="signupPopup" class="popLayer">
+    <h3>회원가입</h3>
+    <div class="pop_container">
+        <form id="signupForm" onsubmit="return false;" autocomplete="off">
+            <table class="tb tb_row tl">
+                <colgroup>
+                    <col style="width: 30%;" />
+                    <col style="width: 70%;" />
+                </colgroup>
+                <tbody>
+                <tr>
+                    <th scope="row">아이디<span class="es">필수 입력</span> </th>
+                    <td>
+                        <input type="text" name="loginId" placeholder="이메일을 입력" maxlength="20" style="width: 80%;" />
+                        <button type="button" id="idCheckBtn" class="btns btn_st5" onclick="checkLoginId();" style="width: 20%; float: right;">중복 확인</button>
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row">비밀번호<span class="es">필수 입력</span> </th>
+                    <td><input type="password" name="password" placeholder="비밀번호 입력" maxlength="30" /></td>
+                </tr>
+                <tr>
+                    <th scope="row">비밀번호 재입력<span class="es">필수 입력</span> </th>
+                    <td><input type="password" name="passwordCheck" placeholder="비밀번호 재입력" maxlength="30" /></td>
+                </tr>
+                </tbody>
+            </table>
+        </form>
+        <p class="btn_set">
+            <button type="button" onclick="saveMember();" class="btns btn_st2">가입</button>
+            <button type="button" onclick="closeSignupPopup();" class="btns btn_bdr2">취소</button>
+        </p>
+    </div>
+    <button type="button" class="btn_close" onclick="closeSignupPopup();"><span><i class="far fa-times-circle"></i></span></button>
+</div>
+<foot>
+    <th:block th:insert="~{layout/fragments/footer :: main-footer}"></th:block>
+</foot>
 </body>
 </html>
-<foot>
-    <th:block th:insert="~{layout/fragments/foot :: footFragment}"></th:block>
-</foot>
+
+<!-- /* Common JS */ -->
+<script th:src="@{/js/function.js}"></script>
+<script th:src="@{/js/jquery-3.6.0.min.js}"></script>
+<script th:src="@{/js/common.js}"></script>
+<script src="https://kit.fontawesome.com/79613ae794.js" crossorigin="anonymous"></script>
 <script>
     // Enter 로그인 이벤트 바인딩
     window.onload = () => {
@@ -64,18 +107,19 @@
     function login() {
         const form = document.getElementById('loginForm');
 
-        if (!form.loginId.value || !form.password.value) {
+/*        if (!form.loginId.value || !form.password.value) {
             alert('아이디와 비밀번호를 모두 입력해 주세요.');
             form.loginId.focus();
             return false;
-        }
+        }*/
+
         $.ajax({
-            url: '/login',
-            type: 'POST',
-            dataType: 'json',
+            url: '/login.do',
+            type: 'GET',
+            dataType: 'text',
             data: {
-                loginId: form.loginId.value,
-                password: form.password.value
+                // loginId: form.loginId.value,
+                // password: form.password.value
             },
             async: false,
             success: function (response) {
@@ -93,16 +137,53 @@
         layerPop('signupPopup');
     }
 
-    // 레이어 팝업(기본)
-    function layerPop(popName){
-        var $layer = $("#"+ popName);
-        $layer.fadeIn(500).css('display', 'inline-block').wrap( '<div class="overlay_t"></div>');
-        $('body').css('overflow','hidden');
+    // 회원가입 팝업 close
+    function closeSignupPopup() {
+        const form = document.getElementById('signupForm'); // getElementById() : 지정한 id 속성을 가진 요소를 나타내는 element 객체 반환.
+        // --- 필드 값 초기화 ---
+        form.loginId.readOnly = false;
+        form.querySelector('#idCheckBtn').disabled = false;
+        form.reset();
+        // -------------------
+        layerPopClose();
     }
-    function layerPopClose(){
-        $(".popLayer").hide().unwrap( '');
-        $('body').css('overflow','auto');
-        $(".popLayer video").each(function() { this.pause(); this.load(); });
+
+    // 아이디 중복 체크
+    function checkLoginId() {
+        const loginId = document.querySelector('#signupForm input[name="loginId"]'); // querySelector() : 호출된 요소의 자손 중 첫번째 일치하는 요소 반환.
+        isValid(loginId, '아이디');
+        const count = getJson(`/member-count`, { loginId : loginId.value}); // URI : member-count
+
+        if (count > 0) {
+            alert('이미 가입된 아이디가 있습니다.');
+            loginId.focus();
+            return false;
+        }
+
+        if (confirm('사용 가능한 아이디입니다.\n입력하신 아이디로 결정하시겠어요?')) {
+            loginId.readOnly = true;
+            document.getElementById('idCheckBtn').disabled = true;
+        }
+    }
+
+    // 회원 정보 유효성 검사
+    function validationMemberInfo(form) {
+        const field = form.querySelectorAll('input:not([type="radio"])'); // querySelectorAll() : 해당 요소와 일치(radio 제외)하는 모든 Nodelist 반환.
+        const fieldNames = ['아이디', '비밀번호', '빕밀번호 재입력', '이름', '생년월일'];
+
+        for (let i = 0, len = field.length; i < len; i++) {
+            isValid(field[i], fieldNames[i]);
+        }
+
+        if (form.loginId.readOnly === false) {
+            alert('아이디 중복 체크를 완료해 주세요.');
+            throw new Error();
+        }
+        if (form.password.value !== form.passwordCheck.value) {
+            alert('비밀번호가 일치하지 않습니다.');
+            form.passwordCheck.focus();
+            throw new Error();
+        }
     }
 
 </script>

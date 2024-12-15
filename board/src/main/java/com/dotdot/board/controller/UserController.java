@@ -13,13 +13,13 @@ public class UserController {
     private UserService userService;
 
     // 로그인
-    @GetMapping ("/login.do")
+    @GetMapping ("/user/login.do")
     public String loginForm() {
         return "user/loginForm";
     }
 
     // 회원가입
-    @GetMapping ("/join.do")
+    @GetMapping ("/user/join.do")
     public String joinForm() {
         return "user/joinForm";
     }

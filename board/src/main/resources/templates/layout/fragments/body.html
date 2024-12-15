@@ -6,9 +6,12 @@
         <header>
             <!-- /* Top 메뉴 */ -->
             <div class="head">
-                <h1>Sophie's Home</h1>
-                <div th:if="${session.loginMember != null}" class="top_menu"> <!-- /* MemberController의 login(), 웹 로컬 저정소에 저장된 session 정보로 확인 */ -->
-                    <div class="login_user"><strong><i class="far fa-user-circle"></i>[[ ${session.loginMember.name} ]]</strong>님 반갑습니다.</div>
+                <div class="container-fluid">
+                    <i style="color: #709085;"><img th:src="@{/images/camp_chairing_woman.png}" height="40"></i>
+                    <span class="h3 fw-bold mb-0" style="color: grey;">Sophie's Home</span>
+                </div>
+                <div class="top_menu"> <!-- /* MemberController의 login(), 웹 로컬 저정소에 저장된 session 정보로 확인 */ -->
+                    <div class="login_user"><strong><i class="far fa-user-circle"></i>Tester</strong>님 반갑습니다.</div>
                     <div class="logout">
                         <form action="/logout" method="post">
                             <button type="submit"><span class="skip_info">로그아웃</span><i class="fas fa-sign-out-alt"></i> </button>
@@ -45,14 +48,9 @@
 
             </div>
         </div>
-        <footer>Copyright(c)dotdot.All rights reserved.</footer>
     </div>
-    <script th:src="@{/js/function.js}"></script> <!-- /* isValid() */ -->
-    <script th:src="@{/js/jquery-3.6.0.min.js}"></script>
-    <script th:src="@{/js/common.js}"></script>
-<!--    <script src="https://kit.fontawesome.com/79613ae794.js" crossorigin="anonymous"></script>-->
-<!--    <script src="https://cdn.jsdelivr.net/npm/dayjs@1/dayjs.min.js"></script>-->
-
+    <footer th:replace="~{layout/fragments/footer :: main-footer}"></footer>
+    <foot th:replace="~{layout/fragments/foot :: foot}"></foot>
     <th:block layout:fragment="script"></th:block>
 </body>
 </html>

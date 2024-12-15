@@ -16,26 +16,23 @@
                         <div class="col-md-6 col-lg-7 d-flex align-items-center">
                             <div class="card-body p-4 p-lg-5 text-black">
                                 <form>
-                                    <h5 class="form-label mb-3 pb-3" style="letter-spacing: 1px;"><em>Sign into your account</em></h5>
-
+                                    <h1 class="form-label mb-3 pb-3" style="letter-spacing: 1px;">Sophie's Home</h1>
                                         <div class="form-floating mb-4">
                                             <input type="email" id="logIn" class="form-control" placeholder="Email address"/>
                                             <label class="form-label" for="logIn">Email address</label>
                                         </div>
-
                                         <div class="form-floating mb-4">
                                             <input type="password" id="password" class="form-control" placeholder="Password"/>
                                             <label class="form-label" for="password">Password</label>
                                         </div>
-
-                                        <div class="pt-1 mb-4">
-                                            <button class="btn btn-dark btn-lg btn-block" type="button">Login
-                                            </button>
+                                        <div class="d-grid gap-2">
+                                            <button type="button" class="btn btn-info btn-lg" id="btnLogin">로그인</button>
                                         </div>
-
-                                        <a class="small text-muted" href="#!">Forgot password?</a>
-                                        <p class="mb-5 pb-lg-2" style="color: #393f81;">Don't have an account?
-                                            <a href="#!" style="color: #393f81;">Register here</a></p>
+                                        <div class="form-floating mb-4"></div>
+                                        <a class="small" style="color: #951e22;" href="#!">패스워드 찾기</a>
+                                        <p class="mb-5 pb-lg-2" style="color: #393f81;">계정이 없으신가요?
+                                            <a th:href="@{/user/join.do}" style="color: #0d6efd;">회원가입</a>
+                                        </p>
                                 </form>
 
                             </div>
@@ -48,11 +45,9 @@
 </section>
 </body>
 </html>
-
-<!-- bootstrap JS -->
-<script th:src="@{/js/bootstrap.bundle.min.js}"></script>
-<!--
-
+<foot>
+    <th:block th:insert="~{layout/fragments/foot :: footFragment}"></th:block>
+</foot>
 <script>
     // Enter 로그인 이벤트 바인딩
     window.onload = () => {
@@ -74,22 +69,40 @@
             form.loginId.focus();
             return false;
         }
-        /*
-                $.ajax({
-                    url : '/login',
-                    type : 'POST',
-                    dataType : 'json',
-                    data : {
-                        loginId: form.loginId.value,
-                        password: form.password.value
-                    },
-                    async : false,
-                    success : function (response) {
-                        location.href = '/board/list.do';
-                    },
-                    error : function (request, status, error) {
-                        alert('아이디와 비밀번호를 확인해 주세요.');
-                    }
-                })*/
+        $.ajax({
+            url: '/login',
+            type: 'POST',
+            dataType: 'json',
+            data: {
+                loginId: form.loginId.value,
+                password: form.password.value
+            },
+            async: false,
+            success: function (response) {
+                location.href = '/board/list.do';
+            },
+            error: function (request, status, error) {
+                alert('아이디와 비밀번호를 확인해 주세요.');
+            }
+        })
     }
-</script>-->
+
+
+    // 회원가입 팝업 open
+    function openSignupPopup() {
+        layerPop('signupPopup');
+    }
+
+    // 레이어 팝업(기본)
+    function layerPop(popName){
+        var $layer = $("#"+ popName);
+        $layer.fadeIn(500).css('display', 'inline-block').wrap( '<div class="overlay_t"></div>');
+        $('body').css('overflow','hidden');
+    }
+    function layerPopClose(){
+        $(".popLayer").hide().unwrap( '');
+        $('body').css('overflow','auto');
+        $(".popLayer video").each(function() { this.pause(); this.load(); });
+    }
+
+</script>

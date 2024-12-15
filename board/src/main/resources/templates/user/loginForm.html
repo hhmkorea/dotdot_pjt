@@ -1,11 +1,7 @@
 <!doctype html>
 <html lang="ko" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <!-- bootstrap CSS -->
-    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
-    <link rel="stylesheet" th:href="@{/css/login.css}">
-    <link rel="stylesheet" th:href="@{/css/default.css}">
-    <link rel="stylesheet" th:href="@{/css/button.css}">
+    <th:block th:insert="~{layout/fragments/head :: headFragment}"></th:block>
 </head>
 <body>
 <section class="vh-100" style="background-color: #9A616D;">
@@ -20,13 +16,6 @@
                         <div class="col-md-6 col-lg-7 d-flex align-items-center">
                             <div class="card-body p-4 p-lg-5 text-black">
                                 <form>
-                                    <div class="d-flex align-items-center mb-3 pb-1">
-                                        <!--<i class="fas fa-cubes fa-2x me-3" style="color: #ff6219;">
-                                            <img th:src="@{/images/camp_chairing_woman.png}" alt="login form" title="source by 'https://www.irasutoya.com/'" width="40px">
-                                        </i>
-                                        <span class="h3 fw-bold mb-0" style="color: grey;">Sophie's Home</span>-->
-                                    </div>
-
                                     <h5 class="form-label mb-3 pb-3" style="letter-spacing: 1px;"><em>Sign into your account</em></h5>
 
                                         <div class="form-floating mb-4">

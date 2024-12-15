@@ -1,6 +1,6 @@
-package com.dotdot.board.controller;
+package com.dotdot.site.controller;
 
-import com.dotdot.board.service.BoardService;
+import com.dotdot.site.service.BoardService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

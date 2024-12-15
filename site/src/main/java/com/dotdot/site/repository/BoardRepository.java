@@ -1,6 +1,6 @@
-package com.dotdot.board.repository;
+package com.dotdot.site.repository;
 
-import com.dotdot.board.model.Board;
+import com.dotdot.site.model.Board;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

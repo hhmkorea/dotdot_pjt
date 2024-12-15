@@ -1,7 +1,7 @@
-package com.dotdot.board.controller;
+package com.dotdot.site.controller;
 
 import ch.qos.logback.core.model.Model;
-import com.dotdot.board.service.UserService;
+import com.dotdot.site.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

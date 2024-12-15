@@ -1,6 +1,6 @@
-package com.dotdot.board.repository;
+package com.dotdot.site.repository;
 
-import com.dotdot.board.model.User;
+import com.dotdot.site.model.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;

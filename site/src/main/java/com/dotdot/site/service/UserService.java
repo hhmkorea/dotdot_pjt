@@ -1,7 +1,7 @@
-package com.dotdot.board.service;
+package com.dotdot.site.service;
 
-import com.dotdot.board.model.User;
-import com.dotdot.board.repository.UserRepository;
+import com.dotdot.site.model.User;
+import com.dotdot.site.repository.UserRepository;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;

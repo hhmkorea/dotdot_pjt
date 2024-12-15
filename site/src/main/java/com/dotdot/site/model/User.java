@@ -1,4 +1,4 @@
-package com.dotdot.board.model;
+package com.dotdot.site.model;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;

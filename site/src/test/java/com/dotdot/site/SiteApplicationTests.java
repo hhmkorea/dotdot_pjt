@@ -1,10 +1,10 @@
-package com.dotdot.board;
+package com.dotdot.site;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class BoardApplicationTests {
+class SiteApplicationTests {
 
     @Test
     void contextLoads() {

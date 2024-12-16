@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layout/default}">
+<th:block layout:fragment="title">
+    <title>게시판 페이지</title>
+</th:block>
+
+<th:block layout:fragment="content">    <!-- /* body.html 중 content 영역에 출력할 조각 */ -->    <!-- /* body.html 중 content 영역에 출력할 조각 */ -->
+    <div class="page_tits">
+        <h3>홈페이지 정보</h3>
+        <p class="path"><strong>현재 위치 : </strong><span>홈페이지 정보</span> <span>홈페이지 정보</span>
+    </div>
+
+    <div class="content">
+
+        <div class="container-fluid px-4">
+            <div class="card mb-4">
+                <div class="card-body">
+                    <form>
+                        <div class="mb-3">
+                            <label for="txt1" class="form-label">Project Info</label>
+                            <textarea class="form-control" id="txt1" name="content" rows="8" disabled>
+* Language : JAVA
+* IDE : IntelliJ
+* Framework : SpringBoot
+* DB : MariaDB
+* UI/UX : thymeleaf, bootStrap, html5
+* Builder : Gradle
+* CI/CD : git hub, docker
+                            </textarea>
+                        </div>
+                        <div class="mb-3">
+                            <label for="txt2" class="form-label">Setting Info</label>
+                            <textarea class="form-control" id="txt2" name="content" rows="5" disabled>
+* Group : dotdot
+* Artifact : board
+* Type : Gradle
+* Package : com.dotdot.board
+                            </textarea>
+                        </div>
+                        <div class="mb-3">
+                            <label for="txt3" class="form-label">Dependency Info</label>
+                            <textarea class="form-control" id="txt3" name="content" rows="8" disabled>
+* Spring Boot DevTools
+* Spring Data JPA
+* Spring Web
+* Spring Web Service
+* MariaDB Driver
+* Lombok
+* Thymeleaf
+                            </textarea>
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </div> <!-- /* .content */ -->
+</th:block>
+
+<th:block layout:fragment="script">
+    <script th:inline="javascript">
+    </script>
+</th:block>
+</html>

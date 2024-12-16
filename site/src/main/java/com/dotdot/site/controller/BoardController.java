@@ -20,6 +20,12 @@ public class BoardController {
 //    }
 
     // 게시글 리스트 페이지
+    @GetMapping ("/board/info.do")
+    public String openInfo() {
+        return "board/infoForm";
+    }
+
+    // 게시글 리스트 페이지
     @GetMapping ("/board/list.do")
     public String openList() {
         return "board/listForm";

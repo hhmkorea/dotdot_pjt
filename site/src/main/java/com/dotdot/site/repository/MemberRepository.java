@@ -7,6 +7,5 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface MemberRepository extends JpaRepository<Member, Integer> {
     // SELECT * FROM user WHERE username = 1?;
-    //Member findAllByUsername(String username);
-    // Optional<User> findAllByUsername(String Username);
+    Member findAllByUsername(String username);
 }

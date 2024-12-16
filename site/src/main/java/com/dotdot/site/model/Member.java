@@ -6,7 +6,6 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.CreationTimestamp;
-import org.hibernate.annotations.UpdateTimestamp;
 
 import java.time.LocalDateTime;
 
@@ -23,12 +22,16 @@ public class Member {
     private int id;
 
     @Column(nullable = false, length = 50)
-    private String loginid;
+    private String username;
 
     @Column(nullable = false, length = 100) // 해쉬(비밀번호 암호화) 대비
     private String password;
 
     @CreationTimestamp
     private LocalDateTime createdDate;
+
+    public void clearPassword() {
+        this.password = "";
+    }
 
 }

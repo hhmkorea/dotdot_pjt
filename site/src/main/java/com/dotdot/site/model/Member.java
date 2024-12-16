@@ -15,25 +15,20 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @Data
 @Entity
-@Table(name = "tb_user")
-public class User {
+@Table(name = "tb_member")
+public class Member {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @Column(nullable = false, length = 100, unique = true)
-    private String username;
-
-    @Column(nullable = false, length = 100)
-    private String password;
-
     @Column(nullable = false, length = 50)
-    private String email;
+    private String loginid;
+
+    @Column(nullable = false, length = 100) // 해쉬(비밀번호 암호화) 대비
+    private String password;
 
     @CreationTimestamp
     private LocalDateTime createdDate;
 
-    @UpdateTimestamp
-    private LocalDateTime updatedDate;
 }

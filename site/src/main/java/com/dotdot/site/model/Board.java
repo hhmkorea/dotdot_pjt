@@ -34,7 +34,7 @@ public class Board {
     // FetchType.LAZY : 해당 Entity(테이블) 조인해서 "필요하면" 데이타 가져올게!, 예:펼치기
     @ManyToOne(fetch = FetchType.EAGER) // 연관관계, Board = Many, User = One
     @JoinColumn(name = "userId")
-    private User user; // 작성자
+    private Member member; // 작성자
 
     @CreationTimestamp
     private LocalDateTime creatDate;

@@ -14,3 +14,6 @@ create user 'cos'@'%' identified by 'cos1234';
 
 -- 테이블 확인
 SELECT  * FROM tb_board;
+SELECT  * FROM tb_member;
+
+desc tb_member;

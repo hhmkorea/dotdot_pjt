@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
-<footer th:fragment="main-footer">
-    <div class="text-center" style="margin-bottom: 0">
-        <p><em>💻Create by Sophie Han</em></p>
-        <p>📞010-1234-5678</p>
-        <p>📧test@test.com</p>
+<html xmlns:th="http://www.thymeleaf.org" lang="ko">
+<footer th:fragment="main-footer" class="bg-white fixed-bottom">
+    <div class="container">
+        <p class="text-center text-dark"><img th:src="@{/icons/home.svg}" height="12" title="source by 'https://feathericons.com/'" alt="home">  create by <em><b>Sophie Han</b></em></p>
+        <p class="text-center text-dark"><img th:src="@{/icons/phone.svg}" height="12" title="source by 'https://feathericons.com/'" alt="phone">  phone : 010-1234-5678</p>
+        <p class="text-center text-dark"><img th:src="@{/icons/mail.svg}" height="12" title="source by 'https://feathericons.com/'" alt="mail">  email : test@test.com</p>
     </div>
 </footer>
 </html>

@@ -8,4 +8,5 @@ import org.springframework.stereotype.Repository;
 public interface MemberRepository extends JpaRepository<Member, Integer> {
     // SELECT * FROM user WHERE username = 1?;
     Member findAllByUsername(String username);
+    int countByUsername(String username);
 }

@@ -7,10 +7,7 @@ import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 @RequiredArgsConstructor
@@ -26,6 +23,21 @@ public class MemberController {
     @GetMapping("/login.do")
     public String openLogin() {
         return "member/loginForm";
+    }
+
+    // 회원 정보 저장 (회원가입)
+    @PostMapping("/saveMember")
+    @ResponseBody
+    public int saveMember(@RequestBody final Member params) {
+        return memberService.saveMember(params);
+    }
+
+    // 회원 수 카운팅 (ID 중복 체크)
+    @GetMapping("/member-count")
+    @ResponseBody
+    public int countMemberByUsername(@RequestParam final String username) {
+        int count = memberService.countMemberByUsername(username);
+        return count;
     }
 
     // 로그인
@@ -46,13 +58,6 @@ public class MemberController {
         }
 
         return member;
-    }
-
-    // 회원 정보 저장 (회원가입)
-    @PostMapping("/saveMember")
-    @ResponseBody
-    public int saveMember(@RequestBody final Member params) {
-        return memberService.saveMember(params);
     }
 
     // 로그아웃

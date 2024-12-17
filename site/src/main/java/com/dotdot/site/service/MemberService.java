@@ -17,10 +17,10 @@ public class MemberService {
 //    @Autowired // DI가 되어 주입됨.
 //    private BCryptPasswordEncoder encoder;
 
-    public Member login(final String loginId) { //, final String password) {
+    public Member login(final String username) { //, final String password) {
 
         // 1. 회원 정보 및 비밀번호 조회
-        Member member = memberRepository.findAllByUsername(loginId);
+        Member member = memberRepository.findAllByUsername(username);
         // String encodedPassword = (member == null) ? "" : member.getPassword();
 
         // 2. 회원 정보 및 비밀번호 체크
@@ -39,6 +39,10 @@ public class MemberService {
         //member.encodingPassword(passwordEncoder);   // password 인코딩
         memberRepository.save(member);
         return member.getId();
+    }
+
+    public int countMemberByUsername(final String username) {
+        return memberRepository.countByUsername(username);
     }
 
 }

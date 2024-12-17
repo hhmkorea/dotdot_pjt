@@ -7,16 +7,16 @@
             <div class="head">
                 <div class="top_menu_l">
                     <i style="color: #709085;"><img th:src="@{/images/camp_chairing_woman.png}" height="40" title="source by 'https://www.irasutoya.com/'" alt="logo"></i>
-                    <span class="h3 fw-bold mb-0" style="color: #00adb4;">Sophie's Home</span>
+                    <span class="h3 fw-bold mb-0" style="color: #6c757d;">Sophie's Home</span>
                 </div>
                 <!-- /* Top 메뉴 */ -->
                 <div class="top_menu"> <!-- /* UserController의 login(), 웹 로컬 저정소에 저장된 session 정보로 확인 */ -->
                     <div class="login_user">
-                        <i class="far fa-user-circle"><img th:src="@{/images/figure_one_white.png}" height="27" title="source by 'https://www.irasutoya.com/'" alt="profile"></i>
+                        <i class="far fa-user-circle"><img th:src="@{/icons/user.svg}" height="27" title="source by 'https://www.irasutoya.com/'" alt="profile"></i>
                         <strong>Tester</strong>님 반갑습니다.</div>
                     <div class="logout">
                         <form action="/logout" method="post">
-                            <button type="submit"><img th:src="@{/images/logout.png}" height="28" title="source by 'https://www.flaticon.com/'" alt="logout"></button>
+                            <button type="submit"><img th:src="@{/icons/log-out.svg}" height="28" title="source by 'https://www.flaticon.com/'" alt="logout"></button>
                         </form>
                     </div>
                 </div>
@@ -30,12 +30,8 @@
                 <!-- /* 좌측 메뉴 */ -->
                 <nav>
                     <ul>
-                        <li class="has_sub"><a href="javascript: void(0);" class="on"><span>개발 정보</span></a><!-- javascript: void(0) : a href 속성 무효화 -->
-                            <ul>
-                                <li><a th:href="@{/board/info.do}">개발 정보</a></li>
-                            </ul>
-                        </li>
-                        <li class="has_sub"><a href="javascript: alert('준비 중입니다');"><span>나의 게시판</span></a>
+                        <li><a th:href="@{/board/info.do}"><span>개발 정보</span></a>
+                        <li class="has_sub"><a href="javascript: void(0);"><span>나의 게시판</span></a>
                             <ul>
                                 <li>
                                     <a href="javascript: alert('준비 중입니다.');">공지사항</a>
@@ -43,7 +39,7 @@
                                 </li>
                             </ul>
                         </li>
-                        <li class="has_sub"><a href="javascript: alert('준비 중입니다');"><span>나만의 서랍장</span></a>
+                        <li class="has_sub"><a href="javascript: void(0);"><span>나만의 서랍장</span></a><!-- javascript: void(0) : a href 속성 무효화 -->
                             <ul>
                                 <li>
                                     <a href="javascript: alert('준비 중입니다.');">포토그램</a>
@@ -52,7 +48,7 @@
                                 </li>
                             </ul>
                         </li>
-                        <li class="has_sub"><a href="javascript: alert('준비 중입니다');"><span>나의 지도</span></a>
+                        <li class="has_sub"><a href="javascript: void(0);"><span>나의 지도</span></a>
                             <ul>
                                 <li>
                                     <a href="javascript: alert('준비 중입니다.');">지도</a>
@@ -61,7 +57,7 @@
                                 </li>
                             </ul>
                         </li>
-                        <li class="has_sub"><a href="javascript: alert('준비 중입니다.');"><span>홈페이지 관리</span></a>
+                        <li class="has_sub"><a href="javascript: void(0);" class="on"><span>홈페이지 관리</span></a>
                             <ul>
                                 <li>
                                     <a href="javascript: alert('준비 중입니다.');">게시판 관리</a>

@@ -19,10 +19,16 @@ public class MemberController {
     @Autowired
     private MemberService memberService;
 
-    // 로그인 -- 테스트용
+    // 로그인 화면
     @GetMapping("/login.do")
     public String openLogin() {
         return "member/loginForm";
+    }
+
+    // 홈 화면
+    @GetMapping("/home.do")
+    public String home() {
+        return "home";
     }
 
     // 회원 정보 저장 (회원가입)

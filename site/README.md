@@ -1,4 +1,8 @@
-# board 
+# board : http://localhost:8000/login
+####
+* thymeleaf
+* bootstrap 
+* html 
 
 ### Project Info
 * Language : JAVA

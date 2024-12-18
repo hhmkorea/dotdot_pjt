@@ -4,8 +4,7 @@ import com.dotdot.site.service.BoardService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
 @RequiredArgsConstructor
@@ -22,14 +21,18 @@ public class BoardController {
     // 게시글 리스트 페이지
     @GetMapping ("/board/info.do")
     public String openInfo() {
-        return "board/infoForm";
+        return "board/info";
     }
 
     // 게시글 리스트 페이지
     @GetMapping ("/board/list.do")
     public String openList() {
-        return "board/listForm";
+        return "board/list";
     }
 
-
+    // USER 권한이 필요
+    @GetMapping("/board/write.do")
+    public String saveForm() {
+        return "board/write";
+    }
 }

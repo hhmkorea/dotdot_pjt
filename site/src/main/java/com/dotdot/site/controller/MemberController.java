@@ -20,13 +20,13 @@ public class MemberController {
     private MemberService memberService;
 
     // 로그인 화면
-    @GetMapping("/login.do")
+    @GetMapping("/login")
     public String openLogin() {
-        return "member/loginForm";
+        return "member/login";
     }
 
     // 홈 화면
-    @GetMapping("/home.do")
+    @GetMapping("/home")
     public String home() {
         return "home";
     }
@@ -70,6 +70,6 @@ public class MemberController {
     @PostMapping("/logout")
     public String logout(HttpSession session) {
         session.invalidate();
-        return "redirect:/login.do"; // redirect: 사용자가 처음 요청한 URL이 아닌 지정한 URL로 보냄.
+        return "redirect:/login"; // redirect: 사용자가 처음 요청한 URL이 아닌 지정한 URL로 보냄.
     }
 }

@@ -6,7 +6,7 @@
         <header>
             <div class="head">
                 <div class="top_menu_l">
-                    <span class="h3 fw-bold mb-0" style="color: #6c757d;"><a th:href="@{/home.do}">Sophie's Home</a></span>
+                    <span class="h3 fw-bold mb-0" style="color: #6c757d;"><a th:href="@{/home}">Sophie's Home</a></span>
                 </div>
                 <!-- /* Top 메뉴 */ -->
                 <div class="top_menu"> <!-- /* UserController의 login(), 웹 로컬 저정소에 저장된 session 정보로 확인 */ -->
@@ -29,8 +29,8 @@
                 <!-- /* 좌측 메뉴 */ -->
                 <nav>
                     <ul>
-                        <li><a th:href="@{/board/info.do}"><span>홈페이지 정보</span></a>
-                        <li><a th:href="@{/board/list.do}"><span>게시판</span></a></li>
+                        <li><a th:href="@{/board/info}"><span>홈페이지 정보</span></a>
+                        <li><a th:href="@{/board/list}"><span>게시판</span></a></li>
                         <li><a href="javascript: void(0);"><span>쇼핑몰</span></a></li>
                         <li class="has_sub"><a href="javascript: void(0);"><span>서랍장</span></a><!-- javascript: void(0) : a href 속성 무효화 -->
                             <ul>
@@ -72,12 +72,5 @@
         </div>
         <footer id="footer" th:replace="~{layout/fragments/footer :: main-footer}"></footer>
     </div>
-    <!-- /* bootstrap JS */ -->
-    <script th:src="@{/js/bootstrap.bundle.min.js}"></script>
-    <!-- /* Common JS */ -->
-    <script th:src="@{/js/function.js}"></script>
-    <script th:src="@{/js/jquery-3.6.0.min.js}"></script>
-    <script th:src="@{/js/common.js}"></script>
 </body>
-<th:block layout:fragment="script"></th:block>
 </html>

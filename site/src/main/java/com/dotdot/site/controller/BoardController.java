@@ -19,19 +19,19 @@ public class BoardController {
 //    }
 
     // 게시글 리스트 페이지
-    @GetMapping ("/board/info.do")
+    @GetMapping ("/board/info")
     public String openInfo() {
         return "board/info";
     }
 
     // 게시글 리스트 페이지
-    @GetMapping ("/board/list.do")
+    @GetMapping ("/board/list")
     public String openList() {
         return "board/list";
     }
 
     // USER 권한이 필요
-    @GetMapping("/board/write.do")
+    @GetMapping("/board/write")
     public String saveForm() {
         return "board/write";
     }

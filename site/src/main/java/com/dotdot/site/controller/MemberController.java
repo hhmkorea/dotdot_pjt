@@ -70,6 +70,6 @@ public class MemberController {
     @PostMapping("/logout")
     public String logout(HttpSession session) {
         session.invalidate();
-        return "redirect:/views/login"; // redirect: 사용자가 처음 요청한 URL이 아닌 지정한 URL로 보냄.
+        return "redirect:/login"; // redirect: 사용자가 처음 요청한 URL이 아닌 지정한 URL로 보냄.
     }
 }

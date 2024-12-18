@@ -2,25 +2,28 @@
 <html lang="ko" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
 <head th:fragment="main-head">
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, maximum-scale=1.0, minimum-scale=1, user-scalable=yes,initial-scale=1.0"/>
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
-    <th:block layout:fragment="title"></th:block> <!-- /* import title 페이지별 title 부분 뿌려줌. */ -->
-    <!-- bootstrap CSS -->
-    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
-    <!-- /* common : css 링크 */ -->
-    <link rel="stylesheet" th:href="@{/css/button.css}">
-    <link rel="stylesheet" th:href="@{/css/content.css}">
-    <link rel="stylesheet" th:href="@{/css/common.css}">
-    <link rel="stylesheet" th:href="@{/css/default.css}">
-    <link rel="stylesheet" th:href="@{/css/login.css}">
-
-    <link rel="stylesheet" th:href="@{/css/summernote-lite.min.css}">
-
     <title></title>
-    <!-- content script -->
-    <th:block layout:fragment="css"></th:block>
-    <!-- content script -->
-    <th:block layout:fragment="script"></th:block>
+
+    <!--Common JS-->
+    <script th:inline="javascript" type="text/javascript" th:src="@{/js/bootstrap.bundle.min.js}"></script>
+    <script th:inline="javascript" type="text/javascript" th:src="@{/js/jquery-3.6.0.min.js}"></script>
+    <script th:inline="javascript" type="text/javascript" th:src="@{/js/member.js}"></script>
+   <!-- <script th:inline="javascript" type="text/javascript" th:src="@{/js/board.js}"></script>-->
+    <script th:inline="javascript" type="text/javascript" th:src="@{/js/function.js}"></script>
+    <script th:inline="javascript" type="text/javascript" th:src="@{/js/common.js}"></script>
+    <script th:inline="javascript" type="text/javascript" th:src="@{/js/summernote-lite.min.js}"></script>
+
+    <!--Common CSS -->
+    <link th:inline="css" th:href="@{/css/bootstrap.min.css}" rel="stylesheet"/>
+    <link th:inline="css" th:href="@{/css/button.css}" rel="stylesheet"/>
+    <link th:inline="css" th:href="@{/css/content.css}" rel="stylesheet"/>
+    <link th:inline="css" th:href="@{/css/common.css}" rel="stylesheet"/>
+    <link th:inline="css" th:href="@{/css/default.css}" rel="stylesheet"/>
+    <link th:inline="css" th:href="@{/css/login.css}" rel="stylesheet"/>
+    <link th:inline="css" th:href="@{/css/summernote-lite.min.css}" rel="stylesheet"/>
 </head>
 </html>

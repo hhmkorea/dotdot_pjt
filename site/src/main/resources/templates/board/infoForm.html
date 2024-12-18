@@ -6,8 +6,8 @@
 
 <th:block layout:fragment="content">    <!-- /* body.html 중 content 영역에 출력할 조각 */ -->    <!-- /* body.html 중 content 영역에 출력할 조각 */ -->
     <div class="page_tits">
-        <h3>개발 정보</h3>
-        <p class="path"><strong>현재 위치 : </strong><span>개발 정보</span> <span>개발 정보</span>
+        <h3>홈페이지 정보</h3>
+        <p class="path"><strong>현재 위치 : </strong><span>홈페이지 정보</span>
     </div>
 
     <div class="content">
@@ -17,7 +17,14 @@
                 <div class="card-body">
                     <form>
                         <div class="mb-3">
-                            <label for="txt1" class="form-label h5">프로젝트 정보</label>
+                            <label for="txt0" class="form-label h5">홈페이지 정보</label>
+                            <textarea class="form-control" id="txt0" name="content" rows="2" readonly>
+Shophie's Home?
+포트폴리오 용 및 개발 테스트 용으로 제작된 website.
+                            </textarea>
+                        </div>
+                        <div class="mb-3">
+                            <label for="txt1" class="form-label h5">개발 소스 정보</label>
                             <textarea class="form-control" id="txt1" name="content" rows="5" readonly>
 팩키지 : com.dotdot.site
 font : 고운 돋음체

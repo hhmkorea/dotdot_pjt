@@ -11,7 +11,7 @@
     <p class="path"><strong>현재 위치 : </strong><span>home</span> <span>게시판</span> <span>글쓰기</span>
   </div>
 
-  <div class="container">
+  <div class="content">
     <form action="" method="post">
       <div class="form-group">
         <input type="text" class="form-control" id="title" name="id">
@@ -21,7 +21,10 @@
       </div>
     </form>
 
-    <button id="btn-save" class="btn btn-primary">저장</button>
+    <p class="btn_set tr">
+      <button id="btn-save" class="btns btn_st3 btn_mid">저장</button>
+      <a th:href="@{/board/list}" class="btns btn_st2 btn_mid">취소</a>
+    </p>
   </div>
 
 </th:block>

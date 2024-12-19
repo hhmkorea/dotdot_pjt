@@ -17,7 +17,7 @@ h1, h2, h3, h4, h5, h6, address, caption {font-weight:700; color:#222;word-break
 table {border-collapse:collapse; border-spacing:0;}
 
 img, fieldset {border:0;}
-img, input, button, select, textarea {vertical-align:middle; font-family:dotum;}
+img, input, button, select, textarea {vertical-align:middle; font-family: 'Gowun Dodum', sans-serif;}
 button {cursor:pointer;}
 legend, caption {width:1px; height:1px; text-indent:100%; overflow:hidden; font-size:0; line-height:0;}
 /* visibility:hidden;나 display:none는 스크린리더기가 읽을수 없으므로 사용하지 않도록 한다 */

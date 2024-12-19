@@ -51,7 +51,7 @@ section:first-child, #tabmenu + section {margin-top:0;}
 
 .tb_col th {border-bottom:1px solid #a2a2a2;}
 .tb_col td {text-align:center;}
-.tb_col thead th {background:#6f8294; border-color:rgba(255,255,255,0.2); color:#fff;}
+.tb_col thead th {background:#6f8294; border-color:rgba(255,255,255,0.2); color:#fff; text-align: center}
 .tb_col tbody tr:nth-child(even) {background:#f6f7f8;}
 .tb_col .no_data_msg {padding:50px 0;}
 

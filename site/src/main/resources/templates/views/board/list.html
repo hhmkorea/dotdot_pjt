@@ -23,7 +23,7 @@
                             <option value="writer">작성자</option>
                         </select>
                         <input type="text" id="keyword" name="keyword" placeholder="키워드를 입력해주세요." title="키워드 입력"/>
-                        <button type="button" class="bt_search" onclick="movePage(1)"><i class="fas fa-search"></i><span class="skip_info">검색</span> </button>
+                        <button type="button" class="bt_search" onclick="movePage(1)"><img th:src="@{/icons/search.svg}" height="17" title="source by 'https://feathericons.com/'" alt="search"><span class="skip_info">검색</span> </button>
                     </div>
                 </form>
             </div>
@@ -61,10 +61,10 @@
 
             <!-- /* 버튼 */ -->
             <p class="btn_set tr">
-                <a th:href="@{/board/write}" class="btns btn_st3 btn_mid">글쓰기</a>
+                <a th:href="@{/board/write}" class="btns btn_st5 btn_mid">글쓰기</a>
             </p>
         </seletion>
     </div> <!-- /* .content */ -->
+    <!--<script th:inline="javascript" type="text/javascript" th:src="@{/js/board.js}"></script>-->
 </th:block>
-
 </html>

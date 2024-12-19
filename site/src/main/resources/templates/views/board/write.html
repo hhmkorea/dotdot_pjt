@@ -14,19 +14,26 @@
   <div class="content">
     <form action="" method="post">
       <div class="form-group">
-        <input type="text" class="form-control" id="title" name="id">
+        <label for="title" class="form-label fw-bold">제목</label>
+        <input type="text" class="form-control" id="title" name="title">
       </div>
       <div class="form-group">
+        <label for="title" class="form-label fw-bold">작성자</label>
+        <input type="text" class="form-control" id="userid" name="userid">
+      </div>
+      <div class="form-group">
+        <label for="content" class="form-label fw-bold">내용</label>
         <textarea class="form-control summernote" id="content" name="content" rows="5"></textarea>
       </div>
     </form>
 
     <p class="btn_set tr">
-      <button id="btn-save" class="btns btn_st3 btn_mid">저장</button>
-      <a th:href="@{/board/list}" class="btns btn_st2 btn_mid">취소</a>
+      <button id="btn-save" class="btns btn_st5 btn_mid">저장</button>
+      <a th:href="@{/board/list}" class="btns btn_st2 btn_mid">목록</a>
     </p>
   </div>
 
+<!--  <script th:inline="javascript" type="text/javascript" th:src="@{/js/board.js}"></script>-->
 </th:block>
 
 </html>

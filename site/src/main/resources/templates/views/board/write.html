@@ -14,10 +14,10 @@
   <div class="container">
     <form action="" method="post">
       <div class="form-group">
-        <input type="text" class="form-control" id="title" placeholder="Enter title">
+        <input type="text" class="form-control" id="title" name="id">
       </div>
       <div class="form-group">
-        <textarea id="summernote" name="content" rows="5" ></textarea>
+        <textarea class="form-control summernote" id="content" name="content" rows="5"></textarea>
       </div>
     </form>
 
@@ -26,76 +26,4 @@
 
 </th:block>
 
-  <script>
-    $(document).ready(function () {
-      $('#summernote').summernote({
-        // 썸머노트 옵션 설정
-        codeviewFilter: false,
-        codeviewIframeFilter: false,
-        disableXSSProtection: true,
-        height: 500,
-        minHeight: null,
-        maxHeight: null,
-        focus: true,
-        lang: 'ko-KR',
-        toolbar: [
-          // 스타일 관련 기능
-          ['style', ['style']],
-          // 글자 크기 설정
-          ['fontsize', ['fontsize']],
-          // 글꼴 스타일
-          ['font', ['bold', 'underline', 'clear']],
-          // 글자 색상
-          ['color', ['color']],
-          // 테이블 삽입
-          ['table', ['table']],
-          // 문단 스타일
-          ['para', ['paragraph']],
-          // 에디터 높이 설정
-          ['height', ['height']],
-          // 이미지, 링크, 동영상 삽입
-          ['insert', ['picture', 'link', 'video']],
-          // 코드 보기, 전체화면, 도움말
-          ['view', ['codeview', 'fullscreen', 'help']],
-        ],
-        fontSizes: [
-          // 글자 크기 선택 옵션
-          '8', '9', '10', '11', '12', '14', '16', '18', '20', '22', '24', '28', '30', '36', '50', '72'
-        ],
-        styleTags: [
-          // 스타일 태그 옵션
-          'p',
-          { title: 'Blockquote', tag: 'blockquote', className: 'blockquote', value: 'blockquote' },
-          'pre',
-          { title: 'code_light', tag: 'pre', className: 'code_light', value: 'pre' },
-          { title: 'code_dark', tag: 'pre', className: 'code_dark', value: 'pre' },
-          'h1', 'h2', 'h3', 'h4', 'h5', 'h6'
-        ],
-
-        callbacks: {
-          onImageUpload: function (files, editor, welEditable) {
-            // 파일 업로드
-            for (var i = files.length - 1; i >= 0; i--) {
-              var fileName = files[i].name
-              var caption = prompt('이미지 설명:', fileName)
-              if (caption == '') {
-                caption = '이미지'
-              }
-              uploadSummernoteImageFile(files[i], this, caption)
-            }
-          },
-          onMediaDelete: function ($target, editor, $editable) {
-            // 삭제된 이미지의 파일 이름을 알아내기 위해 split 활용
-            if (confirm('이미지를 삭제하시겠습니까?')) {
-              var deletedImageUrl = $target.attr('src').split('/').pop()
-
-              // ajax 함수 호출
-              deleteSummernoteImageFile(deletedImageUrl)
-            }
-          },
-        },
-      })
-    });
-
-  </script>
 </html>

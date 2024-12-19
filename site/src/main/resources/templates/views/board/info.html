@@ -6,8 +6,8 @@
 
 <th:block layout:fragment="content">    <!-- /* body.html 중 content 영역에 출력할 조각 */ -->    <!-- /* body.html 중 content 영역에 출력할 조각 */ -->
     <div class="page_tits">
-        <h3>홈페이지 정보</h3>
-        <p class="path"><strong>현재 위치 : </strong><span>홈페이지 정보</span>
+        <h3>Info</h3>
+        <p class="path"><strong>현재 위치 : </strong><span>home</span> <span>Info</span>
     </div>
 
     <div class="content">
@@ -17,9 +17,8 @@
                 <div class="card-body">
                     <form>
                         <div class="mb-3">
-                            <label for="txt0" class="form-label h5">홈페이지 정보</label>
+                            <label for="txt0" class="form-label h5">Sophie's Home?</label>
                             <textarea class="form-control" id="txt0" name="content" rows="2" readonly>
-Shophie's Home?
 포트폴리오 용으로 제작된 홈페이지 입니다.
                             </textarea>
                         </div>
@@ -28,8 +27,8 @@ Shophie's Home?
                             <textarea class="form-control" id="txt2" name="content" rows="5" readonly>
 Language : JAVA
 IDE : Spring Boot, IntelliJ
-UX/UI : Thymeleaf, jQuery(Ajax 비동기 처리), Bootstrap-lite, Summernote
-WAS : Spring Boot에 Tomcat Server 내장됨.
+UX/UI : Thymeleaf, jQuery, Bootstrap-lite, Summernote
+WAS : Spring Boot에 Tomcat Server 내장되어 있음.
 DB : mariaDB
 Builder : Gradle
 CI & CD : Docker
@@ -49,11 +48,11 @@ Thymeleaf-layout-dialect
                             </textarea>
                         </div>
                         <div class="mb-3">
-                            <label for="txt1" class="form-label h5">사용한 콘텐츠 출처</label>
+                            <label for="txt1" class="form-label h5">개발 콘텐츠 출처</label>
                             <textarea class="form-control" id="txt1" name="content" rows="4" readonly>
-font 출처 : Google Fonts Website, https://fonts.google.com/, 고운 돋음체
-icon 출처 : Feather Website, https://feathericons.com
-image 출처 : Mifune Takashi(みふねたかし) Website, https://www.irasutoya.com
+Font : 고운 돋음체, https://fonts.google.com/
+Icon : Feather Icon, https://feathericons.com
+Image : Mifune Takashi(みふねたかし) 일러스트, https://www.irasutoya.com
                             </textarea>
                         </div>
                     </form>

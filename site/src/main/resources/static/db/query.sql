@@ -16,4 +16,5 @@ create user 'cos'@'%' identified by 'cos1234';
 SELECT  * FROM tb_board;
 SELECT  * FROM tb_member;
 
+desc tb_board;
 desc tb_member;

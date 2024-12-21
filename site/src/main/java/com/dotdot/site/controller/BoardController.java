@@ -1,13 +1,11 @@
 package com.dotdot.site.controller;
 
 import com.dotdot.site.service.BoardService;
-import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
-@Controller
-@RequiredArgsConstructor
+@Controller // View 화면(*.html) 리턴
 public class BoardController {
 
     @Autowired

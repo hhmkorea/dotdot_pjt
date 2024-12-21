@@ -19,8 +19,8 @@
                                 <form id="loginForm" onsubmit="return false" autocomplete="off">
                                     <h1 class="form-label mb-3 pb-3" style="letter-spacing: 1px;">Sophie's Home</h1>
                                         <div class="form-floating mb-4">
-                                            <input type="email" id="username" class="form-control" placeholder="아이디"/>
-                                            <label class="form-label" for="username">아이디</label>
+                                            <input type="email" id="userName" class="form-control" placeholder="아이디"/>
+                                            <label class="form-label" for="userName">아이디</label>
                                         </div>
                                         <div class="form-floating mb-4">
                                             <input type="password" id="password" class="form-control" placeholder="패스워드"/>
@@ -59,7 +59,7 @@
                 <tr>
                     <th scope="row">아이디<span class="es">필수 입력</span> </th>
                     <td>
-                        <input type="text" name="username" placeholder="아이디 입력" maxlength="20" style="width: 80%;" />
+                        <input type="text" name="userName" placeholder="아이디 입력" maxlength="20" style="width: 80%;" />
                         <button type="button" id="idCheckBtn" class="btns btn_st5" onclick="checkLoginId();" style="width: 20%; float: right;">중복 확인</button>
                     </td>
                 </tr>
@@ -88,7 +88,7 @@
 <script>
     // Enter 로그인 이벤트 바인딩
     window.onload = () => {
-        document.querySelectorAll('#username, #password').forEach(element => {
+        document.querySelectorAll('#userName, #password').forEach(element => {
             element.addEventListener('keyup', (e) => {
                 if (e.keyCode === 13) {
                     login();
@@ -101,7 +101,7 @@
     function login() {
         const form = document.getElementById('loginForm');
 
-        if (!form.username.value || !form.password.value) {
+        if (!form.userName.value || !form.password.value) {
             alert('아이디와 비밀번호를 모두 입력해 주세요.');
             form.loginid.focus();
             return false;
@@ -112,7 +112,7 @@
             type: 'POST',
             dataType: 'json',
             data : {
-                username: form.username.value,
+                userName: form.userName.value,
                 password: form.password.value
             },
             async: false,
@@ -134,7 +134,7 @@
     function closeSignupPopup() {
         const form = document.getElementById('signupForm'); // getElementById() : 지정한 id 속성을 가진 요소를 나타내는 element 객체 반환.
         // --- 필드 값 초기화 ---
-        form.username.readOnly = false;
+        form.userName.readOnly = false;
         form.querySelector('#idCheckBtn').disabled = false;
         form.reset();
         // -------------------
@@ -143,18 +143,18 @@
 
     // 아이디 중복 체크
     function checkLoginId() {
-        const username = document.querySelector('#signupForm input[name="username"]'); // querySelector() : 호출된 요소의 자손 중 첫번째 일치하는 요소 반환.
-        isValid(username, '아이디');
-        const count = getJson(`/member-count`, { username : username.value}); // URI : member-count
+        const userName = document.querySelector('#signupForm input[name="userName"]'); // querySelector() : 호출된 요소의 자손 중 첫번째 일치하는 요소 반환.
+        isValid(userName, '아이디');
+        const count = getJson(`/member-count`, { userName : userName.value}); // URI : member-count
 
         if (count > 0) {
             alert('이미 가입된 아이디가 있습니다.');
-            username.focus();
+            userName.focus();
             return false;
         }
 
         if (confirm('사용 가능한 아이디입니다.\n입력하신 아이디로 결정하시겠어요?')) {
-            username.readOnly = true;
+            userName.readOnly = true;
             document.getElementById('idCheckBtn').disabled = true;
         }
     }
@@ -168,7 +168,7 @@
             isValid(field[i], fieldNames[i]);
         }
 
-        if (form.username.readOnly === false) {
+        if (form.userName.readOnly === false) {
             alert('아이디 중복 체크를 완료해 주세요.');
             throw new Error();
         }

@@ -22,7 +22,7 @@ public class Member {
     private int id;
 
     @Column(nullable = false, length = 50)
-    private String username;
+    private String userName;
 
     @Column(nullable = false, length = 100) // 해쉬(비밀번호 암호화) 대비
     private String password;

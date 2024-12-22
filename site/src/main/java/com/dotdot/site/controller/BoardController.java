@@ -28,7 +28,7 @@ public class BoardController {
 
     // 게시글 리스트 페이지
     @GetMapping ("/board/list")
-    public String openList(Model model, @PageableDefault(size = 3, sort = "id", direction = Sort.Direction.DESC) Pageable pageable) {
+    public String openList(Model model, @PageableDefault(size = 5, sort = "id", direction = Sort.Direction.DESC) Pageable pageable) {
         model.addAttribute("boards", boardService.viewList(pageable));
         return "views/board/list";
     }

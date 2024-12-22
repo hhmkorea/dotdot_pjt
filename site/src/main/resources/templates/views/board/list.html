@@ -11,10 +11,10 @@
     </div>
 
     <div class="content">
-        <div class="card m-2" th:each="board : ${content}">
+        <div class="card m-2" th:each="board : ${boards.content}">
             <div class="card-body">
                 <h4 class="card-title">[[${board.title}]]</h4>
-                <!--<a th:href="@{/views/board/list{id}(id=${board.id})}" class="btn btn-primary">상세보기</a>-->
+                <a th:href="@{/views/board/{id}(id=${board.id})}" class="btn btn-primary">상세보기</a>
             </div>
         </div>
 

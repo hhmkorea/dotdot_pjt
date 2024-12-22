@@ -18,3 +18,18 @@ SELECT  * FROM tb_member;
 
 desc tb_board;
 desc tb_member;
+
+/* <criteria> */ select
+                     b1_0.id,
+                     b1_0.content,
+                     b1_0.creatDate,
+                     b1_0.title,
+                     b1_0.updatedDate,
+                     b1_0.userName,
+                     b1_0.viewcnt
+                 from
+                     tb_board b1_0
+                 order by
+                     b1_0.id desc
+                 limit
+                     0, 10;

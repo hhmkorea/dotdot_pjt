@@ -2,9 +2,14 @@ package com.dotdot.site.service;
 
 import com.dotdot.site.model.Board;
 import com.dotdot.site.repository.BoardRepository;
-import jakarta.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 public class BoardService {
@@ -19,7 +24,15 @@ public class BoardService {
         boardRepository.save(board);
     }
 
-    @Transactional
+    @Transactional(readOnly = true)
+    public Page<Board> viewList(Pageable pageable) {
+        int page = (pageable.getPageNumber() == 0) ? 0 : (pageable.getPageNumber() - 1);
+        pageable = PageRequest.of(page, 10, Sort.Direction.DESC, "id");
+
+        return boardRepository.findAll(pageable);
+    }
+
+    @Transactional(readOnly = true)
     public Board viewDetail(int id) {
         return boardRepository.findById(id).orElseThrow(() -> {
                 return new IllegalStateException("글 상세보기 실패 : 선택된 게시물을 찾을 수 없습니다.");

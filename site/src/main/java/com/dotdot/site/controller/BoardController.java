@@ -8,6 +8,7 @@ import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 
 @Controller // View 화면(*.html) 리턴
 public class BoardController {
@@ -31,6 +32,12 @@ public class BoardController {
     public String openList(Model model, @PageableDefault(size = 5, sort = "id", direction = Sort.Direction.DESC) Pageable pageable) {
         model.addAttribute("boards", boardService.viewList(pageable));
         return "views/board/list";
+    }
+
+    @GetMapping("/board/{id}")
+    public String findById(@PathVariable int id, Model model) {
+        model.addAttribute("board", boardService.viewDetail(id));
+        return "views/board/detail";
     }
 
     // USER 권한이 필요

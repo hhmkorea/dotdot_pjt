@@ -16,7 +16,7 @@ public class BoardService {
 
     @Transactional
     public void write(Board board) {
-        board.setViewcnt(0);
+        board.setViewCnt(0);
         board.setUserName("tester");
         boardRepository.save(board);
     }

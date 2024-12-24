@@ -26,14 +26,14 @@ public class Board {
 
     @Size(min = 1, max = 50)
     @NotBlank(message = "제목은 필수 입력입니다.")
-    @Column(nullable = false, length = 100)
+    @Column(nullable = false, length = 50)
     private String title;
 
     @NotBlank(message = "내용은 필수 입력 입니다.")
     @Column(columnDefinition = "longblob")
     private String content;
 
-    private int viewcnt; // 조회수
+    private int viewCnt; // 조회수
 
 //    // FetchType.EAGER : 해당 Entity(테이블) 조인해서 데이타 다 가져옴.
 //    // FetchType.LAZY : 해당 Entity(테이블) 조인해서 "필요하면" 데이타 가져올게!, 예:펼치기

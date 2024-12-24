@@ -26,7 +26,7 @@ public class Member {
     @Size(min = 2, max = 20)
     @NotBlank(message = "사용자id는 필수 입력입니다.")
     //@Pattern(regexp = "^[a-zA-Z0-9]{3,20}$", message = "3~20자리의 숫자 또는 문자만 가능합니다.")
-    @Column(nullable = false, length = 50)
+    @Column(nullable = false, length = 20)
     private String userName;
 
     @NotBlank(message = "패스워드는 필수 입력입니다.")

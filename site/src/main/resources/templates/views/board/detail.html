@@ -41,16 +41,16 @@
                     <th scope="row">내용</th>
                     <td colspan="3" th:utext="${board.content}"></td>
                 </tr>
-                <tr>
+               <!-- <tr>
                     <th scope="row">첨부파일</th>
                     <td id="files" colspan="3">
 
                     </td>
-                </tr>
+                </tr>-->
                 </tbody>
             </table>
             <p class="btn_set">
-                <button id="btn-save" class="btns btn_st5 btn_mid">저장</button>
+                <button id="btn-update" class="btns btn_st5 btn_mid">수정</button>
                 <button id="btn-delete" class="btns btn_st1 btn_mid">삭제</button>
                 <a th:href="@{/board/list}" class="btns btn_st2 btn_mid">목록</a>
             </p>

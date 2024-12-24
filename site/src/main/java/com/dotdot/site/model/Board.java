@@ -1,6 +1,8 @@
 package com.dotdot.site.model;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -22,9 +24,12 @@ public class Board {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
+    @Size(min = 1, max = 50)
+    @NotBlank(message = "제목은 필수 입력입니다.")
     @Column(nullable = false, length = 100)
     private String title;
 
+    @NotBlank(message = "내용은 필수 입력 입니다.")
     @Column(columnDefinition = "longblob")
     private String content;
 

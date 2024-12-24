@@ -4,6 +4,7 @@ import com.dotdot.site.controller.dto.BoardResponseDto;
 import com.dotdot.site.model.Board;
 import com.dotdot.site.model.Member;
 import com.dotdot.site.service.BoardService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -15,7 +16,7 @@ public class BoardApiController {
     private BoardService boardService;
 
     @PostMapping("/api/board")
-    public BoardResponseDto<Integer> save(@RequestBody Board board) {
+    public BoardResponseDto<Integer> save(@Valid @RequestBody Board board) {
         Member member = new Member();
         member.setId(0);
         member.setUserName("tester");

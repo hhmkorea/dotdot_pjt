@@ -43,7 +43,7 @@ public class BoardController {
     @GetMapping("/board/{id}/update")
     public String updateForm(@PathVariable int id, Model model) {
         model.addAttribute("board", boardService.viewDetail(id));
-        return "views/board/write";
+        return "views/board/update";
     }
 
     // USER 권한이 필요

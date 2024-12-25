@@ -7,55 +7,34 @@
 <th:block layout:fragment="content">
 
   <div class="page_tits">
-
-    <div th:if="${board != null}">
-      <h3>글쓰기</h3>
-      <p class="path"><strong>현재 위치 : </strong><span>home</span> <span>게시판</span> <span>글쓰기</span>
-      </div>
-    <div th:unless="${board == null}">
-      <h3>글수정</h3>
-      <p class="path"><strong>현재 위치 : </strong><span>home</span> <span>게시판</span> <span>글수정</span>
-    </div>
-    </div>
+    <h3>글쓰기</h3>
+    <p class="path"><strong>현재 위치 : </strong><span>home</span> <span>게시판</span> <span>글쓰기</span>
   </div>
 
   <div class="content">
-    <form id="saveForm" method="post" autocomplete="off" enctype="multipart/form-data">
-      <!-- /* 게시글 수정인 경우, 서버로 전달할 게시글 번호 (PK) */ -->
-      <input type="hidden" id="id" name="id" th:if="${board != null}" th:value="${board.id}" />
+    <form action="" method="post">
       <div class="form-group">
         <label for="title" class="form-label fw-bold">제목</label>
-        <input type="text" class="form-control" id="title" name="title" th:if="${board != null}" th:value="${board.title}">
+        <input type="text" class="form-control" id="title" name="title">
       </div>
       <div class="form-group">
         <label for="title" class="form-label fw-bold">작성자</label>
-        <input type="text" class="form-control" id="userName" name="userName" th:if="${board != null}" th:value="${board.userName}">
+        <input type="text" class="form-control" id="userid" name="userid">
       </div>
       <div class="form-group">
         <label for="content" class="form-label fw-bold">내용</label>
-        <div th:if="${board != null}">
-          <textarea class="form-control summernote" id="content" name="content" rows="5"></textarea>
-        </div>
-        <div th:unless="${board != null}">
-          <textarea class="form-control summernote" id="content_edit" name="content" rows="5">
-            [[${board.content}]]
-          </textarea>
-        </div>
+        <textarea class="form-control summernote" id="content" name="content" rows="5"></textarea>
       </div>
     </form>
 
     <p class="btn_set tr">
-      <div th:if="${board == null}">
-        <button id="btn-save" class="btns btn_st5 btn_mid">저장</button>
-      </div>
-      <div th:unless="${board == null}">
-        <button id="btn-update" class="btns btn_st5 btn_mid">수정</button>
-      </div>
+      <button id="btn-save" class="btns btn_st5 btn_mid">저장</button>
       <a th:href="@{/board/list}" class="btns btn_st2 btn_mid">목록</a>
     </p>
   </div>
 
-    <script th:inline="javascript" type="text/javascript" th:src="@{/js/board.js}"></script>
+  <script th:inline="javascript" type="text/javascript" th:src="@{/js/board.js}"></script>
 </th:block>
 
 </html>
+

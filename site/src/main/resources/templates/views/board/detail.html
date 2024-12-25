@@ -11,7 +11,6 @@
     </div>
 
     <div class="content">
-
         <seletion>
             <table class="tb tb_row">
                 <colgroup>
@@ -31,15 +30,15 @@
                     <th scope="row">제목</th>
                     <td>[[ ${board.title}]]</td>
                     <th scope="row">조회</th>
-                    <td colspan="3">[[ ${board.viewCnt}]]</td>
+                    <td colspan="3" th:text="${board.viewCnt}"></td>
                 </tr>
                 <tr>
                     <th scope="row">이름</th>
-                    <td colspan="3">[[ ${board.userName}]]</td>
+                    <td colspan="3" th:text="${board.userName}"></td>
                 </tr>
                 <tr>
                     <th scope="row">내용</th>
-                    <td colspan="3" th:utext="${board.content}"></td>
+                    <td colspan="3" th:utext="${board.content}"></td> <!-- th:utext에서는 html태그를 하나의 태그로 인식하고 동작. 즉, html 태그 안보임. -->
                 </tr>
                <!-- <tr>
                     <th scope="row">첨부파일</th>
@@ -54,6 +53,7 @@
                 <button id="btn-delete" class="btns btn_st1 btn_mid">삭제</button>
                 <a th:href="@{/board/list}" class="btns btn_st2 btn_mid">목록</a>
             </p>
+        </seletion>
     </div> <!-- /* .content */ -->
 </th:block>
 

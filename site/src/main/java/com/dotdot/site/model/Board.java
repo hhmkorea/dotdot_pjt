@@ -44,8 +44,8 @@ public class Board {
     private String userName;
 
     @CreationTimestamp
-    private LocalDateTime creatDate;
+    private LocalDateTime createDate;
 
     @UpdateTimestamp
-    private LocalDateTime updatedDate;
+    private LocalDateTime updateDate;
 }

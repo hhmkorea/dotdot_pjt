@@ -40,6 +40,12 @@ public class BoardController {
         return "views/board/detail";
     }
 
+    @GetMapping("/board/{id}/update")
+    public String updateForm(@PathVariable int id, Model model) {
+        model.addAttribute("board", boardService.viewDetail(id));
+        return "views/board/write";
+    }
+
     // USER 권한이 필요
     @GetMapping("/board/write")
     public String saveForm() {

@@ -30,15 +30,15 @@
                     <th scope="row">제목</th>
                     <td>[[ ${board.title}]]</td>
                     <th scope="row">조회</th>
-                    <td colspan="3" th:text="${board.viewCnt}"></td>
+                    <td colspan="3" id="title" th:name="title" th:text="${board.viewCnt}"></td>
                 </tr>
                 <tr>
                     <th scope="row">이름</th>
-                    <td colspan="3" th:text="${board.userName}"></td>
+                    <td colspan="3" id="userName" th:name="userName" th:text="${board.userName}"></td>
                 </tr>
                 <tr>
                     <th scope="row">내용</th>
-                    <td colspan="3" th:utext="${board.content}"></td> <!-- th:utext에서는 html태그를 하나의 태그로 인식하고 동작. 즉, html 태그 안보임. -->
+                    <td colspan="3" id="content" th:name="content" th:utext="${board.content}"></td> <!-- th:utext에서는 html태그를 하나의 태그로 인식하고 동작. 즉, html 태그 안보임. -->
                 </tr>
                <!-- <tr>
                     <th scope="row">첨부파일</th>
@@ -49,7 +49,7 @@
                 </tbody>
             </table>
             <p class="btn_set">
-                <a th:href="@{/board/write}" class="btns btn_st5 btn_mid">수정</a>
+                <a th:href="@{/board/${board.id}/update}" class="btns btn_st5 btn_mid">수정</a>
                 <button id="btn-delete" class="btns btn_st1 btn_mid">삭제</button>
                 <a th:href="@{/board/list}" class="btns btn_st2 btn_mid">목록</a>
             </p>

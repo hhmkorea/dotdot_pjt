@@ -11,13 +11,15 @@
     </div>
 
     <div class="content">
-        <seletion>
+        <form action="" method="put">
             <table class="tb tb_row">
                 <colgroup>
-                    <col style="width: 10%;" />
-                    <col style="width: 23%;" />
-                    <col style="width: 10%;" />
-                    <col style="width: 23%;" />
+                    <col style="width: 12%;" />
+                    <col style="width: 18%;" />
+                    <col style="width: 12%;" />
+                    <col style="width: 18%;" />
+                    <col style="width: 12%;" />
+                    <col style="width: 18%;" />
                 </colgroup>
                 <tbody>
                 <tr>
@@ -27,18 +29,20 @@
                     <td th:text="${#temporals.format( post.createdDate, 'yyyy-MM-dd HH:mm')}"></td>-->
                 </tr>
                 <tr>
-                    <th scope="row">제목</th>
-                    <td>[[ ${board.title}]]</td>
+                    <th scope="row">글번호</th>
+                    <td id="id" th:name="id" th:text="${board.id}"></td>
                     <th scope="row">조회</th>
-                    <td colspan="3" id="title" th:name="title" th:text="${board.viewCnt}"></td>
+                    <td id="viewCnt" th:name="viewCnt" th:text="${board.viewCnt}"></td>
+                    <th scope="row">작성자</th>
+                    <td id="userName" th:name="userName" th:text="${board.userName}"></td>
                 </tr>
-                <tr>
-                    <th scope="row">이름</th>
-                    <td colspan="3" id="userName" th:name="userName" th:text="${board.userName}"></td>
-                </tr>
+                    <th scope="row">제목</th>
+                    <td colspan="3" id="title">[[ ${board.title}]]</td>
+                    <th scope="row">작성일자</th>
+                    <td id="createDate" th:name="createDate" th:text="${board.createDate}"></td>
                 <tr>
                     <th scope="row">내용</th>
-                    <td colspan="3" id="content" th:name="content" th:utext="${board.content}"></td> <!-- th:utext에서는 html태그를 하나의 태그로 인식하고 동작. 즉, html 태그 안보임. -->
+                    <td colspan="7" id="content" th:name="content" th:utext="${board.content}"></td> <!-- th:utext에서는 html태그를 하나의 태그로 인식하고 동작. 즉, html 태그 안보임. -->
                 </tr>
                <!-- <tr>
                     <th scope="row">첨부파일</th>
@@ -49,12 +53,13 @@
                 </tbody>
             </table>
             <p class="btn_set">
-                <a th:href="@{|/board/${board.id}/update|}" class="btns btn_st5 btn_mid">수정</a>
+                <a th:href="@{|/board/${board.id}/update|}" class="btns btn_st5 btn_mid">수정</a> <!-- 경로에 이상한 문자가 출력됨. ㄴ경로에 ||를 넣음. -->
                 <button id="btn-delete" class="btns btn_st1 btn_mid">삭제</button>
                 <a th:href="@{/board/list}" class="btns btn_st2 btn_mid">목록</a>
             </p>
-        </seletion>
+        </form>
     </div> <!-- /* .content */ -->
+    <script th:inline="javascript" type="text/javascript" th:src="@{/js/board.js}"></script>
 </th:block>
 
 </html>

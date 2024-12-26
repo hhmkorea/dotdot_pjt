@@ -35,7 +35,7 @@ let index = {
 
     deleteById: function () {
         let id = $("#id").text();
-
+        debugger;
         $.ajax({
             type: "DELETE",
             url: "/api/board/" + id,

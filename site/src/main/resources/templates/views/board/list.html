@@ -23,7 +23,7 @@
                             <option value="writer">작성자</option>
                         </select>
                         <input type="text" id="keyword" name="keyword" placeholder="키워드를 입력해주세요." title="키워드 입력"/>
-                        <button type="button" class="bt_search" onclick="movePage(1)">
+                        <button type="button" class="bt_search" onclick="searchBoard()">
                             <img th:src="@{/icons/search.svg}" height="20" th:title="Search" alt="Search"/>
                             <span class="skip_info">검색</span>
                         </button>
@@ -83,6 +83,35 @@
             </p>
         </seletion>
     </div> <!-- /* .content */ -->
-    <!--<script th:inline="javascript" type="text/javascript" th:src="@{/js/board.js}"></script>-->
 </th:block>
 </html>
+
+<script>
+
+    // 페이지 이동
+    function searchBoard(page) {
+
+        // 1. 검색 폼
+        const form = document.getElementById('searchForm');
+
+        // 2. drawPage( )의 각 버튼에 선언된 onclick 이벤트를 통해 전달받는 page(페이지 번호)를 기준으로 객체 생성
+        const queryParams = {
+            page: (page) ? page : 1,
+            recordSize: 10,
+            pageSize: 10,
+            searchType: form.searchType.value,
+            keyword: form.keyword.value
+        }
+
+        /*
+         * 3. location.pathname : 리스트 페이지의 URI("/board/list")를 의미
+         *    new URLSearchParams(queryParams).toString() : queryParams의 모든 프로퍼티(key-value)를 쿼리 스트링으로 변환
+         *    URI + 쿼리 스트링에 해당하는 주소로 이동
+         *    (해당 함수가 리턴해주는 값을 브라우저 콘솔(console)에 찍어보시면 쉽게 이해하실 수 있습니다.)
+         */
+        console.log(queryParams);
+        debugger;
+        location.href = location.pathname + '?' + new URLSearchParams(queryParams).toString();
+    }
+
+</script>

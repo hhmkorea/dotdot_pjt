@@ -20,7 +20,7 @@ public class MemberController {
     private MemberService memberService;
 
     // 로그인 화면
-    @GetMapping("/login")
+    @GetMapping({"", "/","/login"})
     public String openLogin() {
         return "views/member/login";
     }

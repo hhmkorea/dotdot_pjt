@@ -27,6 +27,18 @@ public class BoardService {
     }
 
     @Transactional(readOnly = true)
+    public Page<Board> search(String keyword, Pageable pageable) {
+        Page<Board> boardList;
+
+        if (keyword == null || keyword.trim().isEmpty()) {
+            boardList = boardRepository.findAll(pageable);
+        } else {
+            boardList = boardRepository.findByTitleContaining(keyword, pageable);
+        }
+        return boardList;
+    }
+
+    @Transactional(readOnly = true)
     public Board viewDetail(int id) {
         return boardRepository.findById(id).orElseThrow(() -> {
                 return new IllegalStateException("글 상세보기 실패 : 선택된 게시물을 찾을 수 없습니다.");

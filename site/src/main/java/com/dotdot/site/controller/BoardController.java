@@ -1,7 +1,9 @@
 package com.dotdot.site.controller;
 
+import com.dotdot.site.model.Board;
 import com.dotdot.site.service.BoardService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PageableDefault;
@@ -18,21 +20,25 @@ public class BoardController {
     @Autowired
     private BoardService boardService;
 
-//    @GetMapping({"", "/"})
-//    public String index() {
-//        return "index";
-//    }
-
     // 게시글 리스트 페이지
     @GetMapping ("/info")
     public String openInfo() {
         return "views/board/info";
     }
 
-    // 게시글 리스트 페이지
-    @GetMapping ("/list")
-    public String openList(Model model, @PageableDefault(size = 5, sort = "id", direction = Sort.Direction.DESC) Pageable pageable) {
-        model.addAttribute("boards", boardService.viewList(pageable));
+//    // 게시글 리스트 페이지
+//    @GetMapping ("/list")
+//    public String findAll(Model model, @PageableDefault(size = 5, sort = "id", direction = Sort.Direction.DESC) Pageable pageable) {
+//        model.addAttribute("boards", boardService.viewList(pageable));
+//        return "views/board/list";
+//    }
+
+    @GetMapping("/list")
+    public String searchBoard(Model model, @PageableDefault(size = 5, sort = "id", direction = Sort.Direction.DESC) Pageable pageable, String searchKeyword) {
+        Page<Board> searchList = boardService.search(searchKeyword, pageable);
+
+        model.addAttribute("boards", searchList);
+
         return "views/board/list";
     }
 

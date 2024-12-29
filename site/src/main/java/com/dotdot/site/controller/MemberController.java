@@ -52,9 +52,9 @@ public class MemberController {
     public Member login(HttpServletRequest request) {
 
         // 1. 회원 정보 조회
-        String userName = request.getParameter("userName");
+        String username = request.getParameter("username");
         String password = request.getParameter("password");
-        Member member = memberService.login(userName);//, password);
+        Member member = memberService.login(username);//, password);
 
         // 2. 세션에 회원 정보 저장 & 세션 유지 시간 설정
         if ( member != null ) {

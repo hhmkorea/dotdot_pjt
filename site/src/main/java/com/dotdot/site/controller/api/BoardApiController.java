@@ -20,7 +20,7 @@ public class BoardApiController {
     public BoardResponseDto<Integer> save(@Valid @RequestBody Board board) {
         Member member = new Member();
         member.setId(0);
-        member.setUserName("tester");
+        member.setUsername("tester");
         boardService.write(board);
         return new BoardResponseDto<Integer>(HttpStatus.OK.value(), 1);
     }

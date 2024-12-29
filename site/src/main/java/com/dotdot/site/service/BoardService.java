@@ -17,23 +17,24 @@ public class BoardService {
     @Transactional
     public void write(Board board) {
         board.setViewCnt(0);
-        board.setUsername("tester");
+        board.setWriter("writer");
         boardRepository.save(board);
     }
 
     @Transactional(readOnly = true)
-    public Page<Board> viewList(Pageable pageable) {
-        return boardRepository.findAll(pageable);
-    }
-
-    @Transactional(readOnly = true)
-    public Page<Board> search(String keyword, Pageable pageable) {
-        Page<Board> boardList;
+    public Page<Board> search(String searchType, String keyword, Pageable pageable) {
+        Page<Board> boardList = null;
 
         if (keyword == null || keyword.trim().isEmpty()) {
             boardList = boardRepository.findAll(pageable);
         } else {
-            boardList = boardRepository.findByTitleContaining(keyword, pageable);
+            if (searchType.equals("writer")) {
+                boardList = boardRepository.findByWriterContaining(keyword, pageable);
+            } else if (searchType.equals("title")) {
+                boardList = boardRepository.findByTitleContaining(keyword, pageable);
+            } else if (searchType.equals("content")) {
+                boardList = boardRepository.findByContentContaining(keyword, pageable);
+            }
         }
         return boardList;
     }

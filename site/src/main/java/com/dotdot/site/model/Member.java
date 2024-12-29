@@ -34,6 +34,9 @@ public class Member {
     @Column(nullable = false, length = 100) // 해쉬(비밀번호 암호화) 대비
     private String password;
 
+//    @Column(nullable = false, length = 50)
+//    private String email;
+
     @CreationTimestamp
     private LocalDateTime createdDate;
 

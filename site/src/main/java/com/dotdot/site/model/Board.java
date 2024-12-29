@@ -41,7 +41,7 @@ public class Board {
 //    @JoinColumn(name = "userName")
 //    private Member member; // 작성자
 
-    private String username;
+    private String writer;
 
     @CreationTimestamp
     private LocalDateTime createDate;

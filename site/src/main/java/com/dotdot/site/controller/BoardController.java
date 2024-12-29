@@ -26,19 +26,10 @@ public class BoardController {
         return "views/board/info";
     }
 
-//    // 게시글 리스트 페이지
-//    @GetMapping ("/list")
-//    public String findAll(Model model, @PageableDefault(size = 5, sort = "id", direction = Sort.Direction.DESC) Pageable pageable) {
-//        model.addAttribute("boards", boardService.viewList(pageable));
-//        return "views/board/list";
-//    }
-
     @GetMapping("/list")
-    public String searchBoard(Model model, @PageableDefault(size = 5, sort = "id", direction = Sort.Direction.DESC) Pageable pageable, String searchKeyword) {
-        Page<Board> searchList = boardService.search(searchKeyword, pageable);
-
+    public String searchBoard(Model model, @PageableDefault(size = 5, sort = "id", direction = Sort.Direction.DESC) Pageable pageable, String searchType, String searchKeyword) {
+        Page<Board> searchList = boardService.search(searchType, searchKeyword, pageable);
         model.addAttribute("boards", searchList);
-
         return "views/board/list";
     }
 

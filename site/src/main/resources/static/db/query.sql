@@ -16,5 +16,7 @@ create user 'cos'@'%' identified by 'cos1234';
 SELECT  * FROM tb_board;
 SELECT  * FROM tb_member;
 
+UPDATE tb_member SET roles = 'USER' where username = 'test';
+
 desc tb_board;
 desc tb_member;

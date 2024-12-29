@@ -37,6 +37,7 @@ public class MemberService {
     @Transactional
     public int saveMember(Member member) {
         //member.encodingPassword(passwordEncoder);   // password 인코딩
+        member.setRoles("USER");
         memberRepository.save(member);
         return member.getId();
     }

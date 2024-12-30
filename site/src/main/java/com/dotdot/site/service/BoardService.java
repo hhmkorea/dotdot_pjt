@@ -2,9 +2,11 @@ package com.dotdot.site.service;
 
 import com.dotdot.site.model.Board;
 import com.dotdot.site.repository.BoardRepository;
+import com.dotdot.site.repository.BoardSpecification;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -25,16 +27,26 @@ public class BoardService {
     public Page<Board> search(String searchType, String keyword, Pageable pageable) {
         Page<Board> boardList = null;
 
+        Specification<Board> spec = (root, query, criteriBuilder) -> null;
+
         if (keyword == null || keyword.trim().isEmpty()) {
             boardList = boardRepository.findAll(pageable);
         } else {
-            if (searchType.equals("writer")) {
-                boardList = boardRepository.findByWriterContaining(keyword, pageable);
-            } else if (searchType.equals("title")) {
-                boardList = boardRepository.findByTitleContaining(keyword, pageable);
-            } else if (searchType.equals("content")) {
-                boardList = boardRepository.findByContentContaining(keyword, pageable);
+            switch (searchType) {
+                case "writer":
+                    spec = spec.and(BoardSpecification.likeWriter(keyword));
+                    break;
+                case "title":
+                    spec = spec.and(BoardSpecification.likeTitle(keyword));
+                    break;
+                case "content":
+                    spec = spec.and(BoardSpecification.likeContent(keyword));
+                    break;
+                default:
+                    spec = spec.or(BoardSpecification.likeWriter(keyword)).or(BoardSpecification.likeTitle(keyword)).or(BoardSpecification.likeContent(keyword));
+                    break;
             }
+            boardList = boardRepository.findAll(spec, pageable);
         }
         return boardList;
     }

@@ -1,8 +1,11 @@
 package com.dotdot.site.controller;
 
+import com.dotdot.site.config.auth.PrincipalDetails;
 import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
@@ -18,7 +21,8 @@ public class MemberController {
 
     // 홈 화면
     @GetMapping("/home")
-    public String home() {
+    public String home(Model model, @AuthenticationPrincipal PrincipalDetails principal) {
+        model.addAttribute("principal", principal);
         return "home";
     }
 

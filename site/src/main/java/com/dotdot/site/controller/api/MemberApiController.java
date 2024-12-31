@@ -25,13 +25,4 @@ public class MemberApiController {
         return count;
     }
 
-    // 로그인
-    @PostMapping("/login")
-    public Member login(@RequestParam final String username, @RequestParam final String password) {
-
-        Member member = memberService.login(username);//, password);
-
-        return member;
-    }
-
 }

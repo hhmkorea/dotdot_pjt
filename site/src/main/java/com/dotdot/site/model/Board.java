@@ -35,13 +35,11 @@ public class Board {
 
     private int viewCnt; // 조회수
 
-//    // FetchType.EAGER : 해당 Entity(테이블) 조인해서 데이타 다 가져옴.
-//    // FetchType.LAZY : 해당 Entity(테이블) 조인해서 "필요하면" 데이타 가져올게!, 예:펼치기
-//    @ManyToOne(fetch = FetchType.EAGER) // 연관관계, Board = Many, User = One
-//    @JoinColumn(name = "userName")
-//    private Member member; // 작성자
-
-    private String writer;
+    // FetchType.EAGER : 해당 Entity(테이블) 조인해서 데이타 다 가져옴.
+    // FetchType.LAZY : 해당 Entity(테이블) 조인해서 "필요하면" 데이타 가져올게!, 예:펼치기
+    @ManyToOne(fetch = FetchType.EAGER) // 연관관계, Board = Many, Member = One
+    @JoinColumn(name = "memberId")
+    private Member member; // 작성자
 
     @CreationTimestamp
     private LocalDateTime createDate;

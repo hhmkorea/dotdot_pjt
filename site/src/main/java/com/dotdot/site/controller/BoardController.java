@@ -45,7 +45,6 @@ public class BoardController {
         return "views/board/update";
     }
 
-    // USER 권한이 필요
     @GetMapping("/write")
     public String saveForm() {
         return "views/board/write";

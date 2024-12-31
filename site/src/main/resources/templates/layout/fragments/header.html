@@ -1,9 +1,16 @@
 <!doctype html>
-<html lang="ko" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<html lang="ko" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
 <head th:fragment="main-head">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <sec:authorize access="isAuthenticated()">
+        <sec:authentication property="principal" var="principal" />
+    </sec:authorize>
 
     <th:block layout:fragment="title"></th:block> <!-- /* import title 페이지별 title 부분 뿌려줌. */ -->
 
@@ -28,6 +35,7 @@
     <link th:inline="css" th:href="@{/css/common.css}" rel="stylesheet"/>
     <link th:inline="css" th:href="@{/css/default.css}" rel="stylesheet"/>
 
-    <th:block layout:fragment="add-css"></th:block> <!-- /* import css */ -->
+    <th:block layout:fragment="add-css"></th:block>
+    <title></title> <!-- /* import css */ -->
 </head>
 </html>

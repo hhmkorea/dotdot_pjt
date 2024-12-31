@@ -1,34 +1,34 @@
 package com.dotdot.site.config.auth;
 
 import com.dotdot.site.model.Member;
-import lombok.Data;
+import lombok.Getter;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.ArrayList;
 import java.util.Collection;
 
-@Data
+@Getter
 public class PrincipalDetails implements UserDetails {
 
-    private Member user;
+    private Member member;
 
-    public PrincipalDetails(Member user) {
-        this.user = user;
+    public PrincipalDetails(Member member) {
+        this.member = member;
     }
 
-    public Member getUser() {
-        return user;
+    public Member getMember() {
+        return member;
     }
 
     @Override
     public String getPassword() {
-        return user.getPassword();
+        return member.getPassword();
     }
 
     @Override
     public String getUsername() {
-        return user.getUsername();
+        return member.getUsername();
     }
 
     @Override
@@ -53,11 +53,9 @@ public class PrincipalDetails implements UserDetails {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        Collection<GrantedAuthority> authorities = new ArrayList<>();
-        user.getRoleList().forEach(r -> {
-            authorities.add(()-> r); // 자바스크립트 () -> r
-        });
-        return authorities;
+        Collection<GrantedAuthority> collectors = new ArrayList<>(); // ArrayList 부모에 Collection 있음.
+        collectors.add(() -> { return "ROLE_" + member.getRole();}); // 람다식
+        return collectors;
     }
 
 }

@@ -34,7 +34,7 @@
                     <th scope="row">조회</th>
                     <td id="viewCnt" th:name="viewCnt" th:text="${board.viewCnt}"></td>
                     <th scope="row">작성자</th>
-                    <td id="writer" th:name="writer" th:text="${board.writer}"></td>
+                    <td id="writer" th:name="writer" th:text="${board.member.username}"></td>
                 </tr>
                     <th scope="row">제목</th>
                     <td colspan="3" id="title">[[ ${board.title}]]</td>
@@ -53,7 +53,7 @@
                 </tbody>
             </table>
             <p class="btn_set">
-                <a th:href="@{|/board/${board.id}/update|}" class="btns btn_st5 btn_mid">수정</a> <!-- 경로에 이상한 문자가 출력됨. ㄴ경로에 ||를 넣음. -->
+                <a th:href="@{|/board/${board.id}/update|}" class="btns btn_st5 btn_mid">수정</a> <!-- 경로에 이상한 문자가 출력됨. 경로에 ||를 넣음. -->
                 <button id="btn-delete" class="btns btn_st1 btn_mid">삭제</button>
                 <a th:href="@{/board/list}" class="btns btn_st2 btn_mid">목록</a>
             </p>

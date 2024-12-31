@@ -1,6 +1,7 @@
 package com.dotdot.site.service;
 
 import com.dotdot.site.model.Board;
+import com.dotdot.site.model.Member;
 import com.dotdot.site.repository.BoardRepository;
 import com.dotdot.site.repository.BoardSpecification;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,9 +18,8 @@ public class BoardService {
     private BoardRepository boardRepository;
 
     @Transactional
-    public void write(Board board) {
-        board.setViewCnt(0);
-        board.setWriter("writer");
+    public void write(Board board, Member member) {
+        board.setMember(member);
         boardRepository.save(board);
     }
 
@@ -33,9 +33,9 @@ public class BoardService {
             boardList = boardRepository.findAll(pageable);
         } else {
             switch (searchType) {
-                case "writer":
-                    spec = spec.and(BoardSpecification.likeWriter(keyword));
-                    break;
+//                case "username":
+//                    spec = spec.and(BoardSpecification.likeUsername(keyword));
+//                    break;
                 case "title":
                     spec = spec.and(BoardSpecification.likeTitle(keyword));
                     break;
@@ -43,7 +43,8 @@ public class BoardService {
                     spec = spec.and(BoardSpecification.likeContent(keyword));
                     break;
                 default:
-                    spec = spec.or(BoardSpecification.likeWriter(keyword)).or(BoardSpecification.likeTitle(keyword)).or(BoardSpecification.likeContent(keyword));
+                    //spec = spec.or(BoardSpecification.likeUsername(keyword)).or(BoardSpecification.likeTitle(keyword)).or(BoardSpecification.likeContent(keyword));
+                    spec = spec.or(BoardSpecification.likeTitle(keyword)).or(BoardSpecification.likeContent(keyword));
                     break;
             }
             boardList = boardRepository.findAll(spec, pageable);

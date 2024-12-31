@@ -10,9 +10,6 @@ import lombok.NoArgsConstructor;
 import org.hibernate.annotations.CreationTimestamp;
 
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 
 @Builder
 @AllArgsConstructor
@@ -40,17 +37,11 @@ public class Member {
 //    @Column(nullable = false, length = 50)
 //    private String email;
 
+    @Enumerated(EnumType.STRING)
+    private RoleType role; // USER, ADMIN ---> security 최신 버전에서는 권한 적용시 ROLE_ 쓰지 않음.
+
     @CreationTimestamp
     private LocalDateTime createdDate;
-
-    private String roles; // USER, ADMIN ---> security 최신 버전에서는 권한 적용시 ROLE_ 쓰지 않음.
-
-    public List<String> getRoleList() { // size 2개, 0:USER, 1:ADMIN
-        if(this.roles.length() > 0) {
-            return Arrays.asList(this.roles.split(","));
-        }
-        return new ArrayList<>();
-    }
 
     public void clearPassword() {
         this.password = "";

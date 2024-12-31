@@ -1,12 +1,13 @@
 package com.dotdot.site.controller.api;
 
+import com.dotdot.site.config.auth.PrincipalDetails;
 import com.dotdot.site.controller.dto.BoardResponseDto;
 import com.dotdot.site.model.Board;
-import com.dotdot.site.model.Member;
 import com.dotdot.site.service.BoardService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
 
 @RestController // JSON 데이타 리턴
@@ -17,11 +18,8 @@ public class BoardApiController {
     private BoardService boardService;
 
     @PostMapping("/board")
-    public BoardResponseDto<Integer> save(@Valid @RequestBody Board board) {
-        Member member = new Member();
-        member.setId(0);
-        member.setUsername("tester");
-        boardService.write(board);
+    public BoardResponseDto<Integer> save(@Valid @RequestBody Board board, @AuthenticationPrincipal PrincipalDetails principalDetails) {
+        boardService.write(board, principalDetails.getMember());
         return new BoardResponseDto<Integer>(HttpStatus.OK.value(), 1);
     }
 

@@ -1,20 +1,17 @@
 package com.dotdot.site.controller;
 
-import com.dotdot.site.model.Member;
-import com.dotdot.site.service.MemberService;
-import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
 @RequiredArgsConstructor
 public class MemberController {
 
     // 로그인 화면
-    @GetMapping({"", "/","/login"})
+    @GetMapping({"", "/","/loginForm"})
     public String openLogin() {
         return "views/member/login";
     }

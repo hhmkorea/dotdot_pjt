@@ -20,3 +20,4 @@ UPDATE tb_member SET roles = 'USER' where username = 'test';
 
 desc tb_board;
 desc tb_member;
+

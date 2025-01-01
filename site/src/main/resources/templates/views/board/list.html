@@ -59,7 +59,7 @@
                         <td>[[${board.id}]]</td>
                         <td class="tl"><a th:href="@{/board/{id}(id=${board.id})}">[[${board.title}]]</a></td>
                         <td>[[${board.member.username}]]</td>
-                        <td>[[${board.createDate}]]</td>
+                        <td th:text="${#temporals.format(board.createDate, 'yyyy-mm-dd HH:mm:ss')}"></td>
                         <td>[[${board.viewCnt}]]</td>
                     </tr>
                 </tbody>

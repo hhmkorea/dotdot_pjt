@@ -21,3 +21,26 @@ SELECT  * FROM member;
 desc board;
 desc member;
 
+
+
+select b.*
+from Board b join Member m on b.memberid = m.id
+where (
+    m.username like '%1%'
+or b.title like '%1%'
+or b.content like '%1%')
+;
+
+select
+    b.*
+from
+    Board b
+        join
+    Member m
+    on b.memberId = m.id
+where
+    (m.username like '%|'+'1'+'|%'
+   or b.title like '%|'+'1'+'|%'
+   or b.content  like '%|'+'1'+'|%')
+
+

@@ -31,23 +31,23 @@ public class BoardService {
 
         if (keyword == null || keyword.trim().isEmpty()) {
             boardList = boardRepository.findAll(pageable);
-        } else {
+        }else {
             switch (searchType) {
-//                case "username":
-//                    spec = spec.and(BoardSpecification.likeUsername(keyword));
-//                    break;
+                case "username":
+                    boardList = boardRepository.findLikeUsername(keyword, pageable);
+                    break;
                 case "title":
                     spec = spec.and(BoardSpecification.likeTitle(keyword));
+                    boardList = boardRepository.findAll(spec, pageable);
                     break;
                 case "content":
                     spec = spec.and(BoardSpecification.likeContent(keyword));
+                    boardList = boardRepository.findAll(spec, pageable);
                     break;
                 default:
-                    //spec = spec.or(BoardSpecification.likeUsername(keyword)).or(BoardSpecification.likeTitle(keyword)).or(BoardSpecification.likeContent(keyword));
-                    spec = spec.or(BoardSpecification.likeTitle(keyword)).or(BoardSpecification.likeContent(keyword));
+                    boardList = boardRepository.findLikeAll(keyword, pageable);
                     break;
             }
-            boardList = boardRepository.findAll(spec, pageable);
         }
         return boardList;
     }

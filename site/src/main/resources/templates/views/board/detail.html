@@ -1,5 +1,8 @@
 <!DOCTYPE html>
-<html lang="ko" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layout/default}">
+<html lang="ko" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+      layout:decorate="~{layout/default}">
 <th:block layout:fragment="title">
     <title>Sophie's Home</title>
 </th:block>
@@ -53,8 +56,8 @@
                 </tbody>
             </table>
             <p class="btn_set">
-                <a th:href="@{|/board/${board.id}/update|}" class="btns btn_st5 btn_mid">수정</a> <!-- 경로에 이상한 문자가 출력됨. 경로에 ||를 넣음. -->
-                <button id="btn-delete" class="btns btn_st1 btn_mid">삭제</button>
+                <a th:if="${principal.username} == ${board.member.username}" th:href="@{|/board/${board.id}/update|}" class="btns btn_st5 btn_mid">수정</a> <!-- 경로에 이상한 문자가 출력됨. 경로에 ||를 넣음. -->
+                <button th:if="${principal.username} == ${board.member.username}" id="btn-delete" class="btns btn_st1 btn_mid">삭제</button>
                 <a th:href="@{/board/list}" class="btns btn_st2 btn_mid">목록</a>
             </p>
         </form>

@@ -1,11 +1,11 @@
 <!doctype html>
-<html lang="ko" xmlns:th="http://www.thymeleaf.org"
-      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
 <head>
     <th:block th:replace="~{layout/fragments/header :: main-head}"></th:block>
     <title>로그인</title>
 </head>
 <body>
+<section class="vh-100" style="background-color: #9A616D;">
 <div class="container py-5 h-100">
     <div class="row d-flex justify-content-center align-items-center h-100">
         <div class="col col-xl-10">
@@ -47,6 +47,7 @@
         </div>
     </div>
 </div>
+</section>
 
 <!-- /* 회원가입 popup */ -->
 <div id="signupPopup" class="popLayer">
@@ -85,10 +86,8 @@
     <button type="button" class="btn_close" onclick="closeSignupPopup();"><span><i class="far fa-times-circle"></i></span></button>
 </div>
 </body>
-<th:block layout:fragment="add-css"></th:block> <!-- /* import css */ -->
 </html>
 
-<link th:inline="css" th:href="@{/css/login.css}" rel="stylesheet"/>
 <script>
 
     // 회원가입 팝업 open

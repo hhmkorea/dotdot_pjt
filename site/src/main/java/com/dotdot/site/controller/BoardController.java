@@ -41,6 +41,7 @@ public class BoardController {
     public String findById(@PathVariable int id, Model model,  @AuthenticationPrincipal PrincipalDetails principal) {
         model.addAttribute("board", boardService.viewDetail(id));
         model.addAttribute("principal", principal);
+        boardService.updateCount(id);
         return "views/board/detail";
     }
 
@@ -52,7 +53,8 @@ public class BoardController {
     }
 
     @GetMapping("/write")
-    public String saveForm() {
+    public String saveForm(Model model,  @AuthenticationPrincipal PrincipalDetails principal) {
+        model.addAttribute("principal", principal);
         return "views/board/write";
     }
 }

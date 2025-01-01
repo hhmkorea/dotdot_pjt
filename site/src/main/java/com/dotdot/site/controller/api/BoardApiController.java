@@ -18,8 +18,8 @@ public class BoardApiController {
     private BoardService boardService;
 
     @PostMapping("/board")
-    public BoardResponseDto<Integer> save(@Valid @RequestBody Board board, @AuthenticationPrincipal PrincipalDetails principalDetails) {
-        boardService.write(board, principalDetails.getMember());
+    public BoardResponseDto<Integer> save(@Valid @RequestBody Board board, @AuthenticationPrincipal PrincipalDetails principal) {
+        boardService.write(board, principal.getMember());
         return new BoardResponseDto<Integer>(HttpStatus.OK.value(), 1);
     }
 

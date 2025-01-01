@@ -1,5 +1,7 @@
 <!DOCTYPE html>
-<html lang="ko" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layout/default}">
+<html lang="ko" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/default}">
 <th:block layout:fragment="title">
   <title>Sophie's Home</title>
 </th:block>
@@ -19,7 +21,7 @@
       </div>
       <div class="form-group">
         <label for="title" class="form-label fw-bold">작성자</label>
-        <input type="text" class="form-control" id="memberId" name="memberId">
+        <input type="text" class="form-control" id="username" name="username" th:value="${principal.username}" readonly="readonly">
       </div>
       <div class="form-group">
         <label for="content" class="form-label fw-bold">내용</label>

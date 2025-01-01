@@ -75,4 +75,9 @@ public class BoardService {
         board.setTitle(requestBoard.getTitle());
         board.setContent(requestBoard.getContent());
     }
+
+    @Transactional
+    public void updateCount(int id) {
+        boardRepository.updateViewCnt(id);
+    }
 }

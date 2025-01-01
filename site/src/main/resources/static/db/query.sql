@@ -13,11 +13,11 @@ create user 'cos'@'%' identified by 'cos1234';
 -- GRANT ALL PRIVILEGES ON *.* TO
 
 -- 테이블 확인
-SELECT  * FROM tb_board;
-SELECT  * FROM tb_member;
+SELECT  * FROM board;
+SELECT  * FROM member;
 
-UPDATE tb_member SET roles = 'USER' where username = 'test';
+-- UPDATE member SET role = 'USER' where username = 'test';
 
-desc tb_board;
-desc tb_member;
+desc board;
+desc member;
 

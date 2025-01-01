@@ -1,5 +1,7 @@
 <!DOCTYPE html>
-<html lang="ko" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layout/default}">
+<html lang="ko" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/default}">
 <th:block layout:fragment="title">
     <title>Sophie's Home</title>
 </th:block>
@@ -39,6 +41,7 @@
                     <col style="width: auto;" />
                     <col style="width: 10%;" />
                     <col style="width: 15%;" />
+                    <col style="width: 15%;" />
                     <col style="width: 7.5%;" />
                 </colgroup>
                 <thead>
@@ -48,6 +51,7 @@
                     <th scope="col">제목</th>
                     <th scope="col">작성자</th>
                     <th scope="col">등록일</th>
+                    <th scope="col">수정일</th>
                     <th scope="col">조회</th>
                 </tr>
                 </thead>
@@ -60,6 +64,7 @@
                         <td class="tl"><a th:href="@{/board/{id}(id=${board.id})}">[[${board.title}]]</a></td>
                         <td>[[${board.member.username}]]</td>
                         <td th:text="${#temporals.format(board.createDate, 'yyyy-mm-dd HH:mm:ss')}"></td>
+                        <td th:text="${#temporals.format(board.updateDate, 'yyyy-mm-dd HH:mm:ss')}"></td>
                         <td>[[${board.viewCnt}]]</td>
                     </tr>
                 </tbody>

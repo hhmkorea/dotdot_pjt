@@ -313,3 +313,5 @@ input[readonly], select[readonly], textarea[readonly], .readonly, input[disabled
 .popLayer .pop_container.scroll_cont {max-height:470px; overflow:auto;}
 .popLayer .pop_container .btn_set {margin:30px 0 0;}
 .popLayer .pop_container .btn_set > button {height:40px; line-height:38px; font-size:15px; min-width:80px;}
+
+/* 소스 출처 : https://congsong.tistory.com/16 */

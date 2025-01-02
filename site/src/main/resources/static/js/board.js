@@ -15,9 +15,13 @@ let index = {
     },
 
     save: function () {
+        if(!confirm("저장 하시겠습니까?")) {
+            return false;
+        }
+
         let data = {
             title: $("#title").val(),
-            content: $("#content").val()
+            content: $("#content").summernote('code')
         };
         $.ajax({
             type: "POST",
@@ -34,6 +38,10 @@ let index = {
     },
 
     deleteById: function () {
+        if(!confirm("삭제 하시겠습니까?")) {
+            return false;
+        }
+
         let id = $("#id").text();
         $.ajax({
             type: "DELETE",
@@ -48,6 +56,10 @@ let index = {
     },
 
     update: function () {
+        if(!confirm("수정 하시겠습니까?")) {
+            return false;
+        }
+
         let id = $("#id").val();
 
         let data = {
@@ -62,7 +74,7 @@ let index = {
             dataType: "json"
         }).done(function (resp){
             alert("글수정이 완료되었습니다.");
-            location.href = "/board/list";
+            location.href = "/board/" + id;
         }).fail(function (error){
             alert(JSON.stringify(error));
         });

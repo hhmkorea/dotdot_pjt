@@ -33,6 +33,11 @@ spring:
     serialization:
       fail-on-empty-beans: false
 
+  servlet:
+    multipart:
+      max-file-size: 100MB
+      max-request-size: 100MB
+
 logging:
   level:
     org.hibernate.orm.jdbc.bind: trace

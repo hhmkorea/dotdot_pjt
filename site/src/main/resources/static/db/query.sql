@@ -21,26 +21,22 @@ SELECT  * FROM member;
 desc board;
 desc member;
 
-
-
-select b.*
-from Board b join Member m on b.memberid = m.id
-where (
-    m.username like '%1%'
-or b.title like '%1%'
-or b.content like '%1%')
-;
-
 select
-    b.*
+#    b.content
+#    , locate('img src', b.content) as result
+#     , substr(b.content, locate('image/', b.content), 47) as result1
+     REGEXP_REPLACE(b.content, '<(/)?(img|label|table|thead|tbody|tfoot|tr|td|p|br|div|span|font|strong|b)(.|\s|\t|\n|\r\n)*?>', '') as post_text_content
 from
     Board b
         join
     Member m
     on b.memberId = m.id
-where
-    (m.username like '%|'+'1'+'|%'
-   or b.title like '%|'+'1'+'|%'
-   or b.content  like '%|'+'1'+'|%')
+where 1=1
+#     (m.username like '%|'+'1'+'|%'
+#    or b.title like '%|'+'1'+'|%'
+#    or b.content  like '%|'+'1'+'|%')
+-- and b.content like concat('%', 'test','%')
+and REGEXP_REPLACE(b.content, '<(/)?(img|label|table|thead|tbody|tfoot|tr|td|p|br|div|span|font|strong|b)(.|\s|\t|\n|\r\n)*?>', '') like '%1%'
+;
 
-
+select length('image/afe72cb2-a0d9-4cbe-9795-4433c452277e..png') from dual; -- 47

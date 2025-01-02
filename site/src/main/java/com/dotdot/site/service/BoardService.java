@@ -27,8 +27,6 @@ public class BoardService {
     public Page<Board> search(String searchType, String keyword, Pageable pageable) {
         Page<Board> boardList = null;
 
-        Specification<Board> spec = (root, query, criteriBuilder) -> null;
-
         if (keyword == null || keyword.trim().isEmpty()) {
             boardList = boardRepository.findAll(pageable);
         }else {
@@ -37,12 +35,10 @@ public class BoardService {
                     boardList = boardRepository.findLikeUsername(keyword, pageable);
                     break;
                 case "title":
-                    spec = spec.and(BoardSpecification.likeTitle(keyword));
-                    boardList = boardRepository.findAll(spec, pageable);
+                    boardList = boardRepository.findLikeTitle(keyword, pageable);
                     break;
                 case "content":
-                    spec = spec.and(BoardSpecification.likeContent(keyword));
-                    boardList = boardRepository.findAll(spec, pageable);
+                    boardList = boardRepository.findLikeContent(keyword, pageable);
                     break;
                 default:
                     boardList = boardRepository.findLikeAll(keyword, pageable);

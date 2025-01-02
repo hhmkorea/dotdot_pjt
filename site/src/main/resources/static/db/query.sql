@@ -25,7 +25,7 @@ select
 #    b.content
 #    , locate('img src', b.content) as result
 #     , substr(b.content, locate('image/', b.content), 47) as result1
-     REGEXP_REPLACE(b.content, '<(/)?(img|label|table|thead|tbody|tfoot|tr|td|p|br|div|span|font|strong|b)(.|\s|\t|\n|\r\n)*?>', '') as post_text_content
+     REGEXP_REPLACE(b.content, '<(/)?(img|label|table|thead|tbody|tfoot|tr|td|p|br|div|span|font|strong|b|iframe|a)(.|\s|\t|\n|\r\n)*?>', '') as post_text_content
 from
     Board b
         join
@@ -35,8 +35,8 @@ where 1=1
 #     (m.username like '%|'+'1'+'|%'
 #    or b.title like '%|'+'1'+'|%'
 #    or b.content  like '%|'+'1'+'|%')
--- and b.content like concat('%', 'test','%')
-and REGEXP_REPLACE(b.content, '<(/)?(img|label|table|thead|tbody|tfoot|tr|td|p|br|div|span|font|strong|b)(.|\s|\t|\n|\r\n)*?>', '') like '%1%'
+ and b.content like concat('%', 'a','%')
+-- and REGEXP_REPLACE(b.content, '<(/)?(img|label|table|thead|tbody|tfoot|tr|td|p|br|div|span|font|strong|b|iframe|a)(.|\s|\t|\n|\r\n)*?>', '') like '%a%'
 ;
 
 select length('image/afe72cb2-a0d9-4cbe-9795-4433c452277e..png') from dual; -- 47

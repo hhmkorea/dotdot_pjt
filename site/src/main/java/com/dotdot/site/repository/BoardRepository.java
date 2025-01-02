@@ -23,9 +23,9 @@ public interface BoardRepository extends JpaRepository<Board, Integer>, JpaSpeci
     @Query(value = "select b.* from Board b join Member m on b.memberId = m.id where b.title like concat('%',:keyword,'%')", nativeQuery = true)
     Page<Board> findLikeTitle(String keyword, Pageable pageable);
 
-    @Query(value = "select b.* from Board b join Member m on b.memberId = m.id where REGEXP_REPLACE(b.content, '<(/)?(img|label|table|thead|tbody|tfoot|tr|td|p|br|div|span|font|strong|b)(.|\\s|\\t|\\n|\\r\\n)*?>', '') like concat('%',:keyword,'%')", nativeQuery = true)
+    @Query(value = "select b.* from Board b join Member m on b.memberId = m.id where REGEXP_REPLACE(b.content, '<(/)?(img|label|table|thead|tbody|tfoot|tr|td|p|br|div|span|font|strong|b|iframe|a)(.|\\s|\\t|\\n|\\r\\n)*?>', '') like concat('%',:keyword,'%')", nativeQuery = true)
     Page<Board> findLikeContent(String keyword, Pageable pageable);
 
-    @Query(value = "select b.* from Board b join Member m on b.memberId = m.id where m.username like concat('%',:keyword,'%') or b.title like concat('%',:keyword,'%') or REGEXP_REPLACE(b.content, '<(/)?(img|label|table|thead|tbody|tfoot|tr|td|p|br|div|span|font|strong|b)(.|\\s|\\t|\\n|\\r\\n)*?>', '') like concat('%',:keyword,'%')", nativeQuery = true)
+    @Query(value = "select b.* from Board b join Member m on b.memberId = m.id where m.username like concat('%',:keyword,'%') or b.title like concat('%',:keyword,'%') or REGEXP_REPLACE(b.content, '<(/)?(img|label|table|thead|tbody|tfoot|tr|td|p|br|div|span|font|strong|b|iframe|a)(.|\\s|\\t|\\n|\\r\\n)*?>', '') like concat('%',:keyword,'%')", nativeQuery = true)
     Page<Board> findLikeAll(String keyword, Pageable pageable);
 }

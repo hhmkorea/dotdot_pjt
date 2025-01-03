@@ -2,10 +2,7 @@ package com.dotdot.site.controller;
 
 import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
@@ -27,22 +24,22 @@ public class ImageUpload {
     private String uploadTempPath = FILE_ROOT.toString() + "/site/upload/temp";
 
     @Operation(summary = "이미지 업로드", description = "이미지를 서버에 업로드한다.")
-    @PostMapping("/imageUpload")
-    public ResponseEntity<?> imageUpload(@RequestParam MultipartFile file) throws Exception{
+    @PostMapping("/imageUpload/{id}")
+    public ResponseEntity<?> imageUpload(@RequestParam MultipartFile file, @PathVariable Integer id) throws Exception{
 
-        // 주어진 경로를 기반으로 폴더 객체 생성
+        System.err.println("이미지 업로드");
+
+        // 주어진 경로를 기반으로 게시물 번호 객체 생성
         File folder1;
         File folder2;
-        folder1 = new File(uploadPath);
-        folder2 = new File(uploadTempPath);
+        folder1 = new File(uploadPath + "/" + id);
+        folder2 = new File(uploadTempPath + "/" + id);
 
         // 폴더가 존재하지 않으면 새로 생성
         if (!folder1.exists())
             folder1.mkdirs();
         if (!folder2.exists())
             folder2.mkdirs();
-
-        System.err.println("이미지 업로드");
 
         try {
             // 업로드 파일의 이름
@@ -56,7 +53,7 @@ public class ImageUpload {
             String reFileName = UUID.randomUUID().toString() + "." + fileExtension;
 
             // 업로드 경로에 파일명을 변경하여 저장
-            file.transferTo(new File(uploadPath + "/"+ reFileName));
+            file.transferTo(new File(uploadPath +"/"+ id + "/"+ reFileName));
 
             // 파일 이름을 재전송
             return ResponseEntity.ok(reFileName);
@@ -67,11 +64,11 @@ public class ImageUpload {
     }
 
     @Operation(summary = "이미지 삭제", description = "서버에 저장된 이미지를 삭제한다.")
-    @PostMapping("/imageDelete")
-    public void imageDelete(@RequestParam String file) throws Exception{
+    @PostMapping("/imageDelete/{id}")
+    public void imageDelete(@RequestParam String file, @PathVariable Integer id) throws Exception{
         System.err.println("이미지 삭제");
         try {
-            Path path = Paths.get(uploadTempPath + "/" + file);
+            Path path = Paths.get(uploadTempPath + "/" + id + "/" + file);
             Files.delete(path);
         } catch (Exception e) {
             e.printStackTrace();
@@ -79,10 +76,12 @@ public class ImageUpload {
     }
 
     // 하위 폴더 복사
-    public void fileUpload(String uploadPath, String uploadTempPath) {
+    public void fileUpload(String uploadPath, String uploadTempPath, int id) {
         // 주어진 경로를 기반으로 폴더 객체 생성
         File folder1;
         File folder2;
+        uploadPath = uploadPath + "/" + id;
+        uploadTempPath = uploadTempPath + "/" + id;
         folder1 = new File(uploadPath);
         folder2 = new File(uploadTempPath);
 
@@ -130,9 +129,9 @@ public class ImageUpload {
     }
 
     // 하위 폴더 삭제
-    public void deleteFile(String path) {
+    public void deleteFile(String path, int id) {
         // 주어진 경로에 있는 폴더와 파일을 재귀적으로 삭제하는 함수입니다.
-
+        path = path + "/" + id;
         File file = new File(path);
         try {
             if (file.exists()) {

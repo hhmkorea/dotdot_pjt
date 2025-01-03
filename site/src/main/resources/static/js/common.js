@@ -23,7 +23,7 @@ $(document).ready(function(){
 	});
 	// cm_list
 	$(".cm_list > div > a").click(function(){
-		var submenu = $(this).next("div.hide_view");
+		let submenu = $(this).next("div.hide_view");
 		if( submenu.is(":visible") ){
 			submenu.removeClass("open");
 		}else{
@@ -33,7 +33,7 @@ $(document).ready(function(){
 
 	// 댓글
 	$(".cm_re_info > button").click(function(){
-		var submenu = $(this).parent().next("div.hide_view");
+		let submenu = $(this).parent().next("div.hide_view");
 		if( submenu.is(":visible") ){
 			submenu.removeClass("open");
 		}else{
@@ -43,12 +43,12 @@ $(document).ready(function(){
 
 	// 첨부파일
 	$(".file_input input[type='file']").on('change',function(){
-		var fileName = $(this).val().split('/').pop().split('\\').pop();
+		let fileName = $(this).val().split('/').pop().split('\\').pop();
 		$(this).parent().siblings("input[type='text']").val(fileName);
 	});
 	// 파일업로드 미리보기
 	$('.file_upload input[type=file]').change(function(event) {
-		var tmppath = URL.createObjectURL(event.target.files[0]);
+		let tmppath = URL.createObjectURL(event.target.files[0]);
 		$(this).parent('label').parent('.file_upload').parent('.file_preview').find("img").attr('src',tmppath);
 	});
 
@@ -96,13 +96,15 @@ $(document).ready(function(){
 	});
 
 });
+
 // 이미지 업로드
 function imageUpload(file){
+	let id = $("#id").val();
 	let formData = new FormData();
 	formData.append("file", file);
 
 	$.ajax({
-		url : "/upload/imageUpload",
+		url : "/upload/imageUpload/" + id,
 		type : "POST",
 		data : formData,
 		// contentType, processData 설정 안하면 TypeError: Illegal invocation 오류가 발생한다
@@ -116,7 +118,7 @@ function imageUpload(file){
 			// });
 
 			// 글에 이미지 넣기
-			$("#content").summernote("insertImage", "/uploadPath/image/"+data);
+			$("#content").summernote("insertImage", "/uploadPath/image/" + id +"/" + data);
 		},
 		error(e){
 			console.log("error : "+ e);
@@ -126,11 +128,12 @@ function imageUpload(file){
 
 // 이미지 삭제
 function deleteFile(fileName) {
+	let id = $("#id").text();
 	let formData = new FormData();
 	formData.append("file", fileName);
 
 	$.ajax({
-		url : "/upload/imageDelete",
+		url : "/upload/imageDelete/" + id,
 		type : "POST",
 		data : formData,
 		// contentType, processData 설정 안하면 TypeError: Illegal invocation 오류가 발생한다
@@ -142,7 +145,7 @@ function deleteFile(fileName) {
 
 // 레이어 팝업(기본)
 function layerPop(popName){
-	var $layer = $("#"+ popName);
+	let $layer = $("#"+ popName);
 	$layer.fadeIn(500).css('display', 'inline-block').wrap( '<div class="overlay_t"></div>');
 	$('body').css('overflow','hidden');
 }
@@ -158,7 +161,7 @@ function layerPopClose2(popName){
 
 // 클릭시 새창 팝업 띄우기
 function popup_win(str,id,w,h,scrollchk){
-	var pop = window.open(str,id,"width="+w+",height="+h+",scrollbars="+scrollchk+",resize=no,location=no ");
+	let pop = window.open(str,id,"width="+w+",height="+h+",scrollbars="+scrollchk+",resize=no,location=no ");
 	pop.focus();
 }
 

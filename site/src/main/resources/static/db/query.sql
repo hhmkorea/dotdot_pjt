@@ -21,6 +21,11 @@ SELECT  * FROM member;
 desc board;
 desc member;
 
+
+select
+    nvl(max(id), 0)
+from
+    board;
 select
 #    b.content
 #    , locate('img src', b.content) as result

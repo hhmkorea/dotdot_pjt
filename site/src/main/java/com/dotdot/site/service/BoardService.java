@@ -59,6 +59,11 @@ public class BoardService {
     }
 
     @Transactional(readOnly = true)
+    public int nextId() {
+        return boardRepository.nextId();
+    }
+
+    @Transactional(readOnly = true)
     public Board viewDetail(int id) {
         return boardRepository.findById(id).orElseThrow(() -> {
                 return new IllegalStateException("글 상세보기 실패 : 선택된 게시물을 찾을 수 없습니다.");
@@ -69,8 +74,8 @@ public class BoardService {
     @Transactional
     public void deleteById(int id) {
         System.out.println("deleteById : " + id);
-        imageUpload.deleteFile(uploadTempPath);
-        imageUpload.deleteFile(uploadPath);
+        imageUpload.deleteFile(uploadTempPath, id);
+        imageUpload.deleteFile(uploadPath, id);
         boardRepository.deleteById(id);
     }
 
@@ -84,8 +89,8 @@ public class BoardService {
         board.setTitle(requestBoard.getTitle());
         board.setContent(requestBoard.getContent());
 
-        imageUpload.fileUpload(uploadPath, uploadTempPath); // image 폴더에 업로드
-        imageUpload.deleteFile(uploadTempPath);     // temp 파일 비우기
+        imageUpload.fileUpload(uploadPath, uploadTempPath, id); // image 폴더에 업로드
+        imageUpload.deleteFile(uploadTempPath, id);     // temp 파일 비우기
 
     }
 

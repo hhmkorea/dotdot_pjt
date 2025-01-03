@@ -54,7 +54,9 @@ public class BoardController {
 
     @GetMapping("/write")
     public String saveForm(Model model,  @AuthenticationPrincipal PrincipalDetails principal) {
+        int newId = boardService.nextId();
         model.addAttribute("principal", principal);
+        model.addAttribute("id", newId);
         return "views/board/write";
     }
 }

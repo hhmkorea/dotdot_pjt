@@ -30,7 +30,7 @@ public class BoardApiController {
     }
 
     @PutMapping("/board/{id}")
-    public BoardResponseDto<Integer> update(@PathVariable Integer id, @RequestBody Board board) {
+    public BoardResponseDto<Integer> update(@Valid @RequestBody Board board, @PathVariable Integer id) {
         boardService.update(id, board);
         return new BoardResponseDto<Integer>(HttpStatus.OK.value(), 1);
     }

@@ -23,7 +23,7 @@ desc member;
 
 
 select
-    nvl(max(id), 0)
+    nvl(max(id), 0) + 1 as newId
 from
     board;
 select

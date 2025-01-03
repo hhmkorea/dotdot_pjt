@@ -1,21 +1,31 @@
 package com.dotdot.site.service;
 
+import com.dotdot.site.controller.ImageUpload;
 import com.dotdot.site.model.Board;
 import com.dotdot.site.model.Member;
 import com.dotdot.site.repository.BoardRepository;
-import com.dotdot.site.repository.BoardSpecification;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.nio.file.Path;
+import java.nio.file.Paths;
 
 @Service
 public class BoardService {
 
+    // 파일 업로드 경로
+    final Path FILE_ROOT = Paths.get("./").toAbsolutePath().normalize();
+    private String uploadPath = FILE_ROOT.toString() + "/site/upload/image";
+    private String uploadTempPath = FILE_ROOT.toString() + "/site/upload/temp";
+
     @Autowired
     private BoardRepository boardRepository;
+
+    @Autowired
+    private ImageUpload imageUpload;
 
     @Transactional
     public void write(Board board, Member member) {
@@ -59,6 +69,8 @@ public class BoardService {
     @Transactional
     public void deleteById(int id) {
         System.out.println("deleteById : " + id);
+        imageUpload.deleteFile(uploadTempPath);
+        imageUpload.deleteFile(uploadPath);
         boardRepository.deleteById(id);
     }
 
@@ -68,8 +80,13 @@ public class BoardService {
                 return new IllegalArgumentException("글 찾기 실패 : 선택된 게시물을 찾을 수 없습니다.");
             }
         );
+
         board.setTitle(requestBoard.getTitle());
         board.setContent(requestBoard.getContent());
+
+        imageUpload.fileUpload(uploadPath, uploadTempPath); // image 폴더에 업로드
+        imageUpload.deleteFile(uploadTempPath);     // temp 파일 비우기
+
     }
 
     @Transactional

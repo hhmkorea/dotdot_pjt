@@ -54,7 +54,7 @@ public class ImageUpload {
 
             // 업로드 경로에 파일명을 변경하여 저장
             file.transferTo(new File(uploadPath +"/"+ id + "/"+ reFileName));
-
+            deleteFile(uploadTempPath, id);     // temp 파일 비우기
             // 파일 이름을 재전송
             return ResponseEntity.ok(reFileName);
         } catch (Exception e) {
@@ -128,17 +128,17 @@ public class ImageUpload {
         }
     }
 
-    // 하위 폴더 삭제
+    // 게시물 번호 폴더, 이미지 삭제
     public void deleteFile(String path, int id) {
-        // 주어진 경로에 있는 폴더와 파일을 재귀적으로 삭제하는 함수입니다.
         path = path + "/" + id;
         File file = new File(path);
         try {
             if (file.exists()) {
                 File[] file_list = file.listFiles();
                 for (int i = 0; i < file_list.length; i++) {
-                    file_list[i].delete();
+                    file_list[i].delete();      // 이미지 폴더 아래 파일 삭제
                 }
+                file.delete();                  // 이미지 폴더 삭제
             }
         } catch (Exception e) {
             e.getStackTrace();

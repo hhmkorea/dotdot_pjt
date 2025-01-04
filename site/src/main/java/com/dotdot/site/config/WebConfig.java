@@ -12,7 +12,6 @@ import java.nio.file.Paths;
 @Configuration
 @RequiredArgsConstructor
 public class WebConfig implements WebMvcConfigurer {
-
     final Path FILE_ROOT = Paths.get("./").toAbsolutePath().normalize();    // resources 폴더가 아닌 위치 일때, 현재 위치를 지정함.
     private final String uploadPath = FILE_ROOT.toString() + "/site/upload/";
 
@@ -25,6 +24,7 @@ public class WebConfig implements WebMvcConfigurer {
                 .resourceChain(true)
                 .addResolver(new PathResourceResolver());
     }
+
 }
 
 // 소스 출처 : https://greed-yb.tistory.com/253

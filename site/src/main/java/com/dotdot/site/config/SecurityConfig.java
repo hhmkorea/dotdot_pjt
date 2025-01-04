@@ -1,5 +1,6 @@
 package com.dotdot.site.config;
 
+import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,11 +13,15 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.authentication.AuthenticationFailureHandler;
 
+@RequiredArgsConstructor
 @Configuration
 @EnableWebSecurity // 스프링 시큐리티 필터가 스프링 필터체인에 등록
 public class SecurityConfig {
     public final Logger log = LoggerFactory.getLogger(SecurityConfig.class);
+    /* 로그인 실패 핸들러 의존성 주입 */
+    private final AuthenticationFailureHandler customnFailureHandler;
 
     @Autowired
     private CorsConfig corsConfig;
@@ -46,8 +51,9 @@ public class SecurityConfig {
                         .anyRequest().permitAll() // 그리고 나머지 url은 전부 권한을 허용해준다.
                 );
 
-        http.formLogin(f -> f.loginPage("/loginForm") // 로그인 처리 프로세스 설정
-                .loginProcessingUrl("/loginProc")
+        http.formLogin(f -> f.loginPage("/auth/loginForm") // 로그인 처리 프로세스 설정
+                .loginProcessingUrl("/auth/loginProc")
+                .failureHandler(customnFailureHandler) // 로그인 실패 핸들러
                 .defaultSuccessUrl("/home")
         );
 

@@ -16,7 +16,7 @@
                     </div>
                     <div class="col-md-6 col-lg-7 d-flex align-items-center">
                         <div class="card-body p-4 p-lg-5 text-black">
-                            <form th:action="@{/loginProc}" method="post">
+                            <form th:action="@{/auth/loginProc}" method="post">
                                 <h1 class="form-label mb-3 pb-3" style="letter-spacing: 1px;">Sophie's Home</h1>
                                     <div class="form-floating mb-4">
                                         <input type="text" id="username" name="username" class="form-control" placeholder="아이디"/>
@@ -30,6 +30,9 @@
 <!--                                            <input type="email" id="email" class="form-control" placeholder="이메일"/>-->
 <!--                                            <label class="form-label" for="email">이메일</label>-->
 <!--                                        </div>-->
+                                <span th:if="${error}">
+                                    <p id="valid" class="alert alert-danger" role="alert">[[${exception}]]</p>
+                                </span>
                                     <div class="d-grid gap-2">
                                         <button type="submit" class="btn btn-secondary btn-lg" id="btn-login">로그인</button>
                                     </div>

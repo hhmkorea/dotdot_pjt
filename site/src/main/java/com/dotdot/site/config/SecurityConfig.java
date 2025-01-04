@@ -1,5 +1,6 @@
 package com.dotdot.site.config;
 
+import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -57,6 +58,18 @@ public class SecurityConfig {
                 .defaultSuccessUrl("/home")
         );
 
+        http.logout(logout -> logout
+                .logoutUrl("/logout") // 로그아웃 처리 URL
+                .logoutSuccessUrl("/")
+                // 로그아웃 핸들러 추가 (세션 무효화 처리)
+                .addLogoutHandler((request, response, authentication) -> {
+                    HttpSession session = request.getSession();
+                    session.invalidate();
+                })
+                // 로그아웃 성공 핸들러 추가 (리다이렉션 처리)
+                .logoutSuccessHandler((request, response, authentication) ->
+                    response.sendRedirect("/"))
+                .deleteCookies("JSESSIONID", "access_token"));
         return http.build();
     }
 }

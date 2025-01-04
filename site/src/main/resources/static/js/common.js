@@ -112,12 +112,11 @@ function imageUpload(file){
 		processData: false,
 		encType : "multipart/form-data",
 		success : function (data) {
-			// 글에 이미지 넣을때 크기 설정
 			// $("#summernote").summernote("insertImage", "/uploadPath/image/"+data, function (data){
-			//     data.css("width" , "100%");
+			//     data.css("width" , "100%");	// 이미지 사이즈 조정
 			// });
 
-			// 글에 이미지 넣기
+			// summernote 안에서 이미지 미리보기
 			$("#content").summernote("insertImage", "/uploadPath/image/" + id +"/" + data);
 		},
 		error(e){
@@ -128,7 +127,7 @@ function imageUpload(file){
 
 // 이미지 삭제
 function deleteFile(fileName) {
-	let id = $("#id").text();
+	let id = $("#id").val();
 	let formData = new FormData();
 	formData.append("file", fileName);
 

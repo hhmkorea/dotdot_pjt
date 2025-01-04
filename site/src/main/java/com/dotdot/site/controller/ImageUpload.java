@@ -23,6 +23,7 @@ public class ImageUpload {
     private String uploadPath = FILE_ROOT.toString() + "/site/upload/image";
     private String uploadTempPath = FILE_ROOT.toString() + "/site/upload/temp";
 
+    // summernote 에디터 이미지 추가 버튼 : /upload/image/{id}
     @Operation(summary = "이미지 업로드", description = "이미지를 서버에 업로드한다.")
     @PostMapping("/imageUpload/{id}")
     public ResponseEntity<?> imageUpload(@RequestParam MultipartFile file, @PathVariable Integer id) throws Exception{
@@ -54,7 +55,7 @@ public class ImageUpload {
 
             // 업로드 경로에 파일명을 변경하여 저장
             file.transferTo(new File(uploadPath +"/"+ id + "/"+ reFileName));
-            deleteFile(uploadTempPath, id);     // temp 파일 비우기
+            deleteFile(uploadTempPath, id);     // temp 폴더 비우기
             // 파일 이름을 재전송
             return ResponseEntity.ok(reFileName);
         } catch (Exception e) {
@@ -63,19 +64,21 @@ public class ImageUpload {
         }
     }
 
+    // summernote 에디터 이미지 삭제 버튼 : /upload/image/{id}
     @Operation(summary = "이미지 삭제", description = "서버에 저장된 이미지를 삭제한다.")
     @PostMapping("/imageDelete/{id}")
     public void imageDelete(@RequestParam String file, @PathVariable Integer id) throws Exception{
         System.err.println("이미지 삭제");
         try {
-            Path path = Paths.get(uploadTempPath + "/" + id + "/" + file);
+            Path path = Paths.get(uploadPath + "/" + id + "/" + file);
             Files.delete(path);
+            deleteFile(uploadTempPath, id);     // temp 폴더 비우기
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
-    // 하위 폴더 복사
+    // 이미지 업로드(to Server) : /upload/image/{id}, /upload/temp/{id}, temp 폴더에 백업 후 image 폴더에 업로드
     public void fileUpload(String uploadPath, String uploadTempPath, int id) {
         // 주어진 경로를 기반으로 폴더 객체 생성
         File folder1;
@@ -128,7 +131,7 @@ public class ImageUpload {
         }
     }
 
-    // 게시물 번호 폴더, 이미지 삭제
+    // 이미지 삭제(from Server) : /upload/image/{id}, /upload/temp/{id}, {id} 폴더 포함 이미지 파일 삭제.
     public void deleteFile(String path, int id) {
         path = path + "/" + id;
         File file = new File(path);
@@ -136,9 +139,9 @@ public class ImageUpload {
             if (file.exists()) {
                 File[] file_list = file.listFiles();
                 for (int i = 0; i < file_list.length; i++) {
-                    file_list[i].delete();      // 이미지 폴더 아래 파일 삭제
+                    file_list[i].delete();      // 게시물 번호 폴더에 들어있는 이미지 파일 삭제
                 }
-                file.delete();                  // 이미지 폴더 삭제
+                file.delete();                  // 게시물 번호 폴더 삭제
             }
         } catch (Exception e) {
             e.getStackTrace();

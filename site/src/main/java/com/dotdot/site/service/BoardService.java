@@ -74,8 +74,8 @@ public class BoardService {
     @Transactional
     public void deleteById(int id) {
         System.out.println("deleteById : " + id);
-        imageUpload.deleteFile(uploadTempPath, id);
-        imageUpload.deleteFile(uploadPath, id);
+        imageUpload.deleteFile(uploadTempPath, id);     // temp 폴더 비우기
+        imageUpload.deleteFile(uploadPath, id);         // image 폴더 비우기
         boardRepository.deleteById(id);
     }
 
@@ -89,8 +89,8 @@ public class BoardService {
         board.setTitle(requestBoard.getTitle());
         board.setContent(requestBoard.getContent());
 
-        imageUpload.fileUpload(uploadPath, uploadTempPath, id); // image 폴더에 업로드
-        imageUpload.deleteFile(uploadTempPath, id);     // temp 파일 비우기
+        imageUpload.fileUpload(uploadPath, uploadTempPath, id); // 이전 이미지 temp 폴더에 복사해 두고 신규 이미지와 함께 image 폴더에 이미지 업로드
+        imageUpload.deleteFile(uploadTempPath, id);     // temp 폴더 비우기
 
     }
 

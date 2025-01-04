@@ -21,9 +21,16 @@ SELECT  * FROM member;
 desc board;
 desc member;
 
+-- AUTO_INCREMENT 증가값 초기화
+-- alter table board auto_increment = 1;
+
+-- AUTO_INCREMENT 조회.
+select auto_increment from information_schema.tables where table_schema = 'dotdot' and table_name = 'board';
+
+SHOW TABLE STATUS LIKE 'board';
 
 select
-    nvl(max(id), 0) + 1 as newId
+    nvl((id), 0) + 1 as newId
 from
     board;
 select

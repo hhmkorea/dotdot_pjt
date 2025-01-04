@@ -29,6 +29,6 @@ public interface BoardRepository extends JpaRepository<Board, Integer>, JpaSpeci
     @Query(value = "select b.* from Board b join Member m on b.memberId = m.id where m.username like concat('%',:keyword,'%') or b.title like concat('%',:keyword,'%') or REGEXP_REPLACE(b.content, '<(/)?(img|label|table|thead|tbody|tfoot|tr|td|p|br|div|span|font|strong|b|iframe|a)(.|\\s|\\t|\\n|\\r\\n)*?>', '') like concat('%',:keyword,'%')", nativeQuery = true)
     Page<Board> findLikeAll(String keyword, Pageable pageable);
 
-    @Query(value = "select nvl(max(id),0) + 1 as newId from board", nativeQuery = true)
+    @Query(value = "select auto_increment as newId from information_schema.tables where table_schema = 'dotdot' and table_name = 'board'", nativeQuery = true)
     int nextId();
 }

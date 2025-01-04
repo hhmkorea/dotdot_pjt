@@ -9,7 +9,6 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.UUID;
@@ -68,14 +67,13 @@ public class ImageUpload {
     @Operation(summary = "이미지 삭제", description = "서버에 저장된 이미지를 삭제한다.")
     @PostMapping("/imageDelete/{id}")
     public void imageDelete(@RequestParam String file, @PathVariable Integer id) throws Exception{
-        System.err.println("이미지 삭제");
-        try {
-            Path path = Paths.get(uploadPath + "/" + id + "/" + file);
-            Files.delete(path);
-            deleteFile(uploadTempPath, id);     // temp 폴더 비우기
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        System.err.println("이미지 삭제"); // 미리보기 안에서만 삭제. 실제 삭제는 게시물 삭제할 경우 삭제됨. 여기서 실제로 삭제하면 게시물 수정 취소할 경우 이미지 깨져서 않보이게 됨.
+//        try {
+//            Path path = Paths.get(uploadPath + "/" + id + "/" + file);  // image 폴더 이미지 파일 지우기
+//            Files.delete(path);
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
     }
 
     // 이미지 업로드(to Server) : /upload/image/{id}, /upload/temp/{id}, temp 폴더에 백업 후 image 폴더에 업로드

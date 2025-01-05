@@ -30,7 +30,7 @@ public class BoardController {
     }
 
     @GetMapping("/list")
-    public String searchBoard(Model model, @PageableDefault(size = 5, sort = "id", direction = Sort.Direction.DESC) Pageable pageable, String searchType, String searchKeyword, @AuthenticationPrincipal PrincipalDetails principal) {
+    public String searchBoard(Model model, @PageableDefault(size = 10, sort = "id", direction = Sort.Direction.DESC) Pageable pageable, String searchType, String searchKeyword, @AuthenticationPrincipal PrincipalDetails principal) {
         Page<Board> searchList = boardService.search(searchType, searchKeyword, pageable);
         model.addAttribute("boards", searchList);
         model.addAttribute("principal", principal);

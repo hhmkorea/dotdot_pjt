@@ -3,3 +3,4 @@
 /site/.gradle/
 /site/gradle/
 /site/build/
+/db/store/

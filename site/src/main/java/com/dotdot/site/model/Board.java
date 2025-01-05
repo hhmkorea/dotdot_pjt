@@ -36,8 +36,8 @@ public class Board {
 
     // FetchType.EAGER : 해당 Entity(테이블) 조인해서 데이타 다 가져옴.
     // FetchType.LAZY : 해당 Entity(테이블) 조인해서 "필요하면" 데이타 가져올게!, 예:펼치기
-    @ManyToOne(fetch = FetchType.EAGER) // 연관관계, Board = Many, Member = One
-    @JoinColumn(name = "memberId")
+    @ManyToOne(fetch = FetchType.LAZY) // 연관관계, Board = Many, Member = One
+    @JoinColumn(name = "memberId", foreignKey = @ForeignKey(value = ConstraintMode.NO_CONSTRAINT))
     private Member member; // 작성자
 
     @CreationTimestamp

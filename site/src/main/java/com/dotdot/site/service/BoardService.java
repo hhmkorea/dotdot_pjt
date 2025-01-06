@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -37,7 +38,7 @@ public class BoardService {
     @Transactional(readOnly = true)
     public Page<Board> getBoardList(Pageable pageable) {
         int page = (pageable.getPageNumber() == 0) ? 0 : (pageable.getPageNumber() - 1);
-        pageable = PageRequest.of(page, 10);
+        pageable = PageRequest.of(page, 10, Sort.by(Sort.Direction.DESC, "createDate"));
 
         return boardRepository.findAll(pageable);
     }
@@ -47,17 +48,25 @@ public class BoardService {
         Page<Board> boardList = null;
 
         int page = (pageable.getPageNumber() == 0) ? 0 : (pageable.getPageNumber() - 1);
-        pageable = PageRequest.of(page, 10);
+        pageable = PageRequest.of(page, 10, Sort.by(Sort.Direction.DESC, "createDate"));
 
         if (keyword == null || keyword.trim().isEmpty()) {
             boardList = boardRepository.findAll(pageable);
         }else {
-            boardList = switch (searchType) {
-                case "username" -> boardRepository.findLikeUsername(keyword, pageable);
-                case "title" -> boardRepository.findLikeTitle(keyword, pageable);
-                case "content" -> boardRepository.findLikeContent(keyword, pageable);
-                default -> boardRepository.findLikeAll(keyword, pageable);
-            };
+            switch (searchType) {
+                case "username":
+                    boardList = boardRepository.findLikeUsername(keyword, pageable);
+                    break;
+                case "title":
+                    boardList = boardRepository.findLikeTitle(keyword, pageable);
+                    break;
+                case "content":
+                    boardList = boardRepository.findLikeContent(keyword, pageable);
+                    break;
+                default:
+                    boardList = boardRepository.findLikeAll(keyword, pageable);
+                    break;
+            }
         }
         return boardList;
     }

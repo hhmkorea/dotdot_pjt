@@ -52,3 +52,17 @@ where 1=1
 ;
 
 select length('image/afe72cb2-a0d9-4cbe-9795-4433c452277e..png') from dual; -- 47
+
+select
+    b1_0.id,
+    b1_0.content,
+    b1_0.createDate,
+    b1_0.memberId,
+    b1_0.title,
+    b1_0.updateDate,
+    b1_0.viewCnt
+from
+    Board b1_0
+order by
+    b1_0.id desc limit 10,
+    20

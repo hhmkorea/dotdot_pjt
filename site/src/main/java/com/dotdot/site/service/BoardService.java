@@ -6,7 +6,9 @@ import com.dotdot.site.model.Member;
 import com.dotdot.site.repository.BoardRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -35,25 +37,20 @@ public class BoardService {
 
     @Transactional(readOnly = true)
     public Page<Board> search(String searchType, String keyword, Pageable pageable) {
+        Sort sortDescName = Sort.by(Sort.Direction.DESC, "id");
+        Pageable pageRequest = PageRequest.of(pageable.getPageNumber(), 10, sortDescName);
+
         Page<Board> boardList = null;
 
         if (keyword == null || keyword.trim().isEmpty()) {
-            boardList = boardRepository.findAll(pageable);
+            boardList = boardRepository.findAll(pageRequest);
         }else {
-            switch (searchType) {
-                case "username":
-                    boardList = boardRepository.findLikeUsername(keyword, pageable);
-                    break;
-                case "title":
-                    boardList = boardRepository.findLikeTitle(keyword, pageable);
-                    break;
-                case "content":
-                    boardList = boardRepository.findLikeContent(keyword, pageable);
-                    break;
-                default:
-                    boardList = boardRepository.findLikeAll(keyword, pageable);
-                    break;
-            }
+            boardList = switch (searchType) {
+                case "username" -> boardRepository.findLikeUsername(keyword, pageable);
+                case "title" -> boardRepository.findLikeTitle(keyword, pageable);
+                case "content" -> boardRepository.findLikeContent(keyword, pageable);
+                default -> boardRepository.findLikeAll(keyword, pageable);
+            };
         }
         return boardList;
     }

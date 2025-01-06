@@ -3,6 +3,8 @@ package com.dotdot.site.controller;
 import com.dotdot.site.config.auth.PrincipalDetails;
 import com.dotdot.site.model.Board;
 import com.dotdot.site.service.BoardService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -19,6 +21,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/board")
 public class BoardController {
 
+    public final Logger log = LoggerFactory.getLogger(BoardController.class);
+
     @Autowired
     private BoardService boardService;
 
@@ -30,10 +34,12 @@ public class BoardController {
     }
 
     @GetMapping("/list")
-    public String searchBoard(Model model, @PageableDefault(size = 10, sort = "id", direction = Sort.Direction.DESC) Pageable pageable, String searchType, String searchKeyword, @AuthenticationPrincipal PrincipalDetails principal) {
-        Page<Board> searchList = boardService.search(searchType, searchKeyword, pageable);
-        model.addAttribute("boards", searchList);
+    public String searchBoard(Model model, @PageableDefault(page = 0, size = 10, sort = "id", direction = Sort.Direction.DESC)Pageable pageable, String searchType, String searchKeyword, @AuthenticationPrincipal PrincipalDetails principal) {
+        Page<Board> boardList = boardService.search(searchType, searchKeyword, pageable);
+
+        model.addAttribute("boardList", boardList);
         model.addAttribute("principal", principal);
+
         return "views/board/list";
     }
 

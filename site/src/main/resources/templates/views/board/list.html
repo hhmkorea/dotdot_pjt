@@ -57,13 +57,13 @@
 
             <!-- /* 리스트 데이터 랜더링 영역 */ -->
             <tbody id="list">
-                <tr th:each="board : ${boards.content}">
+                <tr th:each="board : ${boardList.content}">
                     <td><input type="checkbox" /></td>
                     <td>[[${board.id}]]</td>
                     <td class="tl"><a th:href="@{/board/{id}(id=${board.id})}">[[${board.title}]]</a></td>
                     <td>[[${board.member.username}]]</td>
-                    <td th:text="${#temporals.format(board.createDate, 'yyyy-mm-dd HH:mm:ss')}"></td>
-                    <td th:text="${#temporals.format(board.updateDate, 'yyyy-mm-dd HH:mm:ss')}"></td>
+                    <td th:text="${#temporals.format(board.createDate, 'yyyy-MM-dd HH:mm:ss')}"></td>
+                    <td th:text="${#temporals.format(board.updateDate, 'yyyy-MM-dd HH:mm:ss')}"></td>
                     <td>[[${board.viewCnt}]]</td>
                 </tr>
             </tbody>
@@ -71,15 +71,37 @@
 
         <!-- /* 페이지네이션 랜더링 영역 */ -->
         <div class="mt-3">
-            <ul class="pagination justify-content-center">
+            <div th:if="${!boardList.isEmpty()}">
+                <ul class="pagination justify-content-center" th:with="start=${T(java.lang.Math).floor(boardList.number/10)*10 + 1}, last=(${start + 9 < boardList.totalPages ? start + 9 : boardList.totalPages})">
+<!--                    <li class="page-item">-->
+<!--                        <a class="page-link" th:href="@{/board/list(page=1)}" aria-label="First">-->
+<!--                            <span aria-hidden="true">First</span>-->
+<!--                        </a>-->
+<!--                    </li>-->
 
-                <li class="page-item disabled"><a class="page-link" th:if="${boards.first}" th:href="@{|?page=${boards.number - 1}|}"><img th:src="@{/icons/arrow-left.svg}" height="12" title="Previous" alt="Previous"></a></li>
-                <li class="page-item"><a class="page-link" th:unless="${boards.first}" th:href="@{|?page=${boards.number - 1}|}"><img th:src="@{/icons/arrow-left.svg}" height="12" title="Previous" alt="Previous"></a></li>
+                    <li class="page-item" th:classappend="${boardList.first} ? 'disabled'">
+                        <a class="page-link" th:href="${boardList.first} ? '#' :@{/board/list(page=${boardList.number})}" tabindex="-1" aria-disabled="true">이전
+                            <span aria-hidden="true">&lt</span>
+                        </a>
+                    </li>
 
-                <li class="page-item disabled"><a class="page-link" th:if="${boards.last}" th:href="@{|?page=${boards.number + 1}|}"><img th:src="@{/icons/arrow-right.svg}" height="12" title="Next" alt="Next"></a></li>
-                <li class="page-item"><a class="page-link" th:unless="${boards.last}" th:href="@{|?page=${boards.number + 1}|}"><img th:src="@{/icons/arrow-right.svg}" height="12" title="Next" alt="Next"></a></li>
+                    <li class="page-item" th:each="page: ${#numbers.sequence(start, last)}" th:class="${page == boardList.number + 1} ? 'active'">
+                        <a class="page-link" th:text="${page}" th:href="@{/board/list(page=${page})}"></a>
+                    </li>
 
-            </ul>
+                    <li class="page-item" th:classappend="${boardList.last} ? 'disabled'">
+                        <a class="page-link" th:href="${boardList.last} ? '#' : @{/board/list(page=${boardList.number + 2})}">다음
+                            <span aria-hidden="true">&gt;</span>
+                        </a>
+                    </li>
+
+<!--                    <li class="page-item">-->
+<!--                        <a class="page-link" th:href="@{/board/list(page=${boardList.totalPages})}" aria-label="Last">-->
+<!--                            <span aria-hidden="true">Last</span>-->
+<!--                        </a>-->
+<!--                    </li>-->
+                </ul>
+            </div>
         </div>
         <!-- /* 버튼 */ -->
         <p class="btn_set tr">

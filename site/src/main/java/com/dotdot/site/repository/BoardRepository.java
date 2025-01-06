@@ -14,20 +14,20 @@ import org.springframework.stereotype.Repository;
 public interface BoardRepository extends JpaRepository<Board, Integer>, JpaSpecificationExecutor<Board> {
 
     @Modifying
-    @Query("update Board p set p.viewCnt = p.viewCnt + 1 where p.id = :id")
+    @Query(value = "update Board p set p.viewCnt = p.viewCnt + 1 where p.id = :id", nativeQuery = true)
     void updateViewCnt(@Param("id") int id);
 
     @Query(value = "select b.* from Board b join Member m on b.memberId = m.id where m.username like concat('%',:keyword,'%')", nativeQuery = true)
-    Page<Board> findLikeUsername(String keyword, Pageable pageable);
+    Page<Board> findLikeUsername(@Param("keyword") String keyword, Pageable pageable);
 
     @Query(value = "select b.* from Board b join Member m on b.memberId = m.id where b.title like concat('%',:keyword,'%')", nativeQuery = true)
-    Page<Board> findLikeTitle(String keyword, Pageable pageable);
+    Page<Board> findLikeTitle(@Param("keyword") String keyword, Pageable pageable);
 
     @Query(value = "select b.* from Board b join Member m on b.memberId = m.id where REGEXP_REPLACE(b.content, '<(/)?(img|label|table|thead|tbody|tfoot|tr|td|p|br|div|span|font|strong|b|iframe|a)(.|\\s|\\t|\\n|\\r\\n)*?>', '') like concat('%',:keyword,'%')", nativeQuery = true)
-    Page<Board> findLikeContent(String keyword, Pageable pageable);
+    Page<Board> findLikeContent(@Param("keyword") String keyword, Pageable pageable);
 
     @Query(value = "select b.* from Board b join Member m on b.memberId = m.id where m.username like concat('%',:keyword,'%') or b.title like concat('%',:keyword,'%') or REGEXP_REPLACE(b.content, '<(/)?(img|label|table|thead|tbody|tfoot|tr|td|p|br|div|span|font|strong|b|iframe|a)(.|\\s|\\t|\\n|\\r\\n)*?>', '') like concat('%',:keyword,'%')", nativeQuery = true)
-    Page<Board> findLikeAll(String keyword, Pageable pageable);
+    Page<Board> findLikeAll(@Param("keyword") String keyword, Pageable pageable);
 
     @Query(value = "select auto_increment as newId from information_schema.tables where table_schema = 'dotdot' and table_name = 'board'", nativeQuery = true)
     int nextId();

@@ -164,6 +164,21 @@ h4 + .search_box {margin-top:10px;}
 .paging .last::after {background-position:-49px 0; width:12px; margin-left:-6px;}
 .paging .prev, .paging .last {margin-left:-1px;}
 
+/* paging nav --------------------------------- */
+.pg_wrap {clear:both;text-align:center;padding-top:5px;margin-bottom:-35px;border-top-style:none}
+.pg_wrap:after {display:block;visibility:hidden;clear:both;content:""}
+.pg {font-weight:bold;text-align:center}
+.pg_page, .pg_current {display:inline-block;vertical-align:middle;background:#eeeeee11;border:1px solid #eeeeee11}
+.pg a:focus, .pg a:hover {text-decoration:none}
+.pg_page {color:#959595;font-size:1.083em;height:30px;line-height:28px;padding:0 5px;min-width:30px;text-decoration:none;border-radius:5px}
+.pg_page:hover {background-color:#fafafa}
+.pg_start {border:0px solid #eee}
+.pg_prev {border:0px solid #eee}
+.pg_end {border:0px solid #eee}
+.pg_next {border:0px solid #eee}
+.pg_start:hover,.pg_prev:hover,.pg_end:hover,.pg_next:hover {background-color:#fafafa}
+.pg_current {display:inline-block;background:#eeeeee11;border:1px solid #3a8afd11;color:#f00;height:30px;line-height:30px;padding:0 10px;min-width:30px;border-radius:5px}
+
 /* 댓글 */
 .cm_write {margin:4% 0 15px 0;}
 .cm_write input[type="text"], .cm_write input[type="password"], .cm_write textarea, .cm_list .cm_re_input textarea {padding:10px;}

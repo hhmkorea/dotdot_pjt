@@ -34,8 +34,18 @@ public class BoardController {
     }
 
     @GetMapping("/list")
-    public String searchBoard(Model model, @PageableDefault(page = 0, size = 10, sort = "id", direction = Sort.Direction.DESC)Pageable pageable, String searchType, String searchKeyword, @AuthenticationPrincipal PrincipalDetails principal) {
-        Page<Board> boardList = boardService.search(searchType, searchKeyword, pageable);
+    public String getBoardList(Model model, @PageableDefault(page = 0, size = 10, sort = "createDate", direction = Sort.Direction.DESC)Pageable pageable, @AuthenticationPrincipal PrincipalDetails principal) {
+        Page<Board> boardList = boardService.getBoardList(pageable);
+
+        model.addAttribute("boardList", boardList);
+        model.addAttribute("principal", principal);
+
+        return "views/board/list";
+    }
+
+    @GetMapping("/search")
+    public String searchBoard(Model model, @PageableDefault(page = 0, size = 10, sort = "createDate", direction = Sort.Direction.DESC)Pageable pageable, String searchType, String searchKeyword, @AuthenticationPrincipal PrincipalDetails principal) {
+        Page<Board> boardList = boardService.searchBoard(searchType, searchKeyword, pageable);
 
         model.addAttribute("boardList", boardList);
         model.addAttribute("principal", principal);

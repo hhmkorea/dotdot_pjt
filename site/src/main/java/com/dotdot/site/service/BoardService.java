@@ -8,7 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -36,14 +35,22 @@ public class BoardService {
     }
 
     @Transactional(readOnly = true)
-    public Page<Board> search(String searchType, String keyword, Pageable pageable) {
-        Sort sortDescName = Sort.by(Sort.Direction.DESC, "id");
-        Pageable pageRequest = PageRequest.of(pageable.getPageNumber(), 10, sortDescName);
+    public Page<Board> getBoardList(Pageable pageable) {
+        int page = (pageable.getPageNumber() == 0) ? 0 : (pageable.getPageNumber() - 1);
+        pageable = PageRequest.of(page, 10);
 
+        return boardRepository.findAll(pageable);
+    }
+
+    @Transactional(readOnly = true)
+    public Page<Board> searchBoard(String searchType, String keyword, Pageable pageable) {
         Page<Board> boardList = null;
 
+        int page = (pageable.getPageNumber() == 0) ? 0 : (pageable.getPageNumber() - 1);
+        pageable = PageRequest.of(page, 10);
+
         if (keyword == null || keyword.trim().isEmpty()) {
-            boardList = boardRepository.findAll(pageRequest);
+            boardList = boardRepository.findAll(pageable);
         }else {
             boardList = switch (searchType) {
                 case "username" -> boardRepository.findLikeUsername(keyword, pageable);

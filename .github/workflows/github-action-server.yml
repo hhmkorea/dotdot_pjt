@@ -54,18 +54,15 @@ jobs:
         mariadb version: 'latest'
         mysql database: 'dotdot'
         mysql user: 'root'
-        mysql password: 'root1234'
+        mysql password: ${{ secrets.MYSQL_PASSWORD }}
 
     # 3. Make application.yml
     - run: touch ./src/main/resources/application.yml
     - run : | 
-        mkdir -p src/main/resource 
-        echo "${{ secrets.APPLICATION }}" | base64 --decode > src/main/resources/application.yml
-        find src
-    - uses: actions/upload-artifact@v4
-      with:
-        name: application.yml
-        path: ./src/main/resources/application.yml
+        mkdir -p ./src/main/resources 
+        cd ./src/main/resources
+        touch ./application.yml
+        echo "${{ secrets.APPLICATION }}" > ./application.yml
 
     # 4. Gradle 실행
     # gradlew에 실행권한을 주지 않은면 에러가 뜸.

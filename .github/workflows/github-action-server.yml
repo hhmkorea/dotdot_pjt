@@ -9,8 +9,8 @@ name: Java CI with Gradle
 
 on:
   # main 브랜치로  push가 되면 동작합니다. 
- # push:
- #   branches: [ "main" ]
+  push:
+    branches: [ "main" ]
 
   # main 브랜치로 PR이 오면 동작합니다.
   pull_request:

@@ -57,12 +57,12 @@ jobs:
         mysql password: ${{ secrets.MYSQL_PASSWORD }}
 
     # 3. Make application.yml
-    - run: touch ./src/main/resources/application.yml
-    - run : | 
+    - run: | 
         mkdir -p ./src/main/resources 
         cd ./src/main/resources
         touch ./application.yml
         echo "${{ secrets.APPLICATION }}" > ./application.yml
+        shell: bash
 
     # 4. Gradle 실행
     # gradlew에 실행권한을 주지 않은면 에러가 뜸.

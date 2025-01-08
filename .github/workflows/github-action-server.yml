@@ -15,6 +15,12 @@ on:
   # main 브랜치로 PR이 오면 동작합니다.
   pull_request:
     branches: [ "main" ]
+    paths:
+      - '**.java'
+      - '**/build.gradle*'
+      - '**/settings.gradle*'
+      - '**/application.yml'
+      - '**.sql'
 
 permissions:
   contents: read
@@ -25,10 +31,10 @@ jobs:
 
     # workflow가 실행되는 vm의 os 지정
     runs-on: ubuntu-20.04
-
+    timeout-minutes: 10
     steps:
     # 1. vm에서 레퍼지토리 내려받음
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v2
 
     # 2. vm에 jdk를 세팅함
     - name: Set up JDK 17
@@ -38,7 +44,30 @@ jobs:
         distribution: 'temurin' # 배포판 선택
         cache: gradle
 
-    # 3. Gradle 실행
+    # 3. vm에 mariadb 셋팅함
+    - name: Setup MariaDB
+      uses: getong/mariadb-action@v1.1
+      with:
+        host port: '3306'
+        container port: '3306'
+        character set server: 'utf8'
+        mariadb version: 'latest'
+        mysql database: 'dotdot'
+        mysql user: 'root'
+        mysql password: 'root1234'
+
+    # 3. Make application.yml
+    - run: touch ./src/main/resources/application.yml
+    - run : | 
+        mkdir -p src/main/resource 
+        echo "${{ secrets.APPLICATION }}" | base64 --decode > src/main/resources/application.yml
+        find src
+    - uses: actions/upload-artifact@v4
+      with:
+        name: application.yml
+        path: ./src/main/resources/application.yml
+
+    # 4. Gradle 실행
     # gradlew에 실행권한을 주지 않은면 에러가 뜸.
     - name: Grant execute permission for gradlew
       run: chmod +x gradlew
@@ -47,8 +76,8 @@ jobs:
 
     # ./gradlew build 이 실행되면 build/libs 폴더에 jar 파일이 생김.
     # 관련 설정 : build.gradle 의 jar {...}, bootJar{...} 부분
-    - name: Build with Gradle
-      run: ./gradlew build
+    - name: Build with Gradle(Test 제외)
+      run: ./gradlew clean --stacktrace --info build
       working-directory: ./site
 
     # 현재 디렉토리에 있는 Dockerfile 을 사용하여 도커 이미지 빌드.

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layout/default}">
+<th:block layout:fragment="title">
+    <title>Sophie's Home</title>
+</th:block>
+
+<th:block layout:fragment="content">    <!-- /* body.html 중 content 영역에 출력할 조각 */ -->    <!-- /* body.html 중 content 영역에 출력할 조각 */ -->
+
+    <div class="page_tits">
+        <h3>home</h3>
+        <p class="path"><strong>현재 위치 : </strong><span>home</span>
+    </div>
+
+    <div class="content">
+        <div class="container-fluid px-4">
+            <div class="d-flex justify-content-center">
+                <img th:src="@{/images/tv_panel_quiz_man_1.png}" alt="image" title="source by 'https://www.irasutoya.com/'" />
+                <img th:src="@{/images/tv_panel_quiz_woman_1.png}" alt="image" title="source by 'https://www.irasutoya.com/'" />
+            </div>
+        </div>
+    </div> <!-- /* .content */ -->
+</th:block>
+
+<th:block layout:fragment="script">
+    <script th:inline="javascript">
+    </script>
+</th:block>
+</html>

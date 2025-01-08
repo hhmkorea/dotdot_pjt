@@ -42,6 +42,13 @@ jobs:
     - name: Check out Repository
       uses: actions/checkout@v2
 
+    # 2. jdk를 세팅함
+    - name: Set up JDK 17
+      uses: actions/setup-java@v3
+      with:
+        java-version: '17'
+        distribution: 'temurin'
+
     # 캐싱 추가
     - name: Chache Gradle
       uses: actions/cache@v2
@@ -52,14 +59,6 @@ jobs:
         key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*', '**/gradle-wrapper.properties') }}
         restore-keys: |
           ${{ runner.os }}-gradle-
-
-    # 2. vm에 jdk를 세팅함
-    - name: Set up JDK 17
-      uses: actions/setup-java@v3
-      with:
-        java-version: '17'
-        distribution: 'temurin' # 배포판 선택
-        cache: gradle
 
     # 3. Make application.yml
     - run: |
@@ -85,14 +84,14 @@ jobs:
       run: chmod +x gradlew
       shell: bash
 
-    # Gradle 설치 및 캐싱 설정
-    - name: Setup Gradle
-      uses: gradle/gradle-build-action@v2
-      with:
-        gradle-version: 8.8
-        arguments: build
-        #cache-disabled: 'true' # 캐싱 사용 안함.
-        cache-read-only: ${{ github.ref != 'refs/heads/main' && github.ref != 'refs/heads/develop' }}
+#    # Gradle 설치 및 캐싱 설정
+#    - name: Setup Gradle
+#      uses: gradle/gradle-build-action@v2
+#      with:
+#        gradle-version: 8.8
+#        arguments: build
+#        #cache-disabled: 'true' # 캐싱 사용 안함.
+#        cache-read-only: ${{ github.ref != 'refs/heads/main' && github.ref != 'refs/heads/develop' }}
 
     # ./gradlew build 이 실행되면 build/libs 폴더에 jar 파일이 생김.
     # 관련 설정 : build.gradle 의 jar {...}, bootJar{...} 부분

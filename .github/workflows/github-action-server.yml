@@ -85,6 +85,7 @@ jobs:
     - name: Setup Gradle
       uses: gradle/gradle-build-action@v2
       with:
+        gradle-version: 8.8
         arguments: build
         #cache-disabled: 'true' # 캐싱 사용 안함.
         cache-read-only: ${{ github.ref != 'refs/heads/main' && github.ref != 'refs/heads/develop' }}

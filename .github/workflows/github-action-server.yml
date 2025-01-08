@@ -16,25 +16,33 @@ on:
   pull_request:
     branches: [ "main" ]
 
+permissions:
+  contents: read
+
+# build라는 job은 3개의 step으로 구성됨.
 jobs:
   build:
 
+    # workflow가 실행되는 vm의 os 지정
     runs-on: ubuntu-20.04
-    permissions:
-      contents: read
 
     steps:
-    - uses: actions/checkout@v4
+    # 1. vm에서 레퍼지토리 내려받음
+    - uses: actions/checkout@v3
+
+    # 2. vm에 jdk를 세팅함
     - name: Set up JDK 17
-      uses: actions/setup-java@v4
+      uses: actions/setup-java@v3
       with:
         java-version: '17'
-        distribution: 'temurin'
+        distribution: 'temurin' # 배포판 선택
         cache: gradle
 
+    # 3. Gradle 실행
     # gradlew에 실행권한을 주지 않은면 에러가 뜸.
     - name: Grant execute permission for gradlew
       run: chmod +x gradlew
+      shell: bash
       working-directory: ./site
 
     # ./gradlew build 이 실행되면 build/libs 폴더에 jar 파일이 생김.

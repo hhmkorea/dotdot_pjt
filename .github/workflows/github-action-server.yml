@@ -84,14 +84,14 @@ jobs:
       run: chmod +x gradlew
       shell: bash
 
-#    # Gradle 설치 및 캐싱 설정
-#    - name: Setup Gradle
-#      uses: gradle/gradle-build-action@v2
-#      with:
-#        gradle-version: 8.8
-#        arguments: build
-#        #cache-disabled: 'true' # 캐싱 사용 안함.
-#        cache-read-only: ${{ github.ref != 'refs/heads/main' && github.ref != 'refs/heads/develop' }}
+    # Gradle 설치 및 캐싱 설정
+    - name: Setup Gradle
+      uses: gradle/gradle-build-action@v2
+      with:
+        gradle-version: 8.8
+        arguments: build
+        #cache-disabled: 'true' # 캐싱 사용 안함.
+        cache-read-only: ${{ github.ref != 'refs/heads/main' && github.ref != 'refs/heads/develop' }}
 
     # ./gradlew build 이 실행되면 build/libs 폴더에 jar 파일이 생김.
     # 관련 설정 : build.gradle 의 jar {...}, bootJar{...} 부분

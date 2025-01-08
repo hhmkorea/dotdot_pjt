@@ -57,7 +57,6 @@ jobs:
       with:
         username: ${{ secrets.DOCKERHUB_USERNAME }}
         password: ${{ secrets.DOCKERHUB_TOKEN }}
-      working-directory: ./site
 
     # Docker Hub 저장소에 이미지를 push
     - name: Docker Hub push

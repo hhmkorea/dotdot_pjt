@@ -6,7 +6,7 @@ WORKDIR /site
 COPY . .
 
 # 개행문자 오류 해결 [unix와 window 시스템 차이] -- 꼭 넣어야함!!!
-RUN sed -i 's/\r$//' gradlew
+# RUN sed -i 's/\r$//' gradlew -- gitlab actions 환경은 unbuntu 설치 후 사용.
 
 # RUN은 현재 파일의 위치를 기반으로 작동함
 RUN chmod +x ./gradlew

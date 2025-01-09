@@ -13,7 +13,7 @@ RUN chmod +x ./gradlew
 RUN ./gradlew bootJar
 
 # 컨테이너 내부에서 파일을 찾아서 실행 후 파일 명 변경
-ENV JAR_PATH=/site/build/libs
-RUN mv ${JAR_PATH}/*.jar /site/app.jar
+ENV JAR_PATH=./build/libs
+RUN mv ${JAR_PATH}/*.jar ./app.jar
 
 ENTRYPOINT ["java", "-jar", "app.jar"]

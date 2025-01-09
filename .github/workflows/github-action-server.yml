@@ -50,7 +50,7 @@ jobs:
         distribution: 'temurin'
 
     # 캐싱 추가
-    - name: Chache Gradle
+    - name: Cache Gradle
       uses: actions/cache@v2
       with:
         path:  |
@@ -90,6 +90,7 @@ jobs:
       with:
         gradle-version: 8.8
         arguments: build
+        build-root-directory: ./site
         #cache-disabled: 'true' # 캐싱 사용 안함.
         cache-read-only: ${{ github.ref != 'refs/heads/main' && github.ref != 'refs/heads/develop' }}
 

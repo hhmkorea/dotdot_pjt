@@ -29,7 +29,6 @@ permissions:
 jobs:
   build:
 
-    # workflow가 실행되는 vm의 os 지정
     runs-on: ubuntu-20.04
 
     defaults:
@@ -40,7 +39,7 @@ jobs:
     steps:
     # 1. vm에서 레퍼지토리 내려받음
     - name: Check out Repository
-      uses: actions/checkout@v2
+      uses: actions/checkout@v3
 
     # 2. jdk를 세팅함
     - name: Set up JDK 17
@@ -68,19 +67,20 @@ jobs:
         mysql password: ${{ secrets.MYSQL_PASSWORD }}
 
     # 5. Gradle 실행
-      # Gradle 설치 및 캐싱 설정
+
+    # 5-1) Gradle 설치
     - name: Setup Gradle
-      uses: gradle/gradle-build-action@v2
+      uses: gradle/gradle-build-action@v3
       with:
         gradle-version: 8.8
         arguments: build
         build-root-directory: ./site
-        #cache-disabled: 'true' # 캐싱 사용 안함.
-        #cache-read-only: ${{ github.ref != 'refs/heads/main' && github.ref != 'refs/heads/develop' }}
 
-      # 캐싱 추가
+    # 5-2) 캐싱 설정
+          # 빌드 시간이 20~30% 단축
+          # 공식문서 참고 : https://github.com/actions/cache
     - name: Cache Gradle
-      uses: actions/cache@v2
+      uses: actions/cache@v3
       with:
         path:  |
           ~/.gradle/caches
@@ -89,24 +89,27 @@ jobs:
         restore-keys: |
           ${{ runner.os }}-gradle-
 
-    # gradlew에 실행권한을 주지 않은면 에러가 뜸.
+    # 5-3) gradlew 실행 권한 부여
+          # gradlew에 실행권한을 주지 않은면 에러가 뜸.
     - name: Grant execute permission for gradlew
       run: chmod +x gradlew
       shell: bash
 
-    # ./gradlew build 이 실행되면 build/libs 폴더에 jar 파일이 생김.
-    # 관련 설정 : build.gradle 의 jar {...}, bootJar{...} 부분
-    - name: Build with Gradle(skip Test)
-      run: ./gradlew clean --stacktrace --info build
+    # 5-4) Gradle 빌드
+          # ./gradlew build 이 실행되면 build/libs 폴더에 jar 파일이 생김.
+          # 관련 설정 : build.gradle 의 jar {...}, bootJar{...} 부분
+    - name: Build with Gradle
+      run: ./gradlew build
 
-    # 현재 디렉토리에 있는 Dockerfile 을 사용하여 도커 이미지 빌드.
-    # 이때 이미지 이름은 <docker_hub_username>/<image_name> 로 설정됨.
-    # 도커 허브에 이미지를 publish 하기 위해서는 앞에 유저이름을 곡 붙여야 함.
+    # 6. Docker 이미지 빌드
+          # 현재 디렉토리에 있는 Dockerfile 을 사용하여 도커 이미지 빌드.
+          # 이때 이미지 이름은 <docker_hub_username>/<image_name> 로 설정됨.
+          # 도커 허브에 이미지를 publish 하기 위해서는 앞에 유저이름을 곡 붙여야 함.
     - name: Build Docker image
       run: docker build -t ${{ secrets.DOCKERHUB_USERNAME }}/${{ secrets.DOCKERHUB_IMAGENAME }} .
 
-    # docker/login-action 이라는 Action 사용해서 도커 로그인 진행
-    # -u, -p 옵션을 사용하여 인라인 명령을 사용하면, GitHub Action에서는 보안상 오류가 발생.
+    # 5-6) docker/login-action 이라는 Action 사용해서 도커 로그인 진행
+          # -u, -p 옵션을 사용하여 인라인 명령을 사용하면, GitHub Action에서는 보안상 오류가 발생.
     - name: Docker Hub 로그인
       uses: docker/login-action@v2
       with:

@@ -62,7 +62,7 @@ jobs:
         container port: '3306'
         character set server: 'utf8'
         mariadb version: 'latest'
-        mysql database: 'dotdot'
+        mysql database: ${{ secrets.MYSQL_DATABASE }}
         mysql user: 'root'
         mysql password: ${{ secrets.MYSQL_PASSWORD }}
 
@@ -116,6 +116,10 @@ jobs:
         username: ${{ secrets.DOCKERHUB_USERNAME }}
         password: ${{ secrets.DOCKERHUB_TOKEN }}
 
+    # Docker tag 생성
+    - name: Docker tag 생성
+      run: docker tag site-springboot dotdot000/site-springboot
+
     # Docker Hub 저장소에 이미지를 publish(push)
     - name: Docker Hub push
-      run: docker push ${{ secrets.DOCKERHUB_USERNAME }}/${{ secrets.DOCKERHUB_IMAGENAME }}
+      run: docker push dotdot000/site-springboot #${{ secrets.DOCKERHUB_USERNAME }}/${{ secrets.DOCKERHUB_IMAGENAME }}

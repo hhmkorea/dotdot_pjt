@@ -49,17 +49,6 @@ jobs:
         java-version: '17'
         distribution: 'temurin'
 
-    # 캐싱 추가
-    - name: Cache Gradle
-      uses: actions/cache@v2
-      with:
-        path:  |
-          ~/.gradle/caches
-          ~/.gradle/wrapper
-        key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*', '**/gradle-wrapper.properties') }}
-        restore-keys: |
-          ${{ runner.os }}-gradle-
-
     # 3. Make application.yml
     - run: |
         mkdir -p ./src/main/resources 
@@ -79,12 +68,7 @@ jobs:
         mysql password: ${{ secrets.MYSQL_PASSWORD }}
 
     # 5. Gradle 실행
-    # gradlew에 실행권한을 주지 않은면 에러가 뜸.
-    - name: Grant execute permission for gradlew
-      run: chmod +x gradlew
-      shell: bash
-
-    # Gradle 설치 및 캐싱 설정
+      # Gradle 설치 및 캐싱 설정
     - name: Setup Gradle
       uses: gradle/gradle-build-action@v2
       with:
@@ -92,7 +76,23 @@ jobs:
         arguments: build
         build-root-directory: ./site
         #cache-disabled: 'true' # 캐싱 사용 안함.
-        cache-read-only: ${{ github.ref != 'refs/heads/main' && github.ref != 'refs/heads/develop' }}
+        #cache-read-only: ${{ github.ref != 'refs/heads/main' && github.ref != 'refs/heads/develop' }}
+
+      # 캐싱 추가
+    - name: Cache Gradle
+      uses: actions/cache@v2
+      with:
+        path:  |
+          ~/.gradle/caches
+          ~/.gradle/wrapper
+        key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*', '**/gradle-wrapper.properties') }}
+        restore-keys: |
+          ${{ runner.os }}-gradle-
+
+    # gradlew에 실행권한을 주지 않은면 에러가 뜸.
+    - name: Grant execute permission for gradlew
+      run: chmod +x gradlew
+      shell: bash
 
     # ./gradlew build 이 실행되면 build/libs 폴더에 jar 파일이 생김.
     # 관련 설정 : build.gradle 의 jar {...}, bootJar{...} 부분

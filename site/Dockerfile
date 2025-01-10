@@ -1,4 +1,4 @@
-FROM adoptopenjdk/openjdk16
+FROM openjdk:17-jdk-alpine:17
 
 COPY ./build/libs/*.jar app.jar
 

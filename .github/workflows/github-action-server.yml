@@ -118,7 +118,7 @@ jobs:
 
     # Docker tag 생성
     - name: Docker tag 생성
-      run: docker tag site-springboot:latest ${{ secrets.DOCKERHUB_USERNAME }}/${{ secrets.DOCKERHUB_IMAGENAME }}:0.1
+      run: docker tag site-springboot:0.1 ${{ secrets.DOCKERHUB_USERNAME }}/${{ secrets.DOCKERHUB_IMAGENAME }}:0.1
 
     # Docker Hub 저장소에 이미지를 publish(push)
     - name: Docker Hub push

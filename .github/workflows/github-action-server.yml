@@ -36,6 +36,20 @@ jobs:
         working-directory: ./site
 
     timeout-minutes: 10
+
+    services:
+      mariadb:
+        image: mariadb:latest
+        env:
+          MARIADB_ROOT_PASSWORD: ${{ secrets.MYSQL_PASSWORD }}
+          MARIADB_DATABASE: ${{ secrets.MYSQL_DATABASE }}
+          MARIADB_ROOT_HOST: "%"
+          MARIADB_CHARACTER_SET_SERVER: 'utf8mb4'
+          MARIADB_COLLATION_SERVER: 'utf8mb4_unicode_ci'
+        ports:
+          - 3306:3306
+        options: --health-cmd="healthcheck.sh --connect --innodb_initialized" --health-interval=10s --health-timeout=5s --health-retries=3
+
     steps:
     # 1. vm에서 레퍼지토리 내려받음
     - name: Check out Repository
@@ -54,17 +68,17 @@ jobs:
         echo "${{ secrets.APPLICATION }}" | base64 --decode > src/main/resources/application.yml
         find src
 
-    # 4. vm에 mariadb 셋팅함
-    - name: Setup MariaDB
-      uses: getong/mariadb-action@v1.1
-      with:
-        host port: '3306'
-        container port: '3306'
-        character set server: 'utf8'
-        mariadb version: 'latest'
-        mysql database: ${{ secrets.MYSQL_DATABASE }}
-        mysql user: 'root'
-        mysql password: ${{ secrets.MYSQL_PASSWORD }}
+#    # 4. mariadb 셋팅함 ---> service로 변경
+#    - name: Setup MariaDB
+#      uses: getong/mariadb-action@v1.1
+#      with:
+#        host port: '3306'
+#        container port: '3306'
+#        character set server: 'utf8'
+#        mariadb version: 'latest'
+#        mysql database: ${{ secrets.MYSQL_DATABASE }}
+#        mysql user: 'root'
+#        mysql password: ${{ secrets.MYSQL_PASSWORD }}
 
     # 5. Gradle 실행
 

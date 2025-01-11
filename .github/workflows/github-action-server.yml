@@ -43,7 +43,7 @@ jobs:
         env:
           MARIADB_ROOT_PASSWORD: ${{ secrets.MYSQL_PASSWORD }}
           MARIADB_DATABASE: ${{ secrets.MYSQL_DATABASE }}
-          MARIADB_ROOT_HOST: "%"
+          MARIADB_ROOT_HOST: "localhost"
           MARIADB_CHARACTER_SET_SERVER: 'utf8mb4'
           MARIADB_COLLATION_SERVER: 'utf8mb4_unicode_ci'
         ports:

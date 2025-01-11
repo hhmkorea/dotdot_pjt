@@ -9,8 +9,10 @@ show variables like 'c%';
 select * from mysql.user;
 -- 사용자 추가 : 유저이름@아이피주소
 create user 'cos'@'%' identified by 'cos1234';
--- 권한 설정 : ON DB이름.테이블명 TO 유저이름@아이피주소
--- GRANT ALL PRIVILEGES ON *.* TO
+create user 'tester'@'%' identified by 'root1234';
+# drop user test;
+# -- 권한 설정 : ON DB이름.테이블명 TO 유저이름@아이피주소
+# GRANT ALL PRIVILEGES ON *.* TO tester;
 
 -- 테이블 확인
 SELECT  * FROM board;

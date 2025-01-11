@@ -77,7 +77,7 @@ jobs:
         character set server: 'utf8'
         mariadb version: 'latest'
         mysql database: ${{ secrets.MYSQL_DATABASE }}
-        mysql user: 'root'
+        mysql user: 'tester'
         mysql password: ${{ secrets.MYSQL_PASSWORD }}
 
     # 5. Gradle 실행

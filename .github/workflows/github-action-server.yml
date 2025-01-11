@@ -65,7 +65,7 @@ jobs:
     # 3. Make application.yml
     - run: |
         mkdir -p ./src/main/resources 
-        echo "${{ secrets.APPLICATION }}" | base64 --decode > src/main/resources/application.yml
+        echo "${{ secrets.APPLICATION }}" | base64 --decode > ./src/main/resources/application.yml
         find src
 
     # 4. mariadb 셋팅함 ---> service로 변경

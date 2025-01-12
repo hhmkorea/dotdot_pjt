@@ -1,0 +1,872 @@
+[33mcommit b6d1fa88c4c6b0f7b9eb7f14542d6fb844d7283c[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m
+Author: hhmkorea <hhmkorea@nate.com>
+Date:   Sat Jan 11 22:15:10 2025 +0900
+
+    apllication.yml 경로 변경
+
+[33mcommit 4494fa154e0ed539380dcb894eed60c9a3164d4c[m
+Author: hhmkorea <hhmkorea@nate.com>
+Date:   Sat Jan 11 21:59:58 2025 +0900
+
+    apllication.yml base64로 재변경
+
+[33mcommit fb30ec931eeec8a61a07d1ba7d5805712b2a38e1[m
+Author: hhmkorea <hhmkorea@nate.com>
+Date:   Sat Jan 11 21:45:04 2025 +0900
+
+    .
+
+[33mcommit 0cf7ee5db2030ca576a98bf94da5d9e9343fb91b[m
+Author: hhmkorea <hhmkorea@nate.com>
+Date:   Sat Jan 11 21:44:29 2025 +0900
+
+    mariadb 사용자 tester 추가해서 변경
+
+[33mcommit cb4cf3d163891a0639faa23d999b8f08c223a607[m
+Author: hhmkorea <hhmkorea@nate.com>
+Date:   Sat Jan 11 21:20:10 2025 +0900
+
+    db 설정 변경
+
+[33mcommit 176c8a6d0138143ae9860ce344cb706b9377fc23[m
+Author: hhmkorea <hhmkorea@nate.com>
+Date:   Sat Jan 11 20:52:01 2025 +0900
+
+    github actions test37: localhost
+
+[33mcommit c6fcecb4838f4bfda288ebebfb90c177a06e2696[m
+Author: hhmkorea <hhmkorea@nate.com>
+Date:   Sat Jan 11 19:46:01 2025 +0900
+
+    github actions test36: mariadb 설정 service로 변경
+
+[33mcommit 6654abcf3a642a496fb64faf839a8afadac679fc[m
+Author: hhmkorea <hhmkorea@nate.com>
+Date:   Fri Jan 10 20:03:47 2025 +0900
+
+    github actions test35 : dockerfile jdk 17로 수정
+
+[33mcommit 79030d5d8f3c5a0f93f69eac9af50962ffacbc19[m
+Author: hhmkorea <hhmkorea@nate.com>
+Date:   Fri Jan 10 19:58:22 2025 +0900
+
+    github actions test34 : dockerfile 수정
+
+[33mcommit 13144fe0951bb3f74ba24dea509dbf046b056531[m
+Author: hhmkorea <hhmkorea@nate.com>
+Date:   Fri Jan 10 16:58:45 2025 +0900
+
+    github actions test33 : Docker 설정 수정
+
+[33mcommit 9b835a34e8f7f95d60c8b8ac79139345069b0bb9[m
+Author: hhmkorea <hhmkorea@nate.com>
+Date:   Fri Jan 10 16:42:56 2025 +0900
+
+    github actions test32 : docker tag 0.1로 지정
+
+[33mcommit c4319fde51b7af4cc736e7fd2f2a1583f2b4afac[m
+Author: hhmkorea <hhmkorea@nate.com>
+Date:   Fri Jan 10 16:38:55 2025 +0900
+
+    github actions test31 : tag 추가
+
+[33mcommit 5744b947332d19594aabb59a2977583325da1feb[m
+Author: hhmkorea <hhmkorea@nate.com>
+Date:   Fri Jan 10 16:27:16 2025 +0900
+
+    github actions test30 : Docker tag 생성 후 push
+
+[33mcommit 6fe0d35dbd5202939b6a5b68c7fd11b719b9f5b0[m
+Author: hhmkorea <hhmkorea@nate.com>
+Date:   Fri Jan 10 16:10:41 2025 +0900
+
+    github actions test29 : docker hub에서 access token 발급 받아 적용.
+
+[33mcommit cd9f60e401b67b2355a920f5a8493504a0be34bd[m
+Author: hhmkorea <hhmkorea@nate.com>
+Date:   Fri Jan 10 15:51:25 2025 +0900
+
+    github actions test28
+
+[33mcommit 4a22d53908928dcf9cde56a856cc2f2fc2924f59[m
+Author: hhmkorea <yuyee81@gmail.com>
+Date:   Thu Jan 9 20:25:30 2025 +0900
+
+    github actions test27 : Dockerfile 수정, gitlab actions에서 빌드 하므로 그 과정 주석처리.
+
+[33mcommit a15b350af9d15f2a4e616f07a9acd75a5998cc1e[m
+Author: hhmkorea <yuyee81@gmail.com>
+Date:   Thu Jan 9 20:17:13 2025 +0900
+
+    github actions test26
+
+[33mcommit 3ec2c3e74bdd151a0161bd4cc26783f3ebc01104[m
+Author: hhmkorea <yuyee81@gmail.com>
+Date:   Thu Jan 9 20:09:30 2025 +0900
+
+    github actions test25 : build 해서 *.jar 생성 후 push
+
+[33mcommit 87ed88759b655d9acfaf5dab9a675a2cdb20f797[m
+Author: hhmkorea <yuyee81@gmail.com>
+Date:   Thu Jan 9 20:00:00 2025 +0900
+
+    github actions test24 : Dockerfile 파일 경로 수정.
+
+[33mcommit 64c06f4820c22d9124e06738c7e57374e11aea4a[m
+Author: hhmkorea <yuyee81@gmail.com>
+Date:   Thu Jan 9 19:28:28 2025 +0900
+
+    github actions test23 : gitlab actions 환경에 맞춰 Dockerfile 수정.
+
+[33mcommit e0cb00e819950ba1687515b26d2731f61475072a[m
+Author: hhmkorea <yuyee81@gmail.com>
+Date:   Thu Jan 9 19:16:54 2025 +0900
+
+    github actions test22 : out -> build
+
+[33mcommit 3029cb573a6ba4ef890aec951e504bbe9f2333b0[m
+Author: hhmkorea <yuyee81@gmail.com>
+Date:   Thu Jan 9 18:57:06 2025 +0900
+
+    github actions test21 : docker 설정 수정.
+
+[33mcommit 0768f4cc8801673ac78d0b040c4474695ddb2807[m
+Author: hhmkorea <yuyee81@gmail.com>
+Date:   Thu Jan 9 18:32:58 2025 +0900
+
+    github actions test20 : build test 수정
+
+[33mcommit 87b6463ae744614ea80fb244fca77a1c5cb6588e[m
+Author: hhmkorea <yuyee81@gmail.com>
+Date:   Thu Jan 9 18:32:08 2025 +0900
+
+    github actions test20 : build test 수정
+
+[33mcommit 770c1e2fc1702fadd9cdac3971ebf76c84157992[m
+Author: hhmkorea <yuyee81@gmail.com>
+Date:   Thu Jan 9 18:22:14 2025 +0900
+
+    github actions test20 : test
+
+[33mcommit c1c5da8cc06f02cd196d2ac6749f6f19aece2172[m
+Author: hhmkorea <yuyee81@gmail.com>
+Date:   Thu Jan 9 18:12:18 2025 +0900
+
+    github actions test19 : root directory 설정. Gradle로 build할 경우 하위 프로젝트 인식하게 이렇게 설정해야함.
+
+[33mcommit 290458b0d97699e79803383c9e646e721e87c5d5[m
+Author: hhmkorea <yuyee81@gmail.com>
+Date:   Thu Jan 9 03:10:09 2025 +0900
+
+    github actions test18
+
+[33mcommit fa0f8479d05671cc10bb135f43eff801057aa2d1[m
+Author: hhmkorea <yuyee81@gmail.com>
+Date:   Thu Jan 9 03:01:14 2025 +0900
+
+    github actions test17
+
+[33mcommit 21b55f33f31453a10503d547f680b62bf7955149[m
+Author: hhmkorea <yuyee81@gmail.com>
+Date:   Thu Jan 9 02:22:57 2025 +0900
+
+    github actions test16: working-directory 설정
+
+[33mcommit 9290bb27699c4251216696fe9d0fbe251006bcf1[m
+Author: hhmkorea <yuyee81@gmail.com>
+Date:   Thu Jan 9 02:12:13 2025 +0900
+
+    github actions test15: Gradle 설정 추가.
+
+[33mcommit 8b94ba34ca362a229571b327b2fb102e8ebe8bb0[m
+Author: hhmkorea <yuyee81@gmail.com>
+Date:   Thu Jan 9 02:06:07 2025 +0900
+
+    github actions test14
+
+[33mcommit c6f9c138adbdcfc29df7d58f1c0caf8f6c363ef4[m
+Author: hhmkorea <yuyee81@gmail.com>
+Date:   Thu Jan 9 02:00:54 2025 +0900
+
+    github actions test13 : Gradle 설치
+
+[33mcommit 7637a694c695c2f9d956e4e491d2f465f1e4fc9a[m
+Author: hhmkorea <yuyee81@gmail.com>
+Date:   Thu Jan 9 01:41:36 2025 +0900
+
+    github actions test12 : 캐싱 추가, application.yml 는 base64로 바꿔서 github Repository secrets에 넣음.
+
+[33mcommit 28bfa9d3882b67d3b2975ba7df92fd34b25c44de[m
+Author: hhmkorea <yuyee81@gmail.com>
+Date:   Thu Jan 9 01:25:19 2025 +0900
+
+    github actions test11 :
+
+[33mcommit ffcd4ae0be56d4a9d3f080c2d89a8b3537380a94[m
+Author: hhmkorea <yuyee81@gmail.com>
+Date:   Thu Jan 9 01:11:28 2025 +0900
+
+    github actions test10 :
+
+[33mcommit 9807f8166d425b9d6d7405b829d2f66361edd029[m
+Author: hhmkorea <yuyee81@gmail.com>
+Date:   Thu Jan 9 01:05:14 2025 +0900
+
+    github actions test9 :
+
+[33mcommit 83e1c5ee23070dae86fcfae7fcb9c5b905b69def[m
+Author: hhmkorea <yuyee81@gmail.com>
+Date:   Thu Jan 9 00:52:33 2025 +0900
+
+    github actions test8 : mariadb, application.yml
+
+[33mcommit 6bf0e80e77c04db34e5d64f7879c10c8550436de[m
+Author: hhmkorea <yuyee81@gmail.com>
+Date:   Wed Jan 8 21:39:41 2025 +0900
+
+    github actions test7 : actions 버전 수정
+
+[33mcommit e02afd516f5af3fcb03a197f77139b6482288031[m
+Author: hhmkorea <yuyee81@gmail.com>
+Date:   Wed Jan 8 21:24:37 2025 +0900
+
+    github actions test6
+
+[33mcommit c90f015f4714d3be6c85bee9e4c06a7a6630d596[m
+Author: hhmkorea <yuyee81@gmail.com>
+Date:   Wed Jan 8 21:18:18 2025 +0900
+
+    github actions test5
+
+[33mcommit f2b6cf3f6c4da918fa54c57ddbbd74b0af1f815b[m
+Author: hhmkorea <hhmkorea@nate.com>
+Date:   Wed Jan 8 19:52:00 2025 +0900
+
+    github actions test4
+
+[33mcommit 12ef41380bd9f41a1a7c46bfa0f4c61781e39f69[m
+Author: hhmkorea <hhmkorea@nate.com>
+Date:   Wed Jan 8 19:47:59 2025 +0900
+
+    github actions test3 : 버전 에러로 수정
+
+[33mcommit fe497f61ae5ef0bfd25f9da02dcb65074a1dd6e4[m
+Author: hhmkorea <hhmkorea@nate.com>
+Date:   Wed Jan 8 19:42:49 2025 +0900
+
+    github actions test2
+
+[33mcommit 609c14b66805da618b95751f33feb5508d0e276c[m
+Author: hhmkorea <hhmkorea@nate.com>
+Date:   Wed Jan 8 19:42:06 2025 +0900
+
+    github actions test1
+
+[33mcommit 1e824d595c64fe842ef9c0c313bf7da5ce7f91a9[m
+Author: hhmkorea <hhmkorea@nate.com>
+Date:   Wed Jan 8 19:38:56 2025 +0900
+
+    Update github-action-server.yml
+
+[33mcommit 7f43746dd1c3c79044b865b5a688bc66670025d2[m
+Author: hhmkorea <hhmkorea@nate.com>
+Date:   Wed Jan 8 19:35:40 2025 +0900
+
+    Update github-action-server.yml
+
+[33mcommit b7bac13de2e395b5d96b9544052700571e0fa7d9[m
+Author: hhmkorea <hhmkorea@nate.com>
+Date:   Wed Jan 8 19:34:27 2025 +0900
+
+    Update and rename github-action.yml to github-action-server.yml
+
+[33mcommit f51c6f28b2611f12da34f190692ff3a7d6543176[m
+Author: hhmkorea <hhmkorea@nate.com>
+Date:   Wed Jan 8 19:13:00 2025 +0900
+
+    github actions test
+
+[33mcommit 8752b301af41011d98b12f40478c42889a2d2d4b[m
+Author: hhmkorea <hhmkorea@nate.com>
+Date:   Wed Jan 8 19:07:52 2025 +0900
+
+    Create github-action.yml
+
+[33mcommit c15f86c83957f5c07e954a9dabb7a381e0ff80bc[m
+Author: hhmkorea <hhmkorea@nate.com>
+Date:   Wed Jan 8 19:07:00 2025 +0900
+
+    .
+
+[33mcommit 621575c2a38e5c2b4f32e09e882bcbd4151e71b8[m
+Author: hhmkorea <hhmkorea@nate.com>
+Date:   Wed Jan 8 19:02:37 2025 +0900
+
+    github actions 설정
+
+[33mcommit 151a6c09e0fdfe9bb0120e2c565cab1735aaadf8[m
+Author: hhmkorea <yuyee81@gmail.com>
+Date:   Tue Jan 7 20:27:59 2025 +0900
+
+    .
+
+[33mcommit c540713a45666a2ed32f2e53d202a70b1ced32b9[m
+Author: hhmkorea <yuyee81@gmail.com>
+Date:   Tue Jan 7 19:42:19 2025 +0900
+
+    page 디자인 변경
+
+[33mcommit d896962018635b7d4f37bfd353ece50dd81125c5[m
+Author: hhmkorea <hhmkorea@nate.com>
+Date:   Mon Jan 6 20:04:39 2025 +0900
+
+    Create github-actions.yml
+
+[33mcommit 11d3bde3b3b0d1dd0e8d00c9a5872064d23dd4e4[m
+Author: hhmkorea <hhmkorea@nate.com>
+Date:   Mon Jan 6 16:28:51 2025 +0900
+
+    page 디자인 변경
+
+[33mcommit 66a40ac375d34f4a564777da7502b4ba2d3c6d08[m
+Author: hhmkorea <hhmkorea@nate.com>
+Date:   Mon Jan 6 15:40:46 2025 +0900
+
+    Sort 변경
+
+[33mcommit ed7d5a9f4ba884f3a63a1bee5a163bbd79716a76[m
+Author: hhmkorea <hhmkorea@nate.com>
+Date:   Mon Jan 6 15:12:33 2025 +0900
+
+    limit 값 정상적으로 들어가게 수정!!
+
+[33mcommit ff1ecc53dda0977a644db3acadf6cdd99c8db183[m
+Author: hhmkorea <hhmkorea@nate.com>
+Date:   Mon Jan 6 13:18:30 2025 +0900
+
+    게시판 페이지 리팩토링. limit 값이 반대로 들어가는 문제 있음.
+
+[33mcommit da8ea310d0b4ba6a4096dd68863c46c8d448b5e2[m
+Author: hhmkorea <yuyee81@gmail.com>
+Date:   Mon Jan 6 03:20:07 2025 +0900
+
+    게시판 한페이지에 10개 게시물 보이게 수정, findAll() 수행시 id 여러개 바인딩되어 조회되는 문제 해결
+
+[33mcommit c390c751d6636522b3d0b241a3d1bdec96913113[m
+Author: hhmkorea <hhmkorea@nate.com>
+Date:   Sun Jan 5 21:11:13 2025 +0900
+
+    .
+
+[33mcommit f67171038dd061b9d22da754162ef20d3e2b3493[m
+Author: hhmkorea <hhmkorea@nate.com>
+Date:   Sun Jan 5 21:08:55 2025 +0900
+
+    docker 빌드, 이미지 생성, 실행 구현!!
+
+[33mcommit 78132fce144be7e034d87ed2876433e8bd15f8dd[m
+Author: hhmkorea <hhmkorea@nate.com>
+Date:   Sun Jan 5 20:18:48 2025 +0900
+
+    Board 테이블 create할때 FK제거, Member 테이블 데이타 필요할때만 조인하게 변경.
+
+[33mcommit 3b810ff1ad7359f2bad89e3069ae820c2d6443d3[m
+Author: hhmkorea <hhmkorea@nate.com>
+Date:   Sat Jan 4 21:08:16 2025 +0900
+
+    로그아웃 handler 처리.
+
+[33mcommit fe0439f3d24e61b99d4f71933900c99f6a5427b7[m
+Author: hhmkorea <hhmkorea@nate.com>
+Date:   Sat Jan 4 20:54:53 2025 +0900
+
+    로그인 에러 handler 처리.
+
+[33mcommit 045cba179b59e471b6ed63f9c04762ab72b17424[m
+Author: hhmkorea <hhmkorea@nate.com>
+Date:   Sat Jan 4 19:30:01 2025 +0900
+
+    다음 게시물 번호 찾는 쿼리 수정.
+
+[33mcommit 23a1ad58f792e230163f4d768bf3ae38a5b759ea[m
+Author: hhmkorea <hhmkorea@nate.com>
+Date:   Sat Jan 4 18:57:34 2025 +0900
+
+    서버에 있는 이미지 업로드, 삭제 구현 부분 수정.
+
+[33mcommit 5bf1f7b0c913d5151418c05406c724a52f8c0cf2[m
+Author: hhmkorea <yuyee81@gmail.com>
+Date:   Sat Jan 4 01:08:03 2025 +0900
+
+    이미지 삭제
+
+[33mcommit 5782d631667cd5ee00d21898ece2a0c702dc52ad[m
+Author: hhmkorea <yuyee81@gmail.com>
+Date:   Sat Jan 4 00:24:58 2025 +0900
+
+    신규 게시물 글번호 조회
+
+[33mcommit d3c78a245894864f6112ffbfbcf76fa04c4ffc0f[m
+Author: hhmkorea <hhmkorea@nate.com>
+Date:   Fri Jan 3 23:07:53 2025 +0900
+
+    게시물 저장, 삭제시 게시물 번호를 경로에 넣음
+
+[33mcommit 9e4e83fb653b2cc0ac3d16da7eb4e43b59a58883[m
+Author: hhmkorea <hhmkorea@nate.com>
+Date:   Fri Jan 3 19:49:16 2025 +0900
+
+    summernote 이미지 삭제 구현, 폴더 전체 삭제 됨. 저장 삭제시 사용자id로 해야함.
+
+[33mcommit b99b1dc2f40bd5ceb5de8c34e780eac54b040e93[m
+Author: hhmkorea <yuyee81@gmail.com>
+Date:   Fri Jan 3 04:33:50 2025 +0900
+
+    .
+
+[33mcommit 46f2f8f82a2cc61ccd923292ecab0362dca7afe0[m
+Author: hhmkorea <yuyee81@gmail.com>
+Date:   Fri Jan 3 01:29:48 2025 +0900
+
+    다중검색 html 태그 제외하고 검색.
+
+[33mcommit ccea26c87bd7afb9ae8e221927e95fed4a4c65db[m
+Author: hhmkorea <hhmkorea@nate.com>
+Date:   Thu Jan 2 23:04:12 2025 +0900
+
+    summernote 이미지 업로드 구현!
+    /site/upload/image 폴더 안에 있음!!
+
+[33mcommit 1d9b5d73bf4d8e479d6f25a20a1a5650bb3cbcf5[m
+Author: hhmkorea <hhmkorea@nate.com>
+Date:   Thu Jan 2 20:47:21 2025 +0900
+
+    js, css 소스 출처 남김.
+
+[33mcommit 2680acca173ac8ac0292577ac9d5a9f035d31438[m
+Author: hhmkorea <hhmkorea@nate.com>
+Date:   Wed Jan 1 18:24:51 2025 +0900
+
+    다중검색 native query 적용
+
+[33mcommit 8a808b0b23b41a50ceb15c3dfc4b743d0083173f[m
+Author: hhmkorea <hhmkorea@nate.com>
+Date:   Wed Jan 1 16:55:03 2025 +0900
+
+    조회수 카운트
+
+[33mcommit 715c6847f260d5d35b0ab1754bf365ed2e9aad8a[m
+Author: hhmkorea <hhmkorea@nate.com>
+Date:   Wed Jan 1 14:43:21 2025 +0900
+
+    날자 포맷 적용, yyyy-mm-dd HH:mm:ss
+
+[33mcommit 90390d7869ab19675523df70c304042897dcc650[m
+Author: hhmkorea <hhmkorea@nate.com>
+Date:   Wed Jan 1 13:53:20 2025 +0900
+
+    detail.html : 수정, 삭제 버튼, 로그인한 유저가 작성자랑 동일할 때만 보이게
+
+[33mcommit 64ecd57e1886823992f84a5355462081258317cd[m
+Author: hhmkorea <yuyee81@gmail.com>
+Date:   Wed Jan 1 05:33:46 2025 +0900
+
+    접속자 정보 보임, principal 세션 정보 view 화면에 전달.
+
+[33mcommit 8e03028995c8172159670891c2014805467cd9f0[m
+Author: hhmkorea <hhmkorea@nate.com>
+Date:   Tue Dec 31 23:15:05 2024 +0900
+
+    .
+
+[33mcommit ea6a67305e0fbe0f3fe8994c9825b67dc109508b[m
+Author: hhmkorea <hhmkorea@nate.com>
+Date:   Tue Dec 31 22:59:16 2024 +0900
+
+    UsernameNotFoundException 처리.
+
+[33mcommit 91d439d0278ea76629d86d8ff3b6e0c74ef05919[m
+Author: hhmkorea <hhmkorea@nate.com>
+Date:   Tue Dec 31 20:09:37 2024 +0900
+
+    security 적용!! 비밀번호 암호화처리!!
+
+[33mcommit ad58a9706b831220cabd808ca424d38e87ec9b2f[m
+Author: hhmkorea <hhmkorea@nate.com>
+Date:   Mon Dec 30 19:53:35 2024 +0900
+
+    list.html : 다중 검색
+
+[33mcommit c768b801fc1d0c2ea44b7041f361bd23743c2af0[m
+Author: hhmkorea <yuyee81@gmail.com>
+Date:   Mon Dec 30 01:46:26 2024 +0900
+
+    tb_member 테이블에 roles 컬럼에 USER값 넣고 Controller에 RequestParam 으로 수정해서 해결.
+
+[33mcommit 6c9f3f416830bcd0d560a3fe2982056388f56f2b[m
+Author: hhmkorea <yuyee81@gmail.com>
+Date:   Mon Dec 30 01:31:48 2024 +0900
+
+    login() 500 에러남.. 아이디 중복체크랑 회원가입은 잘 됨.
+
+[33mcommit 150b29f96f89cf66557303759e9f80840b32919b[m
+Author: hhmkorea <yuyee81@gmail.com>
+Date:   Mon Dec 30 01:17:29 2024 +0900
+
+    security 적용 : CorsConfig.corsFilter중 JS 처리 허용 옵션 있음
+
+[33mcommit 2d6d94f8f7bd9d85b58e1747306ce23df7d3dadb[m
+Author: hhmkorea <hhmkorea@nate.com>
+Date:   Sun Dec 29 22:14:27 2024 +0900
+
+    list.html:검색조건 추가.
+
+[33mcommit 7dd4f0de80a8eafeeea628ec64dd9d3c2826796a[m
+Author: hhmkorea <hhmkorea@nate.com>
+Date:   Sun Dec 29 21:53:48 2024 +0900
+
+    security 적용? userName -> username
+
+[33mcommit dc022c1a0a6d836e16c1095042c7d132fdb1c9f2[m
+Author: hhmkorea <hhmkorea@nate.com>
+Date:   Sun Dec 29 20:36:29 2024 +0900
+
+    security 적용? userName -> username
+
+[33mcommit e26b3eae2e1269c91829b99f57d70ae9278147b9[m
+Author: hhmkorea <hhmkorea@nate.com>
+Date:   Fri Dec 27 21:31:44 2024 +0900
+
+    list.html : 검색기능 구현 form th:action, button type=submit
+
+[33mcommit d15a8d2b1e1b5f30ee7500ea02707798dd3bbec2[m
+Author: hhmkorea <hhmkorea@nate.com>
+Date:   Thu Dec 26 23:11:11 2024 +0900
+
+    list.html : 검색 ing
+
+[33mcommit f4150d8380214bc9edda988d6adb4e6ef2896043[m
+Author: hhmkorea <hhmkorea@nate.com>
+Date:   Thu Dec 26 22:50:51 2024 +0900
+
+    detail.html : 삭제 버튼. 글번호 넣어서 처리.
+
+[33mcommit ca7bb2a78d0e62f91d222b6666beb18c65ca1222[m
+Author: hhmkorea <hhmkorea@nate.com>
+Date:   Thu Dec 26 22:47:55 2024 +0900
+
+    detail.html : 삭제 버튼.
+
+[33mcommit b2c0340254ed0dcf87a978fbe154b809e4c0d13b[m
+Author: hhmkorea <hhmkorea@nate.com>
+Date:   Thu Dec 26 18:51:40 2024 +0900
+
+    detail.html : 수정 버튼, 하이퍼 링크 깨지던 현상 수정.
+
+[33mcommit e86a57506e885f6ca57af2a1bb2e9916bfd9e9a5[m
+Author: hhmkorea <yuyee81@gmail.com>
+Date:   Thu Dec 26 03:33:00 2024 +0900
+
+    update.html 추가
+
+[33mcommit 6fd430d7e54d43a18d882216cb740fd102c4f612[m
+Author: hhmkorea <hhmkorea@nate.com>
+Date:   Wed Dec 25 22:22:12 2024 +0900
+
+    글수정 ing
+
+[33mcommit 90d35e1a589bf819d73bd9c75d02cf71803951ef[m
+Author: hhmkorea <hhmkorea@nate.com>
+Date:   Wed Dec 25 21:48:01 2024 +0900
+
+    list, detail 화면 변경
+
+[33mcommit 55f092a9a77303dcba03122a65585ca2edad83fa[m
+Author: hhmkorea <hhmkorea@nate.com>
+Date:   Wed Dec 25 19:19:52 2024 +0900
+
+    .
+
+[33mcommit a3a5bf02fbfd87e9f12f7259503736202a7f37fb[m
+Author: hhmkorea <hhmkorea@nate.com>
+Date:   Tue Dec 24 22:40:39 2024 +0900
+
+    .
+
+[33mcommit a61c1d01af5c2e696f93baded4e6c212bbfce03c[m
+Author: hhmkorea <hhmkorea@nate.com>
+Date:   Tue Dec 24 22:38:05 2024 +0900
+
+    viewDetail() : 상세보기
+
+[33mcommit 4f3bbc2f0ccc23922ef300e89bf8adc977a47c13[m
+Author: hhmkorea <hhmkorea@nate.com>
+Date:   Tue Dec 24 19:59:16 2024 +0900
+
+    validation, size 추가
+
+[33mcommit 6cdf1a38302b5d28f5fc42f41777188773cfdbca[m
+Author: hhmkorea <hhmkorea@nate.com>
+Date:   Mon Dec 23 00:46:17 2024 +0900
+
+    paging 기능 구현, sql parameter 나오게 함.
+
+[33mcommit 60c4e8c60c018116dc785fac35818261092a3b87[m
+Author: hhmkorea <hhmkorea@nate.com>
+Date:   Mon Dec 23 00:39:55 2024 +0900
+
+    viewList() : 리스트 보임.
+
+[33mcommit d4ae7a308656c49b92a808c52fd08b5fbb19a903[m
+Author: hhmkorea <hhmkorea@nate.com>
+Date:   Sun Dec 22 21:07:15 2024 +0900
+
+    viewList() : thymeleaf, bootstrap, pagination
+
+[33mcommit 5f65a0954b3c7f68c2c245d51e7e9625e82bbacf[m
+Author: hhmkorea <hhmkorea@nate.com>
+Date:   Sat Dec 21 22:42:56 2024 +0900
+
+    save() : board.js 추가, BoardApiController(RestController) 추가
+
+[33mcommit 07fc481d1885008a947bcc75cb646427e114c217[m
+Author: hhmkorea <hhmkorea@nate.com>
+Date:   Sat Dec 21 22:42:50 2024 +0900
+
+    save() : board.js 추가, BoardApiController(RestController) 추가
+
+[33mcommit 6b23adcb76e5f149a5a41f8ee2a0cf2e178667cc[m
+Author: hhmkorea <hhmkorea@nate.com>
+Date:   Thu Dec 19 23:24:38 2024 +0900
+
+    js, css 정리
+
+[33mcommit e4126198fbf2d43be8164c2813557b4dff377df9[m
+Author: hhmkorea <hhmkorea@nate.com>
+Date:   Thu Dec 19 22:15:39 2024 +0900
+
+    font-family : Gowun Dodum 통일.
+
+[33mcommit 145f45ae8eaea7e81e23616bb9d9337d582ab8b0[m
+Author: hhmkorea <hhmkorea@nate.com>
+Date:   Thu Dec 19 19:18:30 2024 +0900
+
+    .
+
+[33mcommit 46e6a34cf5a61a98694ad41bc1e33c516d4459fa[m
+Author: hhmkorea <hhmkorea@nate.com>
+Date:   Thu Dec 19 19:10:40 2024 +0900
+
+    .
+
+[33mcommit 5668b00e64177971b59f11256af28c1b108d25fa[m
+Author: hhmkorea <hhmkorea@nate.com>
+Date:   Thu Dec 19 19:05:20 2024 +0900
+
+    홈페이지 정보 : 수정
+
+[33mcommit 2b7a1b8524f9b7c84f5af25f1bfd8fd630d44518[m
+Author: hhmkorea <hhmkorea@nate.com>
+Date:   Thu Dec 19 18:48:29 2024 +0900
+
+    summernote : common.js에 추가해야 보임. bootstrap과 css 충돌을 최소화하기 위해 lite 버전 사용.
+
+[33mcommit 5c182c745b2dbf0078bc0a87241ef0f7f494345d[m
+Author: hhmkorea <yuyee81@gmail.com>
+Date:   Thu Dec 19 02:56:42 2024 +0900
+
+    ..
+
+[33mcommit 686fb282d260731772ecce047175f4d82304c5b7[m
+Author: hhmkorea <hhmkorea@nate.com>
+Date:   Wed Dec 18 23:59:12 2024 +0900
+
+    .
+
+[33mcommit 8a326c11ee09105ca8fe796899f7e88de05e357f[m
+Author: hhmkorea <hhmkorea@nate.com>
+Date:   Wed Dec 18 23:23:02 2024 +0900
+
+    summernote
+
+[33mcommit 9ddd167f339905171810f4ae21840d9704e31cbf[m
+Author: hhmkorea <hhmkorea@nate.com>
+Date:   Wed Dec 18 23:12:59 2024 +0900
+
+    summernote
+
+[33mcommit 707f92d7ecf2feceab33c2e02e4fe6973c62b9e5[m
+Author: hhmkorea <hhmkorea@nate.com>
+Date:   Wed Dec 18 19:19:24 2024 +0900
+
+    thymeleaf 레이아웃 : 공통 css, js 호출 부분 정리.
+
+[33mcommit 12953a0ecaed4b31d9bea5c600b69a2243b8bdd4[m
+Author: hhmkorea <hhmkorea@nate.com>
+Date:   Wed Dec 18 18:42:03 2024 +0900
+
+    views 분리
+
+[33mcommit cb1e7eb6e1f3d246222a9ae17c235ee65de76d0e[m
+Author: hhmkorea <hhmkorea@nate.com>
+Date:   Wed Dec 18 17:26:26 2024 +0900
+
+    summernote 추가
+
+[33mcommit be5a475707d4f324b1c62bebd5255b4d25ed152e[m
+Author: hhmkorea <hhmkorea@nate.com>
+Date:   Wed Dec 18 16:37:58 2024 +0900
+
+    board/write
+
+[33mcommit 5eb808bd9247f62036c164ad786fe4931635f96e[m
+Author: hhmkorea <hhmkorea@nate.com>
+Date:   Wed Dec 18 12:35:16 2024 +0900
+
+    home 화면
+
+[33mcommit 8b959c33e35dcc5ed06b6609cf03372b8cf18770[m
+Author: hhmkorea <hhmkorea@nate.com>
+Date:   Wed Dec 18 11:22:01 2024 +0900
+
+    메뉴 정리
+
+[33mcommit c93af63cbc5bc8a2ee921cc48841c8d89500d6b0[m
+Author: hhmkorea <hhmkorea@nate.com>
+Date:   Tue Dec 17 22:33:23 2024 +0900
+
+    css 수정
+
+[33mcommit 43533f23d8fa5224acb7e4a2ae6fa36751e018ff[m
+Author: hhmkorea <hhmkorea@nate.com>
+Date:   Tue Dec 17 22:21:07 2024 +0900
+
+    footer, body 수정
+
+[33mcommit cf32ac27c54f6c4ac710b08696babe02658f94c7[m
+Author: hhmkorea <hhmkorea@nate.com>
+Date:   Tue Dec 17 21:45:41 2024 +0900
+
+    css, icon 변경
+
+[33mcommit f4d20e5df965b3485fb72538e328e5afd86234ce[m
+Author: hhmkorea <hhmkorea@nate.com>
+Date:   Tue Dec 17 19:12:08 2024 +0900
+
+    회원가입 : countMemberByUsername(), 아이디 중복체크.
+
+[33mcommit 152022588d3522c6f308843a3f19ea5feebd008c[m
+Author: hhmkorea <hhmkorea@nate.com>
+Date:   Mon Dec 16 23:20:22 2024 +0900
+
+    로그인 : login(), 아이디(username)으로 db 조회.
+    로그아웃 : logout()
+
+[33mcommit c42b5c19d4b4d61f4150d267dfa91b9903e29bd8[m
+Author: hhmkorea <hhmkorea@nate.com>
+Date:   Mon Dec 16 22:09:09 2024 +0900
+
+    회원가입 : saveMember()
+
+[33mcommit eeeb54f1dbde0bfe76a0d08533e2efe087ac2157[m
+Author: hhmkorea <hhmkorea@nate.com>
+Date:   Mon Dec 16 19:08:13 2024 +0900
+
+    layout 수정
+
+[33mcommit af92e676a0d203be1e00d589ed606e45bb9c458d[m
+Author: hhmkorea <hhmkorea@nate.com>
+Date:   Mon Dec 16 18:41:57 2024 +0900
+
+    font 변경 : 고운 돋음체
+
+[33mcommit ffebe60ebcc52a346dd917aa8ae98defd255f699[m
+Author: hhmkorea <hhmkorea@nate.com>
+Date:   Mon Dec 16 17:58:25 2024 +0900
+
+    font 추가
+
+[33mcommit faf57f713d7ded52ef2f7bd60e578a1f14efc4bc[m
+Author: hhmkorea <hhmkorea@nate.com>
+Date:   Mon Dec 16 16:52:24 2024 +0900
+
+    홈페이지 정보 화면 : 추가
+
+[33mcommit 2e179ccf3774f4d19088c6bc83bf412f5a363ca3[m
+Author: hhmkorea <yuyee81@gmail.com>
+Date:   Mon Dec 16 04:38:35 2024 +0900
+
+    .
+
+[33mcommit be3a4c951346dc46b096934f7469486e3ca9a2f8[m
+Author: hhmkorea <yuyee81@gmail.com>
+Date:   Mon Dec 16 04:36:17 2024 +0900
+
+    site로 프로젝트명 변경
+
+[33mcommit 2b4450525a9d312a0b91d8443c232464acdd5a44[m
+Author: hhmkorea <hhmkorea@nate.com>
+Date:   Mon Dec 16 00:35:58 2024 +0900
+
+    image 변경
+
+[33mcommit 71c07f6aaebbf4885398dd60f17260dff5b95230[m
+Author: hhmkorea <hhmkorea@nate.com>
+Date:   Mon Dec 16 00:13:23 2024 +0900
+
+    login 화면 : 회원가입 팝업 추가. 테스트용 로그인 버튼 추가.
+
+[33mcommit 975303ad38fe897438b5e827fd1efdb2dc88a428[m
+Author: hhmkorea <hhmkorea@nate.com>
+Date:   Sun Dec 15 21:29:52 2024 +0900
+
+    layout 적용, 회원가입 화면 : http://localhost:8080/user/join.do
+
+[33mcommit ac9624c7eedaba8c5ae7751cc9cec4445a31d6e3[m
+Author: hhmkorea <hhmkorea@nate.com>
+Date:   Sun Dec 15 18:55:27 2024 +0900
+
+    fixed
+
+[33mcommit 3721cb524003fd1159018afe34d09d546ffb0d6e[m
+Author: hhmkorea <hhmkorea@nate.com>
+Date:   Sun Dec 15 03:43:11 2024 +0900
+
+    login 화면 : 변경
+
+[33mcommit 697b612cdbab682434baab3b5fb25711338dd2cc[m
+Author: hhmkorea <hhmkorea@nate.com>
+Date:   Sat Dec 14 21:43:36 2024 +0900
+
+    login 화면 : http://localhost:8080/login.do
+
+[33mcommit 04092e02973f639eb787ddfe680cc48bd5f27e3a[m
+Author: hhmkorea <hhmkorea@nate.com>
+Date:   Fri Dec 13 22:26:49 2024 +0900
+
+    README.md
+
+[33mcommit e413b09e9ef0e03cc85eba70dca6bdad7b35a041[m
+Author: hhmkorea <hhmkorea@nate.com>
+Date:   Fri Dec 13 21:18:02 2024 +0900
+
+    MVC 모델 구축 : Board, User,
+    index.html 호출 : thymeleaf 사용시 templates 아래에 넣어야 되는 규칙이 있음
+
+[33mcommit 6fa8363889da636efa521e31c968d702c5fc0f0f[m
+Author: hhmkorea <hhmkorea@nate.com>
+Date:   Thu Dec 12 22:33:05 2024 +0900
+
+    fixed
+
+[33mcommit 6e8f5658f08419a05bcc909f97c024f5175252f4[m
+Author: hhmkorea <hhmkorea@nate.com>
+Date:   Thu Dec 12 22:29:52 2024 +0900
+
+    index.html
+
+[33mcommit 40493bdf969b92df3f5bcaf2077c6f61806008f1[m
+Author: hhmkorea <hhmkorea@nate.com>
+Date:   Thu Dec 12 22:26:25 2024 +0900
+
+    board pjt init

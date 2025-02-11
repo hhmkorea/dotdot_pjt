@@ -1,0 +1,40 @@
+
+### Spring boot + JPA 게시판 포트폴리오
+ 
+* 개발 소스 URL(Git Hub)  
+https://github.com/hhmkorea/dotdot_pjt.git 
+ 
+* 유튜브 URL 
+board 01 : 개발 소스 
+https://youtu.be/AbiqhGyJrhc
+ 
+board 02 : 개발 소스 백업
+https://youtu.be/7dcCxPS2YLw
+ 
+board 03 : 개발 테스트
+https://youtu.be/OHyZC502v00
+ 
+board 04 : Docker 설정 및 실행
+https://youtu.be/vMrWMqGicgk
+ 
+board 05 : Docker 실행 화면테스트
+https://youtu.be/5AhO3JionQ4
+
+
+
+
+### 기타 포트폴리오 
+
+try 01 : 영상 편집
+https://youtu.be/GVYJigKulgM
+영상 편집 촬영한 걸 편집해서 사용하는 기본 방법 정리한 영상. 
+-> 영상 속 영상편집 툴 : 'Davinci Resolve(무료)'
+-> Premiere Pro(유료)로도 기본적인 영상 편집 가능합니다.
+
+try 02 : Arduino 실습 영상 
+https://youtu.be/eVxEmR5gLYc
+
+스마트팜이나 1인 가구 생존 체크를 위한 팩키지 구상중.
+여기에 사용되는 프로그램이 Arduino라 최근 공부 중.
+
+교재 및 키트 : 한 권으로 끝내는 아두이노 입문+실습(종합편)

@@ -1,5 +1,5 @@
 
-### Spring boot + JPA 게시판 포트폴리오
+### Spring boot + JPA 게시판 포트폴리오 ----------
  
 * 개발 소스 URL(Git Hub)  
 https://github.com/hhmkorea/dotdot_pjt.git 
@@ -23,7 +23,7 @@ https://youtu.be/5AhO3JionQ4
 
 
 
-### 기타 포트폴리오 
+### 기타 포트폴리오 --------------------------
 
 try 01 : 영상 편집
 https://youtu.be/GVYJigKulgM
@@ -38,3 +38,19 @@ https://youtu.be/eVxEmR5gLYc
 여기에 사용되는 프로그램이 Arduino라 최근 공부 중.
 
 교재 및 키트 : 한 권으로 끝내는 아두이노 입문+실습(종합편)
+
+
+### 실습한 프로젝트 GitHub주소 --------------------------
+ 
+1. docker 실습 프로젝트 : Nginx, React, MySQL
+https://github.com/hhmkorea/studyDocker.git			
+
+2. flutter 실습 프로젝트 
+https://github.com/hhmkorea/flutter_shoppingcart.git	
+https://github.com/hhmkorea/flutter_blog.git		
+ 
+3. spring boot 실습 프로젝트 
+https://github.com/hhmkorea/photogram.git				
+
+4. React 실습 프로젝트
+https://github.com/hhmkorea/studyReact.git

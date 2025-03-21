@@ -1,3 +1,5 @@
 /.idea/
 /site/.idea/
-/.github_bak/
+/site/build/
+/site/.gradle/
+/site/upload/

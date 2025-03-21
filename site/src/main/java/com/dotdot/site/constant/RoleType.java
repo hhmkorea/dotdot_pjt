@@ -1,4 +1,4 @@
-package com.dotdot.site.model;
+package com.dotdot.site.constant;
 
 public enum RoleType {
     USER, ADMIN

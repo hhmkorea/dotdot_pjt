@@ -57,7 +57,7 @@ public class ItemController {
             return "views/shop/item/itemForm";
         }
 
-        return "redirect:/"; // 메인으로 이동.
+        return "redirect:/shop/main"; // 메인으로 이동.
     }
 
     @GetMapping(value = "/admin/item/{itemId}")
@@ -96,7 +96,7 @@ public class ItemController {
             return "views/shop/item/itemForm";
         }
 
-        return "redirect:/";
+        return "redirect:/shop/main";
     }
 
     @GetMapping(value = {"/admin/items","/admin/items/{page}"})

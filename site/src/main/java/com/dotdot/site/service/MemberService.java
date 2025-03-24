@@ -1,7 +1,7 @@
 package com.dotdot.site.service;
 
 import com.dotdot.site.model.Member;
-import com.dotdot.site.constant.RoleType;
+import com.dotdot.site.model.RoleType;
 import com.dotdot.site.repository.MemberRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;

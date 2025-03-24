@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/default}">
+<th:block layout:fragment="title">
+    <title>Sophie's Home</title>
+</th:block>
+
+<th:block layout:fragment="content">
+    <div class="page_tits">
+        <h3>쇼핑몰 메인</h3>
+        <p class="path"><strong>현재 위치 : </strong><span>home</span> <span>쇼핑몰</span> <span>쇼핑몰 메인</span>
+    </div>
+
+    <div class="content">
+        <div id="carouselControls" class="carousel slide margin" data-ride="carousel">
+            <div class="carousel-inner">
+                <div class="carousel-item active item">
+                    <img class="d-block w-100 banner" th:src="@{/images/main.png}" alt="First slide">
+                </div>
+            </div>
+        </div>
+
+        <input type="hidden" name="searchQuery" th:value="${itemSearchDto?.searchQuery}"> <!-- 쇼핑몰 상단의 Search 기능을 이용, 검색어 유지를 위해 hidden 처리 -->
+        <div th:if="${not #strings.isEmpty(itemSearchDto?.searchQuery)}" class="center">
+            <p class="h3 font-weight-bold" th:text="${itemSearchDto.searchQuery} + '검색 결과'"></p> <!-- 어떤 검색어로 조회한 결과인지 보여줌 -->
+        </div>
+
+        <div class="row">
+            <th:block th:each="item, status: ${items.getContent()}"> <!-- 조회한 메인 상품 데이터 Card 형태로 보여줌 -->
+                <div class="col-md-4 margin">
+                    <div class="card">
+                        <a th:href="'/views/shop/item/' + ${item.id}" class="text-dark">
+                            <img th:src="${item.imgUrl}" class="card-img-top" th:alt="${item.itemNm}" height="400">
+                            <div class="card-body">
+                                <h4 class="card-title">[[${item.itemNm}]]</h4>
+                                <p class="card-text">[[${item.itemDetail}]]</p>
+                                <h3 class="card-title text-danger">[[${item.price}]]원</h3>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </th:block>
+        </div>
+
+        <!--
+        th:with 변수값 정의
+        start = (현재 페이지 번호/보여줄 페이지수)+1
+        end = start + (보여줄 페이지 수 -1)
+        -->
+        <div th:with="start=${(items.number/maxPage) * maxPage + 1}, end=(${(items.totalPages == 0 ) ? 1 : (start + (maxPage -1 ) < items.totalPages ? start + (maxPage - 1) : start + items.totalPages)})">
+            <ul class="pagination justify-content-center">
+
+                <li class="page-item" th:classappend="${items.number eq 0} ? 'disabled':''">
+                    <a th:href="@{'/' + '?searchQuery=' + ${itemSearchDto?.searchQuery} + '&page=' + ${items.number - 1}}" aria-label="Previous" class="page-link">
+                        <span aria-hidden="true">Previous</span>
+                    </a>
+                </li>
+                <li class="page-item" th:each="page: ${#numbers.sequence(start, end)}" th:classappend="${items.number eq page - 1} ? 'active' : ''">
+                    <a th:href="@{'/' + '?searchQuery=' + ${itemSearchDto?.searchQuery} + '&page=' + ${page - 1}}" th:inline="text" class="page-link">
+                        [[${page}]]
+                    </a>
+                </li>
+                <li class="page-item" th:classappend="${items.number + 1 ge items.totalPages} ? 'disabled':''">
+                    <a th:href="@{'/' + '?searchQuery=' + ${itemSearchDto?.searchQuery} + '&page=' + ${items.number + 1}}" aria-label="Next" class="page-link">
+                        <span aria-hidden="true">Next</span>
+                    </a>
+                </li>
+
+            </ul>
+
+        </div>
+
+    </div> <!-- /* .content */ -->
+</th:block>
+
+</html>

@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/default}">
+<th:block layout:fragment="title">
+    <title>Sophie's Home</title>
+</th:block>
+
+<!-- 사용자 스크립트 추가 -->
+<th:block layout:fragment="script">
+
+    <script th:inline="javascript">
+        $(document).ready(function() {
+            $("#searchBtn").on("click", function(e) {
+                e.preventDefault(); // 검색 버튼 클릭 시 form 태그의 전송을 막아줌.
+                page(0);
+            });
+        });
+
+        function page(page) { // 이동할 페이지의 값을 받아 상품 데이터 조회
+            let searchDateType = $("#searchDateType").val();
+            let searchSellStatus = $("#searchSellStatus").val();
+            let searchBy = $("#searchBy").val();
+            let searchQuery = $("#searchQuery").val();
+
+            location.href = "/views/shop/admin/items/" + page + "?searchDateType=" + searchDateType + "&searchSellStatus=" + searchSellStatus + "&searchBy=" +  searchBy + "&searchQuery=" + searchQuery;
+        }
+    </script>
+</th:block>
+
+<th:block layout:fragment="content">
+    <div class="page_tits">
+        <h3>상품 관리</h3>
+        <p class="path"><strong>현재 위치 : </strong><span>home</span> <span>쇼핑몰</span> <span>상품 관리</span>
+    </div>
+
+    <div class="content">
+        <form th:action="@{'/views/shop/admin/items' + ${items.number}}" role="form" method="get" th:object="${items}">
+            <table class="tb tb_col">
+                <thead>
+                <tr>
+                    <th scope="col">상품아이디</th>
+                    <th scope="col">상품명</th>
+                    <th scope="col">상태</th>
+                    <th scope="col">등록자</th>
+                    <th scope="col">등록일</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="item, status: ${items.getContent()}"> <!-- 상품 리스트 -->
+                    <td th:text="${item.id}"></td>
+                    <td>
+                        <a th:href="@{'/views/shop/admin/item/' + ${item.id}}" th:text="${item.itemNm}"></a>
+                    </td>
+                    <td th:text="${item.itemSellStatus == T(com.shop.constant.ItemSellStatus).SELL} ? '판매중' : '품절'"></td>
+                    <td th:text="${item.createdBy}"></td>
+                    <td th:text="${#temporals.format(item.regTime, 'yyyy-MM-dd HH:mm:ss')}"></td>
+                </tr>
+                </tbody>
+            </table>
+            <!--
+            th:with 변수값 정의
+            start = (현재 페이지 번호/보여줄 페이지수)+1
+            end = start + (보여줄 페이지 수 -1)
+            -->
+            <div th:with="start=${(items.number/maxPage) * maxPage + 1}, end=(${(items.totalPages == 0 ) ? 1 : (start + (maxPage -1 ) < items.totalPages ? start + (maxPage - 1) : start + items.totalPages)})">
+                <ul class="pagination justify-content-center">
+                    <li class="page-item" th:classappend="${items.first} ? 'disabled'">
+                        <a th:onclick="'javascript:page(' + ${items.number - 1} + ')'" aria-label="Previous" class="page-link">
+                            <span aria-hidden="true">Previous</span>
+                        </a>
+                    </li>
+                    <li class="page-item" th:each="page: ${#numbers.sequence(start, end)}" th:classappend="${items.number eq page - 1} ? 'active' : ''">
+                        <a th:onclick="'javascript:page(' + ${page - 1} + ')'" aria-label="Previous" class="page-link">
+                            [[${page}]]
+                        </a>
+                    </li>
+                    <li class="page-item" th:classappend="${items.last} ? 'disabled'">
+                        <a th:onclick="'javascript:page(' + ${items.number + 1} + ')'" aria-label="Next" class="page-link">
+                            <span aria-hidden="true">Next</span>
+                        </a>
+                    </li>
+
+                </ul>
+
+            </div>
+
+            <br />
+            <div class="form-control center bg-light-silver" th:object="${itemSearchDto}">
+                <label>
+                    <select th:field="*{searchDataType}" class="form-control" style="width: auto;">
+                        <option value="all">전체기간</option>
+                        <option value="1d">1일</option>
+                        <option value="1w">1주</option>
+                        <option value="1m">1개월</option>
+                        <option value="6m">6개월</option>
+                    </select>
+                </label>
+                <label>
+                    <select th:field="*{searchSellStatus}" class="form-control" style="width: auto;">
+                        <option value="">판매상태(전체)</option>
+                        <option value="SELL">판매</option>
+                        <option value="SOLD_OUT">품절</option>
+                    </select>
+                </label>
+                <label>
+                    <select th:field="*{searchBy}" class="form-control" style="width: auto;">
+                        <option value="itemNm">상품명</option>
+                        <option value="createdBy">등록자</option>
+                    </select>
+                </label>
+
+                <label>
+                    <input th:field="*{searchQuery}" type="text" class="form-control" placeholder="검색어를 입력해주세요">
+                </label>
+                <button id="searchBtn" type="submit" class="btn btn-primary">검색</button>
+
+            </div>
+
+        </form>
+
+    </div> <!-- /* .content */ -->
+</th:block>
+
+</html>

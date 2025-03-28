@@ -16,5 +16,7 @@ _* 개발 언어 : JAVA
 * CI & CD : Docker
 
 ### *** 폴더별 설명 *** ###
-* board : 게시판 
-* shop : 쇼핑몰 
+* board : 게시판
+  참고 URL : https://congsong.tistory.com/16
+* shop : 쇼핑몰
+  참고 URL : https://back-stead.tistory.com/7

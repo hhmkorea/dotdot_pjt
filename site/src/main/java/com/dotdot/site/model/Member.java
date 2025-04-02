@@ -46,4 +46,6 @@ public class Member {
         this.password = "";
     }
 
+//    @OneToMany(mappedBy = "member")
+//    private List<Item> items = new ArrayList<>();
 }

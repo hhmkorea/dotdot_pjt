@@ -54,3 +54,15 @@ where 1=1
 ;
 
 select length('image/afe72cb2-a0d9-4cbe-9795-4433c452277e..png') from dual; -- 47
+
+select * from item;
+select * from member;
+select * from board;
+
+/* dynamic native SQL query */ select
+                                   auto_increment as newId
+                               from
+                                   information_schema.tables
+                               where
+                                   table_schema = 'dotdot'
+                                 and table_name = 'item';

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/default}">
+<th:block layout:fragment="title">
+    <title>Sophie's Home</title>
+</th:block>
+
+<th:block layout:fragment="content">
+    <div class="page_tits">
+        <h3>쇼핑몰</h3>
+        <p class="path"><strong>현재 위치 : </strong><span>home</span> <span>쇼핑몰</span>
+    </div>
+
+    <div class="content">
+
+        <section class="py-5">
+            <div class="container px-4 px-lg-5 mt-5">
+                <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+                    <!-- 반복문을 사용하여 상품 목록 표시 -->
+                    <div class="col mb-5" th:each="item : ${items}" >
+                        <div class="card h-100">
+                            <!-- Product image-->
+                            <!--<img class="card-img-top" th:src="" alt="no image" />-->
+                            <!-- Product details-->
+                            <div class="card-body p-4">
+                                <div class="text-center">
+                                    <!-- Product name-->
+                                    <h5 class="fw-bolder" th:text="${item.name}">Fancy Product</h5>
+                                    <!-- Product price-->
+                                    <div th:text="${#numbers.formatInteger(item.price, 0, 'COMMA')} + '원'"></div>
+                                    <div th:text="'판매자: ' + ${principal.username}"></div>
+                                    <div th:text="${item.itemSellStatus}" style="color: #dc3545; font-weight: bold"></div>
+                                </div>
+                            </div>
+                            <!-- Product actions-->
+                            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" th:href="@{/items/{id}(id=${item.id})}">View options</a></div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+    </div> <!-- /* .content */ -->
+</th:block>
+</html>

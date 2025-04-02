@@ -5,7 +5,7 @@
 * 프로젝트명 : site 
 
 ### *** 개발 환경 *** 
-_* 개발 언어 : JAVA
+* 개발 언어 : JAVA
 * 개발 도구 : IntelliJ
 * 프레임워크 : Spring Boot
 * WAS : Spring Boot에 Tomcat Server 내장됨.

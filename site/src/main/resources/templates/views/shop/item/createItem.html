@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/default}">
+
+<th:block layout:fragment="title">
+  <title>Sophie's Home</title>
+</th:block>
+
+<th:block layout:fragment="content">
+  <div class="page_tits">
+    <h3>쇼핑몰</h3>
+    <p class="path"><strong>현재 위치 : </strong><span>home</span> <span>쇼핑몰</span> <span>상품 등록</span>
+  </div>
+
+  <div class="content">
+    <form action="" method="post" >
+      <div class="form-group">
+        <label for="id" class="form-label fw-bold">아이템 번호</label>
+        <input type="text" class="form-control" id="id" name="id" th:value="${id}" readonly="readonly">
+      </div>
+      <div class="form-group">
+        <label for="name" class="form-label fw-bold">상품명</label>
+        <input type="text" class="form-control" id="name" name="name">
+      </div>
+      <div class="form-group">
+        <label for="price" class="form-label fw-bold">가격</label>
+        <input type="text" class="form-control" id="price" name="price">
+      </div>
+      <div class="form-group">
+        <label for="stockQuantity" class="form-label fw-bold">수량</label>
+        <input type="text" class="form-control" id="stockQuantity" name="stockQuantity">
+      </div>
+      <div class="form-group">
+        <label for="author" class="form-label fw-bold">저자</label>
+        <input type="text" class="form-control" id="author" name="author" th:value="${principal.username}" readonly="readonly">
+      </div>
+      <div class="form-group">
+        <label for="itemDetail" class="form-label fw-bold">상세 설명</label>
+        <textarea class="form-control" id="itemDetail" name="itemDetail" rows="5"></textarea>
+      </div>
+      <div class="form-group">
+        <label for="itemSellStatus"></label>
+        <select id="itemSellStatus" name="itemSellStatus" class="custom-select">
+          <option value="SELL">판매중</option>
+          <option value="SOLD_OUT">품절</option>
+        </select>
+      </div>
+      <p class="btn_set tr">
+        <button id="btn-save-item" class="btns btn_st5 btn_mid">저장</button>
+        <a th:href="@{/shop/main}" class="btns btn_st2 btn_mid">취소</a>
+      </p>
+    </form>
+
+  </div> <!-- /* .content */ -->
+
+  <script th:inline="javascript" type="text/javascript" th:src="@{/js/shop.js}"></script>
+</th:block>
+</html>
